@@ -1,6 +1,21 @@
 [build]
   publish = "."
 
+# HTML: jangan di-cache supaya selalu serve versi terbaru.
+# Browser tetap revalidate tiap kali halaman dibuka.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# JS & CSS dengan ?v=... aman di-cache lama; bump-version.ps1 yang
+# mengubah versi setiap kali file berubah.
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+# Default headers untuk semua file
 [[headers]]
   for = "/*"
   [headers.values]

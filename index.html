@@ -115,8 +115,11 @@
   .info-item .value { font-size: 14px; color: var(--blue-dark); font-weight: 600; }
 
   .docs-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: grid; grid-template-columns: 1fr;
     gap: 24px; margin-bottom: 32px;
+  }
+  @media (min-width: 720px) {
+    .docs-grid { grid-template-columns: 1fr 1fr; }
   }
 
   .doc-card {
@@ -559,7 +562,7 @@
   <em style="color:#94a3b8; font-size:11px;">Bukan pengganti saran medis profesional. Selalu konsultasikan ke DSA untuk concern spesifik.</em>
 </footer>
 
-<script src="config.js?v=be52c7fd7a"></script>
-<script src="app.js?v=be52c7fd7a"></script>
+<script src="config.js?v=bc42e0e520"></script>
+<script src="app.js?v=bc42e0e520"></script>
 </body>
 </html>

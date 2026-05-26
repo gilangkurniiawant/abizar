@@ -71,7 +71,7 @@
     else document.addEventListener("DOMContentLoaded", fn);
   }
 
-  ready(function () {
+  function render() {
     const today = new Date();
     const birth = parseDate(cfg.child.birthDate);
     const age   = diffMonthsDays(birth, today);
@@ -214,6 +214,14 @@
     // ---- Halaman progress.html ----
     setText("abi-prog-nick",    cfg.child.nickname);
     setText("abi-prog-updated", fmtFullDate(today));
+  }
+
+  ready(render);
+  // Re-render tiap menit supaya usia & tanggal update tanpa reload manual.
+  setInterval(render, 60 * 1000);
+  // Re-render saat tab kembali aktif (mis. setelah malam dibiarkan terbuka).
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) render();
   });
 
   function escapeHtml(s) {
