@@ -180,11 +180,11 @@
   <div class="avatar">A</div>
   <div class="pc-text">
     <div class="pc-title">Profil Anak</div>
-    <h2 class="pc-name">Muhammad Abizar Kurniawan</h2>
+    <h2 class="pc-name" id="abi-profile-fullname">Muhammad Abizar Kurniawan</h2>
     <div class="pc-meta">
-      <strong>Lahir:</strong> 28 Juli 2025 &middot;
-      <strong>Usia saat ini:</strong> 9 bulan 28 hari (memasuki bulan ke-10)<br>
-      <strong>Susu saat ini:</strong> Morinaga Chil&middot;Mil P-HP (Partial Hydrolysate Protein)<br>
+      <strong>Lahir:</strong> <span id="abi-profile-birth">28 Juli 2025</span> &middot;
+      <strong>Usia saat ini:</strong> <span id="abi-pu-age">9 bulan 28 hari (memasuki bulan ke-10)</span><br>
+      <strong>Susu saat ini:</strong> <span id="abi-profile-formula">Morinaga Chil&middot;Mil P-HP</span> (Partial Hydrolysate Protein)<br>
       <strong>Catatan medis:</strong> riwayat batuk ringan usia 3 bln saat S26 Gold &rarr; hilang total setelah pindah ke P-HP
     </div>
   </div>
@@ -1155,7 +1155,7 @@
   <div class="table-scroll"><table>
     <tr>
       <th>Pertanyaan</th>
-      <th>Status Abi (10 bln, 26 Mei 2026)</th>
+      <th>Status Abi (<span id="abi-pu-table-ctx">10 bln, 26 Mei 2026</span>)</th>
       <th>Implikasi</th>
     </tr>
     <tr>
@@ -2286,9 +2286,11 @@
 </div>
 
 <footer>
-  Panduan Susu &amp; MPASI Usia 10 Bulan &middot; Disusun khusus untuk Muhammad Abizar Kurniawan (lahir 28 Juli 2025) &middot; Berbasis riset WHO, AAP, IDAI, ESPGHAN, EAACI, BSACI, CDC<br>
-  &#128197; Disusun: 26 Mei 2026 &middot; Konteks: Abi 9 bulan 28 hari, Morinaga Chil&middot;Mil P-HP, riwayat alergi ringan
+  Panduan Susu &amp; MPASI Usia 10 Bulan &middot; Disusun khusus untuk <span id="abi-footer-fullname">Muhammad Abizar Kurniawan</span> (lahir <span id="abi-footer-birth">28 Juli 2025</span>) &middot; Berbasis riset WHO, AAP, IDAI, ESPGHAN, EAACI, BSACI, CDC<br>
+  &#128197; Disusun: <span id="abi-footer-updated">26 Mei 2026</span> &middot; Konteks: <span id="abi-pu-footer-ctx">Abi 9 bulan 28 hari, Morinaga Chil&middot;Mil P-HP, riwayat alergi ringan</span>
 </footer>
 
+<script src="config.js?v=d8c1f77cee"></script>
+<script src="app.js?v=d8c1f77cee"></script>
 </body>
 </html>

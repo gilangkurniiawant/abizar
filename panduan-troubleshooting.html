@@ -191,19 +191,19 @@
   <div class="avatar">A</div>
   <div class="pc-text">
     <div class="pc-title">Profil Anak</div>
-    <h2 class="pc-name">Muhammad Abizar Kurniawan</h2>
+    <h2 class="pc-name" id="abi-profile-fullname">Muhammad Abizar Kurniawan</h2>
     <div class="pc-meta">
-      <strong>Lahir:</strong> 28 Juli 2025 &middot;
-      <strong>Usia:</strong> 9 bulan 28 hari (memasuki bulan ke-10)<br>
-      <strong>BB saat ini:</strong> <strong>10.72 kg</strong> &middot;
-      <strong>Susu:</strong> Morinaga Chil&middot;Mil P-HP<br>
+      <strong>Lahir:</strong> <span id="abi-profile-birth">28 Juli 2025</span> &middot;
+      <strong>Usia:</strong> <span id="abi-pts-age">9 bulan 28 hari (memasuki bulan ke-10)</span><br>
+      <strong>BB saat ini:</strong> <strong id="abi-profile-weight">10.72 kg</strong> &middot;
+      <strong>Susu:</strong> <span id="abi-profile-formula">Morinaga Chil&middot;Mil P-HP</span><br>
       <strong>Pola tidur sekarang:</strong> 18:30 &rarr; 03:30/04:00 (perlu disesuaikan)<br>
       <strong>Pola mandi:</strong> ~16:00 sore
     </div>
   </div>
   <div class="pc-pills">
-    <span class="pill">10 bln</span>
-    <span class="pill pill-blue">10.72 kg</span>
+    <span class="pill" id="abi-pts-pill-age">10 bln</span>
+    <span class="pill pill-blue" id="abi-pts-pill-bb">10.72 kg</span>
     <span class="pill pill-green">Sehat</span>
   </div>
 </div>
@@ -1510,7 +1510,7 @@
   <div class="box box-info">
     <strong>&#128203; Template Briefing Pengasuh (1 halaman):</strong>
     <ol style="margin-top:8px;">
-      <li><strong>Nama anak:</strong> Muhammad Abizar Kurniawan, 10 bulan, BB 10.72 kg</li>
+      <li><strong>Nama anak:</strong> <span id="abi-pts-card-name">Muhammad Abizar Kurniawan, 10 bulan, BB 10.72 kg</span></li>
       <li><strong>Susu:</strong> Morinaga Chil&middot;Mil P-HP, takaran ___ scoop per ___ ml. Maksimal 700 ml/hari. Jadwal: pagi, siang opsional, malam.</li>
       <li><strong>MPASI:</strong> 3x makan utama (jam ___), 2x snack. Selalu ada protein hewani.</li>
       <li><strong>Bedtime:</strong> Jam ___. Routine: mandi/lap &rarr; pijat &rarr; baju tidur &rarr; baca buku &rarr; susu &rarr; lagu ___ &rarr; boks.</li>
@@ -1834,9 +1834,11 @@
 </div>
 
 <footer>
-  Panduan Troubleshooting Transisi &middot; Disusun khusus untuk Muhammad Abizar Kurniawan (lahir 28 Juli 2025) &middot; BB 10.72 kg &middot; Berbasis riset WHO, AAP, AASM, ESPGHAN, AAPD<br>
-  &#128197; Disusun: 26 Mei 2026 &middot; Dokumen pendamping panduan utama
+  Panduan Troubleshooting Transisi &middot; Disusun khusus untuk <span id="abi-footer-fullname">Muhammad Abizar Kurniawan</span> (lahir <span id="abi-footer-birth">28 Juli 2025</span>) &middot; BB <span id="abi-footer-bb">10.72 kg</span> &middot; Berbasis riset WHO, AAP, AASM, ESPGHAN, AAPD<br>
+  &#128197; Disusun: <span id="abi-footer-updated">26 Mei 2026</span> &middot; Dokumen pendamping panduan utama
 </footer>
 
+<script src="config.js?v=d8c1f77cee"></script>
+<script src="app.js?v=d8c1f77cee"></script>
 </body>
 </html>
