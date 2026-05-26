@@ -70,3 +70,4 @@ const ABIZAR_CONFIG = {
     { months: [23, 24] }
   ]
 };
+window.ABIZAR_CONFIG = ABIZAR_CONFIG;
