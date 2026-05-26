@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+<title>Panduan Troubleshooting Transisi &mdash; Muhammad Abizar Kurniawan</title>
+<style>
+  :root {
+    --blue-dark: #1a3a5c;
+    --blue-mid: #2563a8;
+    --blue-light: #dbeafe;
+    --green-dark: #166534;
+    --green-light: #dcfce7;
+    --yellow-light: #fefce8;
+    --yellow-border: #ca8a04;
+    --red-light: #fff1f2;
+    --red-border: #e11d48;
+    --gray-100: #f8fafc;
+    --gray-200: #e2e8f0;
+    --gray-700: #374151;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 14px; line-height: 1.75; color: #1e293b; background: #f0f4f8;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='460' height='240' viewBox='0 0 460 240'><text x='230' y='120' text-anchor='middle' fill='rgba(225,29,72,0.06)' font-family='Segoe UI, Arial, sans-serif' font-size='20' font-weight='700' letter-spacing='2' transform='rotate(-28 230 120)'>TROUBLESHOOTING ABI</text></svg>");
+    background-repeat: repeat; background-attachment: fixed;
+  }
+  a, button, summary, .tag, .step-num, .month-num, .month-card, .toc a, .badge, .month-header { touch-action: manipulation; }
+  img, iframe, video { max-width: 100%; height: auto; }
+  table { width: 100%; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0; border-radius: 8px; }
+  .table-scroll table { margin: 0; min-width: 480px; }
+  .cover {
+    background: linear-gradient(135deg, #7c1d1d 0%, #b91c1c 50%, #2563a8 100%);
+    color: white; padding: 48px 40px 40px; text-align: center;
+  }
+  .cover h1 { font-size: clamp(20px, 4.6vw, 28px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; line-height: 1.3; }
+  .cover p  { font-size: clamp(12px, 2.4vw, 14px); opacity: 0.85; max-width: 600px; margin: 0 auto 20px; }
+  .cover .badge {
+    display: inline-block; background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4); border-radius: 20px;
+    padding: 4px 14px; font-size: 12px; margin: 4px;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+  .child-profile {
+    background: #fff; border-radius: 12px; padding: 18px 22px; margin-bottom: 24px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08); border-left: 5px solid #b91c1c;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center;
+  }
+  .child-profile .avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, #7c1d1d, #b91c1c);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 800; letter-spacing: 1px; flex-shrink: 0;
+  }
+  .child-profile .pc-text { min-width: 0; }
+  .child-profile .pc-title {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+    color: #b91c1c; font-weight: 700; margin-bottom: 4px;
+  }
+  .child-profile .pc-name { font-size: 16px; color: #1a3a5c; font-weight: 700; margin: 0 0 4px; line-height: 1.3; }
+  .child-profile .pc-meta { font-size: 12.5px; color: #475569; line-height: 1.55; }
+  .child-profile .pc-meta strong { color: #1a3a5c; font-weight: 600; }
+  .child-profile .pc-pills { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; align-items: flex-end; }
+  .child-profile .pill {
+    display: inline-block; background: #fee2e2; color: #991b1b;
+    border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; white-space: nowrap;
+  }
+  .child-profile .pill.pill-green { background: #dcfce7; color: #166534; }
+  .child-profile .pill.pill-blue { background: #dbeafe; color: #1e40af; }
+  .toc { background: white; border-radius: 12px; padding: 24px 28px; margin-bottom: 32px; box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+  .toc h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #b91c1c; margin-bottom: 16px; }
+  .toc ol { padding-left: 20px; columns: 2; column-gap: 32px; }
+  .toc li { font-size: 13px; padding: 3px 0; color: var(--blue-dark); }
+  .toc a { color: var(--blue-mid); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  section { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 6px rgba(0,0,0,0.08); overflow: hidden; }
+  h2.section-title { font-size: 18px; color: #b91c1c; border-left: 5px solid #b91c1c; padding-left: 14px; margin-bottom: 20px; line-height: 1.3; }
+  h3 { font-size: 15px; color: var(--blue-dark); margin: 20px 0 10px; }
+  h4 { font-size: 13px; color: var(--gray-700); text-transform: uppercase; letter-spacing: 0.5px; margin: 16px 0 8px; }
+  p { margin-bottom: 10px; }
+  ul, ol { padding-left: 20px; margin-bottom: 10px; }
+  li { margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+  th { background: #7c1d1d; color: white; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 12px; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--gray-100); }
+  tr:hover td { background: #fee2e2; }
+  .box { border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: 13px; }
+  .box-info { background: var(--blue-light); border-left: 5px solid var(--blue-mid); }
+  .box-success { background: var(--green-light); border-left: 5px solid #16a34a; }
+  .box-warning { background: var(--yellow-light); border-left: 5px solid var(--yellow-border); }
+  .box-danger { background: var(--red-light); border-left: 5px solid var(--red-border); }
+  .box strong { display: block; margin-bottom: 6px; font-size: 13px; }
+  .ref { font-size: 11px; color: #6b7280; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 6px 10px; margin-top: 8px; line-height: 1.5; overflow-wrap: anywhere; word-break: break-word; }
+  .ref a { color: var(--blue-mid); word-break: break-all; text-decoration: none; overflow-wrap: anywhere; }
+  .ref a:hover { text-decoration: underline; }
+  .source-list a, p a, li a { overflow-wrap: anywhere; word-break: break-word; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-green { background: var(--green-light); color: var(--green-dark); }
+  .tag-blue  { background: var(--blue-light);  color: var(--blue-dark); }
+  .tag-yellow{ background: #fef3c7; color: #92400e; }
+  .tag-red   { background: var(--red-light);   color: var(--red-border); }
+  .step-row { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; font-size: 13px; }
+  .step-num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: #b91c1c; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; }
+  .scenario-card { border: 1px solid var(--gray-200); border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+  .scenario-header { padding: 14px 18px; background: linear-gradient(90deg, #7c1d1d, #b91c1c); color: white; }
+  .scenario-header h3 { margin: 0; color: white; font-size: 15px; }
+  .scenario-header p { margin: 4px 0 0; font-size: 12px; opacity: 0.85; }
+  .scenario-body { padding: 18px; }
+  .source-list { padding-left: 22px; }
+  .source-list li { margin-bottom: 12px; font-size: 12.5px; line-height: 1.6; }
+  .source-list strong { color: var(--blue-dark); }
+  footer { text-align: center; padding: 24px 16px 30px; font-size: 11.5px; color: #64748b; }
+  .growth-bar {
+    background: #f1f5f9; border-radius: 8px; padding: 16px; margin: 14px 0;
+    border: 1px solid var(--gray-200);
+  }
+  .growth-track {
+    position: relative; height: 50px; background: linear-gradient(90deg,
+      #fee2e2 0%, #fee2e2 8%,
+      #fef3c7 8%, #fef3c7 20%,
+      #dcfce7 20%, #dcfce7 80%,
+      #fef3c7 80%, #fef3c7 92%,
+      #fee2e2 92%, #fee2e2 100%);
+    border-radius: 6px; margin: 24px 0 8px;
+  }
+  .growth-marker {
+    position: absolute; top: -8px; bottom: -8px; width: 4px;
+    background: #1a3a5c; border-radius: 2px;
+  }
+  .growth-marker::after {
+    content: 'Abi 10.72 kg';
+    position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
+    font-size: 11px; font-weight: 700; color: #1a3a5c;
+    background: white; padding: 2px 6px; border-radius: 4px; border: 1px solid #1a3a5c;
+    white-space: nowrap;
+  }
+  .growth-labels {
+    display: flex; justify-content: space-between; font-size: 10px;
+    color: #64748b; margin-top: 4px;
+  }
+  html { overflow-x: hidden; }
+  body { overflow-x: hidden; }
+
+  @media (max-width: 768px) {
+    .container { padding: 24px 16px 50px; }
+    section { padding: 22px 20px; }
+    .toc ol { columns: 1; }
+    .child-profile { grid-template-columns: auto 1fr; grid-template-areas: "avatar text" "pills pills"; padding: 14px 16px; gap: 12px; }
+    .child-profile .avatar { grid-area: avatar; width: 48px; height: 48px; font-size: 20px; }
+    .child-profile .pc-text { grid-area: text; }
+    .child-profile .pc-pills { grid-area: pills; flex-direction: row; flex-wrap: wrap; gap: 6px; align-items: flex-start; justify-content: flex-start; }
+  }
+  @media (max-width: 600px) {
+    body { font-size: 14px; line-height: 1.65; }
+    .cover { padding: 28px 18px 22px; }
+    .container { padding: 18px 12px 40px; }
+    section { padding: 18px 14px; border-radius: 10px; margin-bottom: 18px; }
+    h2.section-title { font-size: 15px; padding-left: 10px; line-height: 1.35; }
+    h3 { font-size: 14px; margin: 16px 0 8px; }
+    h4 { font-size: 12px; }
+    table { font-size: 12px; }
+    th { padding: 8px 9px; font-size: 11px; }
+    td { padding: 7px 9px; }
+    .scenario-header { padding: 12px 14px; }
+    .scenario-body { padding: 14px; }
+    .ref { font-size: 11px; padding: 8px 10px; }
+    .ref a { word-break: break-word; }
+    .box { padding: 12px 14px; font-size: 12.5px; }
+    .toc { padding: 18px 16px; }
+    .toc li { font-size: 12.5px; }
+  }
+</style>
+</head>
+<body>
+<div class="cover">
+  <h1>Panduan Troubleshooting Transisi Abi</h1>
+  <p>Panduan masalah praktis selama transisi: tantrum malam, bangun-tidur berulang, asosiasi dot, ritual mandi, dan analisis pertumbuhan berbasis kurva WHO.</p>
+  <span class="badge">&#127769; Tantrum Malam</span>
+  <span class="badge">&#127868; Asosiasi Dot</span>
+  <span class="badge">&#128704; Ritual Mandi</span>
+  <span class="badge">&#128202; Kurva BB WHO</span>
+  <span class="badge">&#128218; Riset AAP &middot; AASM &middot; WHO</span>
+</div>
+
+<div class="container">
+
+<div class="child-profile">
+  <div class="avatar">A</div>
+  <div class="pc-text">
+    <div class="pc-title">Profil Anak</div>
+    <h2 class="pc-name">Muhammad Abizar Kurniawan</h2>
+    <div class="pc-meta">
+      <strong>Lahir:</strong> 28 Juli 2025 &middot;
+      <strong>Usia:</strong> 9 bulan 28 hari (memasuki bulan ke-10)<br>
+      <strong>BB saat ini:</strong> <strong>10.72 kg</strong> &middot;
+      <strong>Susu:</strong> Morinaga Chil&middot;Mil P-HP<br>
+      <strong>Pola tidur sekarang:</strong> 18:30 &rarr; 03:30/04:00 (perlu disesuaikan)<br>
+      <strong>Pola mandi:</strong> ~16:00 sore
+    </div>
+  </div>
+  <div class="pc-pills">
+    <span class="pill">10 bln</span>
+    <span class="pill pill-blue">10.72 kg</span>
+    <span class="pill pill-green">Sehat</span>
+  </div>
+</div>
+
+<div class="toc">
+  <h2>Daftar Isi</h2>
+  <ol>
+    <li><a href="#analisis-bb">Analisis BB Abi vs Kurva WHO</a></li>
+    <li><a href="#mandi">Ritual Mandi: 4 Sore vs Pre-Tidur</a></li>
+    <li><a href="#tantrum-malam">Tantrum Tengah Malam</a></li>
+    <li><a href="#tolak-pola">Saat Abi Menolak Pola Baru</a></li>
+    <li><a href="#bangun-nangis">Bangun Nangis Berulang</a></li>
+    <li><a href="#asosiasi-dot">Asosiasi Dot Kosong</a></li>
+    <li><a href="#tolak-mpasi">Penolakan MPASI</a></li>
+    <li><a href="#tolak-uht">Penolakan UHT/Sufor Baru</a></li>
+    <li><a href="#mundur">Kapan Boleh Mundur ke Pola Lama</a></li>
+    <li><a href="#sakit-transisi">Saat Abi Sakit di Tengah Transisi</a></li>
+    <li><a href="#tumbuh-gigi">Tumbuh Gigi &amp; Pengaruhnya</a></li>
+    <li><a href="#travel">Travel/Mudik di Tengah Transisi</a></li>
+    <li><a href="#pengasuh">Konsistensi Pengasuh</a></li>
+    <li><a href="#mental-ortu">Mental &amp; Energi Orang Tua</a></li>
+    <li><a href="#emergency">Tanda Emergency &amp; Telpon Dokter</a></li>
+    <li><a href="#referensi">Referensi &amp; Sumber Riset</a></li>
+  </ol>
+</div>
+
+<!-- SECTION 1: ANALISIS BB -->
+<section id="analisis-bb">
+  <h2 class="section-title">1. Analisis BB Abi vs Kurva WHO</h2>
+
+  <h3>1.1 Status Pertumbuhan Abi</h3>
+
+  <div class="box box-success">
+    <strong>&#128202; Ringkasan Cepat:</strong>
+    BB Abi <strong>10.72 kg</strong> di usia 10 bulan (jenis kelamin laki-laki) berada di atas median WHO Growth Standard. Ini status <strong>NORMAL CENDERUNG TINGGI</strong> &mdash; pertumbuhan sangat baik, tidak ada concern stunting/wasting.
+  </div>
+
+  <h3>1.2 Kurva BB WHO Anak Laki-laki Usia 10 Bulan</h3>
+
+  <p>WHO Multicentre Growth Reference Study (MGRS, 2006) menetapkan standar pertumbuhan global. Untuk anak laki-laki usia 10 bulan tepat:</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Persentil / Z-score</th>
+      <th>BB (kg)</th>
+      <th>Kategori</th>
+      <th>Posisi Abi</th>
+    </tr>
+    <tr>
+      <td>P3 / -2 SD</td>
+      <td>7.4 kg</td>
+      <td>Batas bawah normal (underweight di bawah ini)</td>
+      <td>+3.32 kg di atas</td>
+    </tr>
+    <tr>
+      <td>P15 / -1 SD</td>
+      <td>8.2 kg</td>
+      <td>Normal bawah</td>
+      <td>+2.52 kg di atas</td>
+    </tr>
+    <tr>
+      <td><strong>P50 / median</strong></td>
+      <td><strong>9.2 kg</strong></td>
+      <td>Median populasi sehat</td>
+      <td>+1.52 kg di atas</td>
+    </tr>
+    <tr>
+      <td>P85 / +1 SD</td>
+      <td>10.4 kg</td>
+      <td>Normal atas</td>
+      <td>+0.32 kg di atas</td>
+    </tr>
+    <tr>
+      <td><strong>P97 / +2 SD</strong></td>
+      <td><strong>11.4 kg</strong></td>
+      <td>Batas atas normal</td>
+      <td><strong>Abi 10.72 kg di sini (~+1.5 SD, P92)</strong></td>
+    </tr>
+    <tr>
+      <td>+3 SD</td>
+      <td>12.7 kg</td>
+      <td>Overweight (perlu evaluasi)</td>
+      <td>-1.98 kg di bawah</td>
+    </tr>
+  </table></div>
+
+  <div class="growth-bar">
+    <strong style="font-size:13px; color:#1a3a5c;">&#128205; Posisi BB Abi di Spektrum WHO</strong>
+    <div class="growth-track">
+      <div class="growth-marker" style="left: 78%;"></div>
+    </div>
+    <div class="growth-labels">
+      <span>P3 (7.4)</span>
+      <span>P50 (9.2)</span>
+      <span>P85 (10.4)</span>
+      <span>P97 (11.4)</span>
+    </div>
+    <p style="font-size:12px; color:#475569; margin-top:10px; margin-bottom:0;">
+      Abi (10.72 kg) berada di sekitar <strong>persentil 92, +1.5 SD</strong> &mdash; zona hijau (normal atas). Bukan obesitas, bukan overweight, dan jauh dari risiko stunting.
+    </p>
+  </div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> WHO Multicentre Growth Reference Study Group (2006) - "WHO Child Growth Standards: Length/height-for-age, weight-for-age, weight-for-length, weight-for-height and body mass index-for-age."<br>
+    &#128279; <a href="https://www.who.int/tools/child-growth-standards/standards/weight-for-age" target="_blank">who.int - Weight-for-age boys 0-5 years</a>
+  </div>
+
+  <h3>1.3 Implikasi untuk Strategi Transisi</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Aspek</th>
+      <th>Implikasi</th>
+    </tr>
+    <tr>
+      <td>Cadangan kalori</td>
+      <td>Abi punya cadangan baik &mdash; tidak ada urgensi takut kelaparan saat transisi. Mengurangi susu malam tidak akan mengakibatkan penurunan BB drastis</td>
+    </tr>
+    <tr>
+      <td>Keamanan reduksi susu</td>
+      <td>Aman mengurangi volume susu bertahap (sesuai panduan utama) tanpa khawatir BB turun di bawah kurva</td>
+    </tr>
+    <tr>
+      <td>Risiko overfeeding</td>
+      <td><strong>Perlu hati-hati</strong>: jangan tambah susu/MPASI kalau Abi rewel di malam hari &mdash; ini bisa overfeeding. Rasa lapar di tengah malam belum tentu lapar fisiologis</td>
+    </tr>
+    <tr>
+      <td>Komposisi MPASI</td>
+      <td>Tetap fokus protein hewani &amp; zat besi, bukan karbo/gula. BB sudah cukup, kualitas gizi yang penting</td>
+    </tr>
+    <tr>
+      <td>Aktivitas fisik</td>
+      <td>Pastikan banyak waktu aktif (tummy time, merangkak, berdiri) &mdash; mencegah overweight di toddler</td>
+    </tr>
+  </table></div>
+
+  <h3>1.4 Velocity Pertumbuhan (Lebih Penting dari Angka Tunggal)</h3>
+
+  <p>Riset menunjukkan <strong>kecepatan pertumbuhan</strong> (velocity) lebih penting dari angka satu titik. Yang sehat adalah pertumbuhan yang konsisten mengikuti garis persentil sendiri, bukan loncat-loncat.</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Pola</th>
+      <th>Interpretasi</th>
+      <th>Tindakan</th>
+    </tr>
+    <tr>
+      <td>BB tetap di P85-P95 selama 3 bulan</td>
+      <td>&#9989; Normal, tracking persentil sendiri</td>
+      <td>Lanjut pola gizi</td>
+    </tr>
+    <tr>
+      <td>BB naik tajam dari P50 ke P97 dalam 1-2 bulan</td>
+      <td>&#9888;&#65039; Crossing percentile up &mdash; cek overfeeding</td>
+      <td>Evaluasi volume susu &amp; snack tinggi gula</td>
+    </tr>
+    <tr>
+      <td>BB turun dari P85 ke P50 dalam 1-2 bulan</td>
+      <td>&#9888;&#65039; Faltering &mdash; cek asupan/penyakit</td>
+      <td>Konsultasi DSA</td>
+    </tr>
+    <tr>
+      <td>BB stagnan 2 bulan berturut</td>
+      <td>&#9888;&#65039; Perlu evaluasi</td>
+      <td>Cek MPASI, infeksi, alergi</td>
+    </tr>
+  </table></div>
+
+  <div class="box box-info">
+    <strong>&#128202; Target Pertumbuhan Abi 10-12 bulan:</strong>
+    Pertambahan BB ~300-450 g/bulan adalah normal di usia ini (lebih lambat dari 0-6 bln). Jadi target wajar:<br>
+    - <strong>Akhir bulan 10:</strong> 10.9-11.1 kg<br>
+    - <strong>Akhir bulan 11:</strong> 11.2-11.5 kg<br>
+    - <strong>Akhir bulan 12 (1 tahun):</strong> 11.5-11.9 kg<br>
+    Selama tetap dalam range P50-P97, semua aman.
+  </div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> WHO (2009) - "WHO Child Growth Standards: Growth velocity based on weight, length and head circumference."<br>
+    &#128279; <a href="https://www.who.int/publications/i/item/9789241547635" target="_blank">who.int - Growth Velocity Standards</a>
+  </div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Mei Z, Grummer-Strawn LM (2007) - "Standard deviation of anthropometric Z-scores as a data quality assessment tool." Bull WHO 85:441-448.<br>
+    &#128279; <a href="https://www.who.int/bulletin/volumes/85/6/06-034421.pdf" target="_blank">who.int - Z-score Quality Assessment</a>
+  </div>
+</section>
+
+<!-- SECTION 2: MANDI -->
+<section id="mandi">
+  <h2 class="section-title">2. Ritual Mandi: 4 Sore vs Pre-Tidur</h2>
+
+  <div class="box box-info">
+    <strong>&#128203; Konteks Abi:</strong>
+    Pola sekarang mandi ~16:00 sore. Panduan utama menyebut mandi 18:30 sebagai bagian bedtime routine. Mana yang ideal?
+  </div>
+
+  <h3>2.1 Riset: Apakah Mandi Sebelum Tidur Membantu?</h3>
+
+  <p>Riset Haghayegh et al. (2019) di Sleep Medicine Reviews melakukan meta-analisis 5,322 studi tentang dampak mandi air hangat (warm bath) terhadap tidur. Temuan utamanya:</p>
+
+  <ul>
+    <li>Mandi air hangat <strong>40-42&deg;C selama 10 menit</strong> dilakukan <strong>1-2 jam sebelum tidur</strong> mempercepat onset tidur (sleep latency) sekitar 8.6 menit</li>
+    <li>Mekanismenya: mandi memicu vasodilatasi perifer, suhu inti tubuh turun setelah keluar dari air, dan ini menjadi sinyal sirkadian untuk tidur</li>
+    <li>Mandi <strong>terlalu dekat dengan bedtime</strong> (&lt;30 menit) atau <strong>terlalu jauh</strong> (&gt;3 jam) tidak memberi efek sleep-promoting</li>
+  </ul>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Haghayegh S et al. (2019) - "Before-bedtime passive body heating by warm shower or bath to improve sleep: A systematic review and meta-analysis." Sleep Medicine Reviews 46:124-135.<br>
+    &#128279; <a href="https://www.sciencedirect.com/science/article/abs/pii/S1087079218301552" target="_blank">sciencedirect.com - Before-bedtime warm bath meta-analysis</a>
+  </div>
+
+  <h3>2.2 Analisis Mandi Sore (16:00) vs Mandi Pre-Tidur (18:30)</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Aspek</th>
+      <th>Mandi 16:00 (sekarang)</th>
+      <th>Mandi 18:30 (panduan)</th>
+    </tr>
+    <tr>
+      <td>Efek sleep latency (riset)</td>
+      <td>Tidak ada efek langsung (terlalu jauh dari bedtime)</td>
+      <td>Optimal jika bedtime 19:30-20:00</td>
+    </tr>
+    <tr>
+      <td>Praktis di Indonesia</td>
+      <td>Sangat umum, lingkungan masih terang &amp; hangat</td>
+      <td>Bayi sudah ngantuk, butuh mandi cepat</td>
+    </tr>
+    <tr>
+      <td>Risiko masuk angin</td>
+      <td>Rendah (suhu lingkungan masih hangat)</td>
+      <td>Sedikit lebih tinggi (suhu turun, bayi lelah)</td>
+    </tr>
+    <tr>
+      <td>Asosiasi tidur</td>
+      <td>Lemah</td>
+      <td>Kuat (cue konsisten ke ritual tidur)</td>
+    </tr>
+    <tr>
+      <td>Cocok untuk bedtime 18:30 sekarang?</td>
+      <td>&#9989; Ya (jarak ~2.5 jam)</td>
+      <td>&#10060; Tidak (terlalu mepet bedtime)</td>
+    </tr>
+    <tr>
+      <td>Cocok untuk bedtime baru 19:45-20:00?</td>
+      <td>&#9888;&#65039; OK tapi kurang optimal (jarak ~4 jam)</td>
+      <td>&#9989; Optimal (jarak ~75 menit)</td>
+    </tr>
+  </table></div>
+
+  <h3>2.3 Rekomendasi untuk Abi</h3>
+
+  <div class="box box-success">
+    <strong>&#9989; Solusi Praktis (Pilih Salah Satu):</strong><br><br>
+    <strong>Opsi A &mdash; Tetap Mandi Sore (16:00) + Lap Hangat Pre-Tidur:</strong><br>
+    Pertahankan rutinitas mandi sore yang sudah jalan. Tambahkan ritual <em>warm-down</em> 18:30: lap badan dengan washlap hangat (seka muka, leher, lipatan), pijat lembut dengan baby lotion. Efek vasodilatasi mirip mandi tapi lebih ringan dan tetap sebagai sleep cue.<br><br>
+    <strong>Opsi B &mdash; Geser Jadwal Mandi ke 18:30:</strong><br>
+    Saat geser bedtime ke 19:45-20:00, geser juga mandi ke 18:30. Sesuai riset Haghayegh (mandi 1-2 jam sebelum tidur). Tantangannya: butuh adaptasi 1-2 minggu.<br><br>
+    <strong>Opsi C &mdash; Hybrid (paling fleksibel):</strong><br>
+    Senin-Jumat mandi sore 16:00 (rutinitas keluarga), Sabtu-Minggu mandi 18:30 saat ritual tidur lebih santai. Konsisten yang penting bukan jam, tapi <em>urutan aktivitas pre-tidur</em>.
+  </div>
+
+  <p><strong>Verdict:</strong> Mandi 18:30 di panduan utama bukan keharusan mutlak. Yang ilmiah dibutuhkan adalah <strong>perubahan suhu tubuh 1-2 jam sebelum tidur</strong>, bukan mandi spesifik. Jika mandi sore 16:00 dan bedtime baru 19:45, jarak 3 jam 45 menit &mdash; sudah lewat window optimal. Tapi efeknya kecil (~5-8 menit perbedaan onset tidur).</p>
+
+  <div class="box box-warning">
+    <strong>&#9888;&#65039; Yang Lebih Penting dari Jam Mandi:</strong>
+    Konsistensi ritual pre-tidur (urutan: lap/mandi &rarr; pijat &rarr; baju tidur &rarr; lampu redup &rarr; baca buku &rarr; susu &rarr; tidur) jauh lebih berdampak pada kualitas tidur Abi daripada jam mandi spesifik. Mindell et al. (2009): bedtime routine konsisten = tidur lebih cepat &amp; lebih panjang.
+  </div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Mindell JA, Williamson AA (2018) - "Benefits of a bedtime routine in young children: Sleep, development, and beyond." Sleep Medicine Reviews 40:93-108.<br>
+    &#128279; <a href="https://www.sciencedirect.com/science/article/abs/pii/S1087079217301399" target="_blank">sciencedirect.com - Benefits of bedtime routine</a>
+  </div>
+</section>
+
+<!-- SECTION 3: TANTRUM MALAM -->
+<section id="tantrum-malam">
+  <h2 class="section-title">3. Tantrum Tengah Malam Saat Transisi</h2>
+
+  <div class="box box-warning">
+    <strong>&#128276; Yang Terjadi Saat Pola Diubah:</strong>
+    Tantrum dan night waking adalah respon <strong>NORMAL</strong> dan <strong>SEMENTARA</strong> saat pola berubah. Bayi 9-12 bulan memiliki memori prosedural kuat &mdash; kebiasaan lama (susu malam, gendong, dot) terbentuk neural pathway yang butuh 7-21 hari untuk "rewire". Tantrum justru tanda otak Abi sedang belajar pola baru.
+  </div>
+
+  <h3>3.1 Skenario A: Tantrum Saat Bedtime (Menolak Tidur)</h3>
+
+  <p>Penyebab tersering: bedtime baru terlalu awal sehingga sleep pressure belum cukup, atau wake window terakhir terlalu pendek/panjang.</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Tanda</th>
+      <th>Penyebab Kemungkinan</th>
+      <th>Tindakan</th>
+    </tr>
+    <tr>
+      <td>Tantrum 5-15 menit lalu tidur</td>
+      <td>Penyesuaian normal (1-3 hari)</td>
+      <td>Tetap konsisten, tidak balik ke pola lama</td>
+    </tr>
+    <tr>
+      <td>Tantrum &gt;30 menit, tidak mau tidur sama sekali</td>
+      <td>Belum ngantuk &mdash; sleep pressure kurang</td>
+      <td>Tunda bedtime 15-20 menit, ulang ritual</td>
+    </tr>
+    <tr>
+      <td>Tantrum + kucek mata + uring-uringan dari sore</td>
+      <td>Overtired &mdash; nap kurang siang ini</td>
+      <td>Tidak bisa diatasi sekarang. Besok atur nap lebih baik</td>
+    </tr>
+    <tr>
+      <td>Tantrum + minta dot/susu kosong</td>
+      <td>Asosiasi sleep prop (lihat Section 6)</td>
+      <td>Lihat protokol dot di bawah</td>
+    </tr>
+  </table></div>
+
+  <h3>3.2 Skenario B: Tantrum di Tengah Malam (00:00-04:00)</h3>
+
+  <p>Ini yang paling melelahkan untuk orang tua. Pendekatan paling efektif berdasarkan riset adalah <strong>graduated extinction</strong> atau <strong>chair method</strong>.</p>
+
+  <h4>&#128205; Graduated Extinction (Ferber Method)</h4>
+
+  <p>Riset Mindell et al. (2006) systematic review dari American Academy of Sleep Medicine menemukan ini adalah metode dengan bukti efektivitas paling kuat untuk infant 6+ bulan, tanpa dampak negatif jangka panjang.</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Malam</th>
+      <th>Tunggu sebelum masuk</th>
+      <th>Saat di kamar (max 1-2 menit)</th>
+    </tr>
+    <tr>
+      <td>Malam 1</td>
+      <td>3 mnt &rarr; 5 mnt &rarr; 10 mnt &rarr; 10 mnt seterusnya</td>
+      <td>Tepuk lembut, suara tenang &quot;Sudah malam, tidur ya&quot;, JANGAN angkat dari boks, JANGAN nyalakan lampu</td>
+    </tr>
+    <tr>
+      <td>Malam 2</td>
+      <td>5 mnt &rarr; 10 mnt &rarr; 12 mnt &rarr; 12 mnt</td>
+      <td>Sama, lebih singkat</td>
+    </tr>
+    <tr>
+      <td>Malam 3</td>
+      <td>10 mnt &rarr; 12 mnt &rarr; 15 mnt &rarr; 15 mnt</td>
+      <td>Sama</td>
+    </tr>
+    <tr>
+      <td>Malam 4-7</td>
+      <td>15 mnt &rarr; 20 mnt &rarr; 25 mnt</td>
+      <td>Biasanya sudah jauh berkurang</td>
+    </tr>
+  </table></div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Mindell JA et al. (2006) - "Behavioral treatment of bedtime problems and night wakings in infants and young children: An American Academy of Sleep Medicine review." Sleep 29(10):1263-76.<br>
+    &#128279; <a href="https://academic.oup.com/sleep/article/29/10/1263/2708292" target="_blank">academic.oup.com - AASM Behavioral Treatment Review</a>
+  </div>
+
+  <h4>&#128205; Chair Method (Lebih Lembut)</h4>
+
+  <p>Cocok untuk orang tua yang tidak nyaman dengan extinction. Lebih lambat (2-3 minggu) tapi tantrum lebih ringan.</p>
+
+  <ol>
+    <li><strong>Hari 1-3:</strong> Duduk di kursi di samping boks Abi. Diam, hadir, jangan kontak mata terus, jangan bicara</li>
+    <li><strong>Hari 4-6:</strong> Geser kursi 1 meter dari boks</li>
+    <li><strong>Hari 7-9:</strong> Geser kursi ke pintu kamar</li>
+    <li><strong>Hari 10-12:</strong> Kursi di luar kamar (pintu dibuka)</li>
+    <li><strong>Hari 13+:</strong> Tidak ada kursi, pintu ditutup</li>
+  </ol>
+
+  <h3>3.3 Yang BOLEH dan TIDAK BOLEH Dilakukan</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>&#9989; Boleh / Direkomendasikan</th>
+      <th>&#10060; Hindari</th>
+    </tr>
+    <tr>
+      <td>Tepuk pelan punggung/bokong saat di boks</td>
+      <td>Angkat dari boks setiap kali nangis</td>
+    </tr>
+    <tr>
+      <td>Suara tenang &quot;sshhh&quot; atau lagu pelan</td>
+      <td>Bicara panjang, kontak mata kuat</td>
+    </tr>
+    <tr>
+      <td>Tawarkan air putih sippy cup jika sungguh haus</td>
+      <td>Botol susu untuk menenangkan</td>
+    </tr>
+    <tr>
+      <td>Cek popok / suhu / sakit (singkat)</td>
+      <td>Nyalakan lampu terang, TV, gadget</td>
+    </tr>
+    <tr>
+      <td>Konsisten respon dari kedua orang tua</td>
+      <td>Pasangan beda strategi (satu CIO, satu gendong)</td>
+    </tr>
+    <tr>
+      <td>Beri waktu 7-14 hari untuk metode baru</td>
+      <td>Ganti metode setiap 2-3 hari (membingungkan Abi)</td>
+    </tr>
+  </table></div>
+
+  <div class="box box-success">
+    <strong>&#127919; Ekspektasi Realistis Berbasis Data:</strong><br>
+    Riset Hiscock et al. (2007, RCT 328 keluarga) - "Improving infant sleep and maternal mental health: a cluster randomised trial":<br>
+    - <strong>70-80% bayi membaik</strong> dalam 1-2 minggu sleep training konsisten<br>
+    - <strong>50% tidak ada night waking sama sekali</strong> setelah 4 minggu<br>
+    - Tidak ada perbedaan signifikan dalam attachment, mood, atau perkembangan vs grup kontrol<br>
+    Yang gagal biasanya bukan karena metodenya, tapi karena <em>inconsistency</em>.
+  </div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Hiscock H et al. (2007) - "Improving infant sleep and maternal mental health: a cluster randomised trial." Arch Dis Child 92(11):952-8.<br>
+    &#128279; <a href="https://adc.bmj.com/content/92/11/952" target="_blank">adc.bmj.com - Improving Infant Sleep RCT</a>
+  </div>
+</section>
+
+<!-- SECTION 4: TOLAK POLA -->
+<section id="tolak-pola">
+  <h2 class="section-title">4. Saat Abi Menolak Pola Baru &mdash; Tetap Lanjut atau Mundur?</h2>
+
+  <h3>4.1 Decision Framework: 4 Pertanyaan Kunci</h3>
+
+  <p>Saat Abi tantrum/menolak pola baru, jangan langsung kembali ke pola lama. Tanyakan dulu 4 hal ini:</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Pertanyaan</th>
+      <th>Jika YA &rarr; Lanjut</th>
+      <th>Jika TIDAK &rarr; Evaluasi</th>
+    </tr>
+    <tr>
+      <td>Apakah Abi sehat? (tidak demam, pilek, diare, gusi bengkak)</td>
+      <td>Lanjutkan transisi</td>
+      <td>Pause sampai sembuh, lalu lanjut</td>
+    </tr>
+    <tr>
+      <td>Apakah ini hari ke 1-7 perubahan?</td>
+      <td>Tantrum normal, lanjut konsisten</td>
+      <td>Sudah &gt;2 minggu? Evaluasi metode</td>
+    </tr>
+    <tr>
+      <td>Apakah BB Abi tetap stabil?</td>
+      <td>Aman lanjut</td>
+      <td>BB turun &gt;100 g/minggu &rarr; pause</td>
+    </tr>
+    <tr>
+      <td>Apakah ada faktor eksternal? (travel, sakit ortu, pengasuh ganti)</td>
+      <td>Tidak ada &rarr; lanjut</td>
+      <td>Ada &rarr; tunda 1-2 minggu</td>
+    </tr>
+  </table></div>
+
+  <h3>4.2 Bedakan: Resistance vs Distress</h3>
+
+  <p>Riset Gradisar et al. (2016, Pediatrics RCT) membedakan dua jenis respon bayi terhadap perubahan tidur:</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Resistance (Perlawanan Wajar)</th>
+      <th>Distress (Stres Berlebih)</th>
+    </tr>
+    <tr>
+      <td>Nangis &lt;30 menit di awal</td>
+      <td>Nangis terus-menerus &gt;1 jam non-stop</td>
+    </tr>
+    <tr>
+      <td>Berkurang hari ke hari</td>
+      <td>Memburuk hari ke hari</td>
+    </tr>
+    <tr>
+      <td>Bisa tenang dengan tepuk/lagu</td>
+      <td>Tidak bisa ditenangkan dengan apapun</td>
+    </tr>
+    <tr>
+      <td>Mood pagi normal/ceria</td>
+      <td>Mood pagi tetap rewel, lesu</td>
+    </tr>
+    <tr>
+      <td>Makan &amp; bermain normal</td>
+      <td>Penolakan makan, lesu, regresi perkembangan</td>
+    </tr>
+    <tr>
+      <td>BB stabil</td>
+      <td>BB turun &gt;200 g dalam 1 minggu</td>
+    </tr>
+    <tr>
+      <td><strong>&rarr; Lanjut</strong></td>
+      <td><strong>&rarr; Pause &amp; konsultasi DSA</strong></td>
+    </tr>
+  </table></div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Gradisar M et al. (2016) - "Behavioral Interventions for Infant Sleep Problems: A Randomized Controlled Trial." Pediatrics 137(6):e20151486.<br>
+    &#128279; <a href="https://publications.aap.org/pediatrics/article/137/6/e20151486/52571" target="_blank">publications.aap.org - Behavioral Sleep RCT</a>
+  </div>
+
+  <h3>4.3 Aturan Mundur Sebagian (Bukan Mundur Total)</h3>
+
+  <div class="box box-info">
+    <strong>&#128161; Konsep "Tactical Retreat":</strong>
+    Jika benar perlu mundur, jangan kembali 100% ke pola lama. Mundur 1 langkah saja, stabilkan 1-2 minggu, lalu coba maju lagi. Mundur total = sinyal ke Abi bahwa &quot;tantrum berhasil&quot; &mdash; pola lama akan jauh lebih sulit diubah lagi.
+  </div>
+
+  <p><strong>Contoh tactical retreat untuk pola tidur:</strong></p>
+  <ul>
+    <li>Target: bedtime 19:45. Abi tantrum 5 hari berturut.</li>
+    <li>Jangan kembali ke 18:30. Mundur ke 19:15 (15 menit lebih awal dari target)</li>
+    <li>Stabilkan 1 minggu di 19:15 sampai tantrum reda</li>
+    <li>Geser lagi ke 19:30, lalu 19:45</li>
+  </ul>
+
+  <p><strong>Contoh tactical retreat untuk volume susu:</strong></p>
+  <ul>
+    <li>Target: kurangi susu malam dari 200 ml ke 0 ml</li>
+    <li>Abi tantrum saat susu malam dihapus total</li>
+    <li>Mundur: kembalikan susu malam tapi dengan volume 100 ml + encerkan 50:50 dengan air</li>
+    <li>Stabilkan 1 minggu, lalu kurangi 50 ml lagi</li>
+  </ul>
+
+  <h3>4.4 Aturan "3-Day Rule"</h3>
+
+  <p>Pendekatan yang konsisten dijadikan standar oleh banyak pediatric sleep consultant (Weissbluth, Mindell, Pantley):</p>
+
+  <ol>
+    <li><strong>Hari 1-3:</strong> JANGAN ubah strategi apapun. Tantrum hari 1-3 adalah puncak dan akan menurun</li>
+    <li><strong>Hari 4-7:</strong> Evaluasi tren. Membaik &rarr; lanjut. Memburuk atau plateau &rarr; ubah</li>
+    <li><strong>Hari 8-14:</strong> Pola seharusnya 70%+ membaik. Jika tidak &rarr; rencana B</li>
+    <li><strong>Setelah 2 minggu:</strong> Jika tidak ada progress sama sekali, konsultasi DSA atau pediatric sleep consultant</li>
+  </ol>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Weissbluth M (2015) - "Healthy Sleep Habits, Happy Child" 4th ed., Ballantine Books. Bab consistency rule.
+  </div>
+</section>
+
+<!-- SECTION 5: BANGUN NANGIS -->
+<section id="bangun-nangis">
+  <h2 class="section-title">5. Bangun Nangis Berulang Sebentar-sebentar</h2>
+
+  <div class="box box-warning">
+    <strong>&#128276; Pola Spesifik Abi:</strong>
+    "Bangun nangis bentar-bentar lalu diam kalau dikasih dot meskipun kosong" adalah <strong>klasik sleep onset association</strong>. Abi belum bisa transisi antar siklus tidur (sleep cycle 50-60 menit) tanpa bantuan dot. Setiap kali keluar dari deep sleep ke light sleep, Abi terbangun &amp; butuh dot untuk masuk siklus berikutnya.
+  </div>
+
+  <h3>5.1 Mekanisme Sleep Cycle Bayi 9-12 Bulan</h3>
+
+  <p>Bayi punya siklus tidur lebih pendek dari dewasa. Pemahaman ini penting untuk mengatasi night waking.</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Komponen</th>
+      <th>Bayi 9-12 bln</th>
+      <th>Dewasa</th>
+    </tr>
+    <tr>
+      <td>Durasi 1 siklus</td>
+      <td>50-60 menit</td>
+      <td>90 menit</td>
+    </tr>
+    <tr>
+      <td>Jumlah siklus per malam</td>
+      <td>10-11 siklus</td>
+      <td>5-6 siklus</td>
+    </tr>
+    <tr>
+      <td>Mikro-bangun (arousal) tiap siklus</td>
+      <td>Wajar, bisa balik tidur sendiri</td>
+      <td>Wajar, biasanya tidak teringat</td>
+    </tr>
+    <tr>
+      <td>% REM (light sleep)</td>
+      <td>~50%</td>
+      <td>~25%</td>
+    </tr>
+  </table></div>
+
+  <p>Artinya: Abi normal "bangun" 10-11 kali setiap malam (mikro-arousal). Bayi yang <em>self-soothe</em> bisa langsung tidur lagi. Bayi dengan asosiasi sleep prop (dot, gendong, susu) <strong>butuh prop itu</strong> untuk masuk siklus berikutnya. Ini yang terjadi pada Abi.</p>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Grigg-Damberger MM (2016) - "The Visual Scoring of Sleep in Infants 0 to 2 Months of Age." J Clin Sleep Med 12(3):429-45. Karakteristik sleep cycle bayi.<br>
+    &#128279; <a href="https://jcsm.aasm.org/doi/10.5664/jcsm.5600" target="_blank">jcsm.aasm.org - Sleep Scoring in Infants</a>
+  </div>
+
+  <h3>5.2 Strategi Memutus Asosiasi Dot Kosong</h3>
+
+  <p>Karena dot kosong (tanpa susu) tidak memberi kalori, ini purely kebiasaan psikologis. Tiga pendekatan dengan tingkat kesulitan berbeda:</p>
+
+  <h4>&#128205; Pendekatan 1: Cold Turkey (Cepat tapi Tantrum Tinggi)</h4>
+
+  <ul>
+    <li>Hilangkan dot total dari kamar &mdash; jangan ada di sekitar boks</li>
+    <li>Saat Abi cari, gunakan graduated extinction (Section 3.2)</li>
+    <li>Tantrum 3-7 hari berat, lalu drastis turun</li>
+    <li>Selesai dalam ~2 minggu</li>
+    <li>Cocok untuk: orang tua yang siap mental, weekend panjang/cuti</li>
+  </ul>
+
+  <h4>&#128205; Pendekatan 2: Pacifier Weaning Bertahap</h4>
+
+  <p>Riset Stein et al. (2001, Arch Pediatr Adolesc Med) menunjukkan reduction gradual mengurangi distress tapi butuh komitmen lebih lama.</p>
+
+  <ol>
+    <li><strong>Minggu 1:</strong> Dot hanya untuk tidur (siang &amp; malam), tidak untuk siang hari/menenangkan</li>
+    <li><strong>Minggu 2:</strong> Dot hanya untuk onset tidur. Saat Abi sudah tidur, ambil pelan dari mulut</li>
+    <li><strong>Minggu 3:</strong> Letakkan dot di tangan Abi (bukan di mulut) saat tidur</li>
+    <li><strong>Minggu 4:</strong> Dot disimpan di rak terlihat tapi tidak diberikan</li>
+    <li><strong>Minggu 5+:</strong> Dot dibuang/disembunyikan total</li>
+  </ol>
+
+  <h4>&#128205; Pendekatan 3: "Pacifier Fairy" (12-15 bln+)</h4>
+
+  <p>Untuk anak 12 bulan ke atas yang sudah lebih kooperatif. Kumpulkan semua dot, &quot;dikirim ke peri dot&quot; tukar dengan mainan baru. Ada elemen ritual yang membantu kognitif anak menerima.</p>
+
+  <div class="box box-success">
+    <strong>&#128161; Saran untuk Abi (10 bulan):</strong>
+    Pendekatan 1 atau 2. Pacifier Fairy belum cocok karena kognisi belum siap. Saran spesifik: <strong>weaning bertahap</strong> selama 3-4 minggu, mulai dengan menghilangkan dot di siang hari dulu, baru di malam hari.
+  </div>
+
+  <h3>5.3 Pengganti Dot: Sleep Tools yang Lebih Baik</h3>
+
+  <p>Daripada dot, latih Abi pakai <em>sleep aids</em> yang independen (tidak butuh orang tua untuk masuk-keluar):</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Sleep Aid</th>
+      <th>Cara</th>
+      <th>Catatan AAP Safe Sleep</th>
+    </tr>
+    <tr>
+      <td>White noise machine</td>
+      <td>Konstan 50-65 dB sepanjang malam</td>
+      <td>&#9989; Aman, distance &gt;2 m dari kepala</td>
+    </tr>
+    <tr>
+      <td>Sleep sack / swaddle transition</td>
+      <td>Tidur dengan baju tidur tertutup, tidak pakai selimut</td>
+      <td>&#9989; Aman, justru cegah SIDS</td>
+    </tr>
+    <tr>
+      <td>Lovey/comfort object</td>
+      <td>Kain kecil/boneka kecil yang dipegang Abi</td>
+      <td>&#9888;&#65039; AAP: aman SETELAH 12 bln, sebelumnya keluarkan dari boks saat tidur</td>
+    </tr>
+    <tr>
+      <td>Kebiasaan menggosok telinga/menyentuh wajah sendiri</td>
+      <td>Self-soothing alami</td>
+      <td>&#9989; Aman, biarkan</td>
+    </tr>
+  </table></div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> AAP (2022) - "Sleep-Related Infant Deaths: Updated 2022 Recommendations." Pediatrics 150(1):e2022057990.<br>
+    &#128279; <a href="https://publications.aap.org/pediatrics/article/150/1/e2022057990/188304" target="_blank">publications.aap.org - AAP Safe Sleep 2022</a>
+  </div>
+</section>
+
+<!-- SECTION 6: ASOSIASI DOT -->
+<section id="asosiasi-dot">
+  <h2 class="section-title">6. Asosiasi Dot Kosong: Detail Penanganan</h2>
+
+  <h3>6.1 Mengapa Dot Kosong Bekerja?</h3>
+
+  <p>Riset menunjukkan refleks <em>non-nutritive sucking</em> (mengisap tanpa kalori) mengaktifkan jalur parasympathetic di otak bayi, melepaskan endorfin dan menurunkan kortisol. Ini bukan &quot;kebiasaan buruk&quot; secara biologis, tapi kebiasaan yang harus disapih sebelum 18-24 bulan untuk mencegah:</p>
+
+  <ul>
+    <li>Maloklusi gigi (gigi seri condong ke depan, open bite)</li>
+    <li>Otitis media (infeksi telinga tengah) &mdash; risiko 33% lebih tinggi pada pengguna dot &gt;12 bln (Niemela et al., Pediatrics 2000)</li>
+    <li>Speech delay (artikulasi terganggu)</li>
+    <li>Asosiasi tidur yang sulit dilepas saat usia toddler/sekolah</li>
+  </ul>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Niemela M et al. (2000) - "Pacifier as a risk factor for acute otitis media: A randomized, controlled trial of parental counseling." Pediatrics 106(3):483-8.<br>
+    &#128279; <a href="https://publications.aap.org/pediatrics/article/106/3/483/64938" target="_blank">publications.aap.org - Pacifier &amp; Otitis Media RCT</a>
+  </div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> AAP (2018) - "Pacifiers: Satisfying Your Baby's Needs." Healthychildren.org. Rekomendasi weaning sebelum 12-24 bulan.<br>
+    &#128279; <a href="https://www.healthychildren.org/English/ages-stages/baby/crying-colic/Pages/Pacifiers-Satisfying-Your-Babys-Needs.aspx" target="_blank">healthychildren.org - Pacifiers</a>
+  </div>
+
+  <h3>6.2 Skenario Penanganan Spesifik Abi</h3>
+
+  <div class="scenario-card">
+    <div class="scenario-header">
+      <h3>Skenario 1: Bangun Jam 02:00, Nangis, Dikasih Dot &rarr; Tidur</h3>
+      <p>Pola asosiasi sleep onset paling klasik</p>
+    </div>
+    <div class="scenario-body">
+      <p><strong>Apa yang terjadi:</strong> Sleep cycle berakhir, Abi micro-arouse, tidak bisa transisi sendiri, butuh dot untuk masuk siklus berikutnya.</p>
+
+      <p><strong>Strategi 7 hari:</strong></p>
+      <ul>
+        <li><strong>Hari 1-2:</strong> Saat bangun, jangan langsung kasih dot. Tunggu 2 menit. Tepuk pelan. Jika tetap nangis, kasih dot tapi singkat (~1 menit), ambil saat mulai tertidur.</li>
+        <li><strong>Hari 3-4:</strong> Tunggu 5 menit. Tawarkan air sippy cup dulu (untuk break asosiasi suck = sleep). Dot hanya jika benar-benar tidak bisa tenang.</li>
+        <li><strong>Hari 5-6:</strong> Tunggu 7-10 menit. Coba tepuk + lagu pendek. Tanpa dot.</li>
+        <li><strong>Hari 7+:</strong> Dot tidak diberikan sama sekali. Graduated extinction.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-header">
+      <h3>Skenario 2: Bangun Tiap 30-60 Menit, Cari Dot Hilang</h3>
+      <p>Dot keluar dari mulut saat tidur dalam, Abi cari saat micro-arouse</p>
+    </div>
+    <div class="scenario-body">
+      <p><strong>Apa yang terjadi:</strong> Setiap kali dot terlepas (gerakan tidur), Abi terbangun dan tidak bisa lanjut tidur. Pola "wake every 30-60 min" adalah bendera merah jelas.</p>
+
+      <p><strong>Solusi cepat (kalau belum siap weaning total):</strong></p>
+      <ul>
+        <li>Beri 3-4 dot di sekitar boks &mdash; supaya saat tangan Abi mencari, dia mudah menemukannya tanpa orang tua masuk</li>
+        <li>Latih Abi mengembalikan dot ke mulut sendiri (di siang hari, sambil bermain)</li>
+        <li>Ini bukan solusi jangka panjang, hanya jembatan sementara untuk istirahat ortu</li>
+      </ul>
+
+      <p><strong>Solusi jangka panjang:</strong></p>
+      <ul>
+        <li>Mulai weaning seperti Section 5.2 Pendekatan 2</li>
+        <li>Target: dalam 4-6 minggu, dot total dilepas</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-header">
+      <h3>Skenario 3: Hanya Mau Tidur dengan Dot di Mulut</h3>
+      <p>Onset tidur dependent pada dot</p>
+    </div>
+    <div class="scenario-body">
+      <p><strong>Strategi pickup-putdown method (Tracy Hogg):</strong></p>
+      <ol>
+        <li>Letakkan Abi di boks dengan dot, tunggu sampai matanya redup</li>
+        <li>Saat hampir tidur, ambil dot pelan</li>
+        <li>Jika nangis, kasih dot lagi 30 detik</li>
+        <li>Ambil lagi. Ulangi sampai Abi tidur tanpa dot di mulut</li>
+        <li>Awal mungkin perlu 30-60 menit dan 20-30 kali pickup-putdown. Hari ke-5+ biasanya cepat</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3>6.3 Catatan Khusus: Botol Susu Saat Tidur</h3>
+
+  <div class="box box-danger">
+    <strong>&#10060; STOP Botol Susu Saat Tidur Sekarang Juga:</strong>
+    Berbeda dengan dot kosong yang hanya psikologis, <strong>botol susu saat tidur sangat berbahaya</strong>:
+    <ul style="margin-top:8px;">
+      <li><strong>Baby bottle tooth decay (BBTD)</strong>: laktosa susu menggenang di gigi semalam, demineralisasi enamel. Karies pada gigi seri atas bisa terjadi dalam 6-12 bulan</li>
+      <li><strong>Aspirasi</strong>: risiko susu masuk ke saluran napas saat bayi tidur lelap</li>
+      <li><strong>Otitis media</strong>: posisi terlentang minum susu meningkatkan risiko cairan ke tuba eustachius</li>
+      <li><strong>Overfeeding</strong>: kalori berlebih semalam &rarr; risiko obesitas</li>
+    </ul>
+  </div>
+
+  <p>Jika Abi sudah ada kebiasaan ini, putus segera dengan cara:</p>
+  <ol>
+    <li><strong>Malam 1-3:</strong> Susu diberikan SEBELUM masuk boks (di luar kamar atau di kursi). Setelah selesai, sikat gusi/gigi, baru ke boks tanpa botol</li>
+    <li><strong>Malam 4-7:</strong> Geser jam susu malam 30 menit lebih awal. Lebih banyak waktu antara susu dan tidur</li>
+    <li><strong>Malam 8+:</strong> Botol diberikan max 30 menit sebelum tidur, di luar boks. Dalam boks: kosong total</li>
+  </ol>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> AAPD (American Academy of Pediatric Dentistry) - "Policy on Early Childhood Caries: Classifications, Consequences, and Preventive Strategies."<br>
+    &#128279; <a href="https://www.aapd.org/research/oral-health-policies--recommendations/early-childhood-caries-classifications-consequences-and-preventive-strategies/" target="_blank">aapd.org - Early Childhood Caries Policy</a>
+  </div>
+</section>
+
+<!-- SECTION 7: TOLAK MPASI -->
+<section id="tolak-mpasi">
+  <h2 class="section-title">7. Penolakan MPASI / GTM (Gerakan Tutup Mulut)</h2>
+
+  <h3>7.1 Penyebab Tersering pada Anak 10-12 Bulan</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Penyebab</th>
+      <th>Tanda</th>
+      <th>Solusi</th>
+    </tr>
+    <tr>
+      <td>Susu berlebih (&gt;700 ml/hari)</td>
+      <td>Anak kenyang susu, MPASI ditolak</td>
+      <td>Kurangi susu siang, geser susu malam jauh dari makan</td>
+    </tr>
+    <tr>
+      <td>Bosan rasa/tekstur</td>
+      <td>Tolak makanan yang biasanya disuka</td>
+      <td>Variasi rasa &amp; bumbu, ganti tekstur</td>
+    </tr>
+    <tr>
+      <td>Tumbuh gigi</td>
+      <td>Ngiler banyak, gigit semua, gusi merah</td>
+      <td>Beri makanan dingin, teether, lanjutkan offering</td>
+    </tr>
+    <tr>
+      <td>Distraksi (TV, gadget, mainan saat makan)</td>
+      <td>Mata fokus ke layar, mulut tertutup</td>
+      <td>Eliminasi distraksi total</td>
+    </tr>
+    <tr>
+      <td>Tekanan/paksaan</td>
+      <td>Anak menangis saat lihat sendok/kursi makan</td>
+      <td>Stop paksaan minimal 1 minggu &mdash; reset asosiasi</td>
+    </tr>
+    <tr>
+      <td>Sleep regression / tidak cukup tidur</td>
+      <td>Mood rewel sepanjang hari</td>
+      <td>Perbaiki tidur dulu (Section 8 panduan utama)</td>
+    </tr>
+    <tr>
+      <td>Sakit ringan</td>
+      <td>Demam, pilek, batuk</td>
+      <td>Tunggu sembuh, jangan paksa, hidrasi cukup</td>
+    </tr>
+  </table></div>
+
+  <h3>7.2 Aturan "Division of Responsibility" (Satter)</h3>
+
+  <p>Pendekatan paling validated di pediatric nutrition adalah Ellyn Satter's Division of Responsibility (sDOR), didukung oleh AAP dan Academy of Nutrition and Dietetics:</p>
+
+  <div class="box box-info">
+    <strong>&#128176; Pembagian Tanggung Jawab:</strong><br>
+    <strong>Tugas Orang Tua (the WHAT, WHEN, WHERE):</strong>
+    <ul style="margin-top:6px;">
+      <li>Apa yang disajikan</li>
+      <li>Kapan disajikan (jadwal tetap)</li>
+      <li>Di mana disajikan (kursi makan, suasana tenang)</li>
+    </ul>
+    <strong>Tugas Anak (the WHETHER, HOW MUCH):</strong>
+    <ul style="margin-top:6px;">
+      <li>Apakah dia makan</li>
+      <li>Berapa banyak yang dimakan</li>
+    </ul>
+    Memaksakan jumlah/jenis spesifik adalah pelanggaran sDOR &amp; meningkatkan picky eating.
+  </div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Satter E (2007) - "Eating competence: definition and evidence for the Satter Eating Competence model." J Nutr Educ Behav 39(5 Suppl):S142-53.<br>
+    &#128279; <a href="https://www.jneb.org/article/S1499-4046(07)00432-8/fulltext" target="_blank">jneb.org - Satter Eating Competence</a>
+  </div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Black MM &amp; Aboud FE (2011) - "Responsive Feeding Is Embedded in a Theoretical Framework of Responsive Parenting." J Nutr 141(3):490-4.<br>
+    &#128279; <a href="https://academic.oup.com/jn/article/141/3/490/4630508" target="_blank">academic.oup.com - Responsive Feeding Framework</a>
+  </div>
+
+  <h3>7.3 30-Menit Rule</h3>
+
+  <ol>
+    <li>Sajikan makanan, set timer 30 menit</li>
+    <li>Beri waktu Abi untuk makan dengan tenang, tidak dipaksa</li>
+    <li>Setelah 30 menit, angkat makanan tanpa drama, tanpa menggoda &quot;ayo dong sayang sedikit lagi&quot;</li>
+    <li>Tidak ada snack pengganti dalam 1.5-2 jam berikutnya (kecuali air)</li>
+    <li>Jadwal makan berikutnya tetap, sajikan menu reguler</li>
+  </ol>
+
+  <p>Hari 1-3 anak akan tampak makan sangat sedikit. Hari 4-7 nafsu makan kembali karena rasa lapar fisiologis benar-benar muncul. Penting: <strong>jangan beri snack tinggi kalori di antara waktu makan</strong> sebagai &quot;kompensasi&quot;.</p>
+
+  <h3>7.4 Food Exposure: 10-15 Kali</h3>
+
+  <p>Riset menunjukkan anak butuh <strong>10-15 kali eksposur</strong> ke makanan baru sebelum menerima. Penolakan pertama BUKAN tanda anak tidak suka.</p>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Caton SJ et al. (2014) - "Repetition counts: Repeated exposure increases intake of a novel vegetable in UK pre-school children compared to flavour-flavour and flavour-nutrient learning." Br J Nutr 109(11):2089-97.<br>
+    &#128279; <a href="https://www.cambridge.org/core/journals/british-journal-of-nutrition/article/repetition-counts/" target="_blank">cambridge.org - Repeated Exposure to Vegetables</a>
+  </div>
+
+  <h3>7.5 Ketika MPASI Sulit, Susu Naik &mdash; Salah Besar</h3>
+
+  <div class="box box-danger">
+    <strong>&#10060; Jangan Lakukan:</strong>
+    Jika MPASI sulit, jangan tambah volume/frekuensi susu untuk &quot;mengganti kalori&quot;. Ini perangkap klasik:
+    <ul style="margin-top:6px;">
+      <li>Susu lebih banyak &rarr; Abi makin kenyang &rarr; MPASI makin ditolak</li>
+      <li>Lingkaran setan: susu &uarr; &amp; MPASI &darr; &rarr; defisiensi besi (anemia) dalam 2-4 bulan</li>
+      <li>Kebiasaan tergantung susu makin sulit diputus saat 12-24 bulan</li>
+    </ul>
+    <strong>Yang benar:</strong> tahan susu di range 500-700 ml/hari, sajikan MPASI tetap konsisten. Lapar adalah motivator alami terbaik.
+  </div>
+</section>
+
+<!-- SECTION 8: TOLAK UHT -->
+<section id="tolak-uht">
+  <h2 class="section-title">8. Penolakan UHT/Sufor Baru Saat Transisi</h2>
+
+  <h3>8.1 Mengapa Bayi Menolak Susu Baru?</h3>
+
+  <p>Bayi 9-12 bulan punya preferensi rasa &amp; tekstur yang sangat kuat. P-HP punya rasa khas (sedikit pahit dari hidrolisis whey) yang sudah dikenal Abi sejak 3 bulan. Susu baru = pengalaman baru = wajar ditolak awal.</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Penyebab Penolakan</th>
+      <th>Solusi</th>
+    </tr>
+    <tr>
+      <td>Rasa berbeda</td>
+      <td>Mulai dengan rasio kecil (10-15% baru), naikkan bertahap</td>
+    </tr>
+    <tr>
+      <td>Suhu berbeda</td>
+      <td>Sajikan di suhu yang sama dengan P-HP biasanya</td>
+    </tr>
+    <tr>
+      <td>Botol/dot berbeda</td>
+      <td>Pakai botol/dot yang sama dengan biasa Abi</td>
+    </tr>
+    <tr>
+      <td>Asosiasi negatif (dipaksa)</td>
+      <td>Jangan paksa, tawarkan saat anak haus &amp; relax</td>
+    </tr>
+  </table></div>
+
+  <h3>8.2 Strategi Pengenalan UHT (12 Bulan ke Atas)</h3>
+
+  <ol>
+    <li><strong>Suhu ruang/hangat suam:</strong> Hangatkan UHT seperti suhu sufor (~37&deg;C). Bayi tidak suka susu dingin</li>
+    <li><strong>Mulai di gelas, bukan botol:</strong> Asosiasi botol = sufor. Gelas/sippy cup = minuman baru. Lebih mudah Abi terima</li>
+    <li><strong>Tawarkan saat haus, bukan saat ngantuk:</strong> Pagi setelah bangun atau setelah bermain aktif. Bukan pre-tidur</li>
+    <li><strong>Mulai dengan rasio kecil:</strong> 10-15% UHT dicampur dengan P-HP. Lihat rasio bertahap di Section 6.6 panduan utama</li>
+    <li><strong>Konsisten 5-7 hari sebelum naikkan rasio:</strong> Jangan terburu</li>
+  </ol>
+
+  <h3>8.3 Jika Abi Menolak Total UHT di Bulan 12</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Tindakan</th>
+      <th>Catatan</th>
+    </tr>
+    <tr>
+      <td>Lanjut P-HP 2-4 minggu lagi, coba lagi</td>
+      <td>Kadang butuh maturity sedikit lagi</td>
+    </tr>
+    <tr>
+      <td>Coba brand UHT berbeda</td>
+      <td>Greenfields vs Ultra Milk vs Diamond punya profile rasa berbeda</td>
+    </tr>
+    <tr>
+      <td>Tawarkan sebagai &quot;minuman&quot; bukan &quot;susu&quot;</td>
+      <td>Di gelas warna lucu, dengan straw, sebagai pendamping snack</td>
+    </tr>
+    <tr>
+      <td>Kombinasikan dengan baked goods (pancake, muffin)</td>
+      <td>UHT dalam masakan lebih dulu diterima daripada cair</td>
+    </tr>
+    <tr>
+      <td>Yogurt &amp; keju dulu, UHT belakangan</td>
+      <td>Tekstur berbeda, sumber kalsium &amp; protein sama</td>
+    </tr>
+  </table></div>
+
+  <div class="box box-info">
+    <strong>&#128161; Yang Penting Diingat:</strong>
+    Susu sapi cair BUKAN keharusan untuk anak setelah 12 bulan. Anak yang menolak total UHT bisa cukup nutrisinya dari yogurt + keju + sayuran tinggi kalsium + protein hewani harian. AAP &amp; CDC mengakui ini valid. Volume susu/kalsium dari makanan setara dengan volume susu cair.
+  </div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> CDC - "Cow's Milk and Milk Alternatives" (2024). Alternatif kalsium dari makanan untuk anak yang tidak minum susu.<br>
+    &#128279; <a href="https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/cows-milk-and-milk-alternatives.html" target="_blank">cdc.gov - Milk Alternatives</a>
+  </div>
+</section>
+
+<!-- SECTION 9: MUNDUR -->
+<section id="mundur">
+  <h2 class="section-title">9. Kapan Boleh Mundur ke Pola Lama (Tactical)</h2>
+
+  <h3>9.1 Daftar Lengkap Kondisi Boleh Pause/Mundur</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Kondisi</th>
+      <th>Berapa Lama Pause</th>
+      <th>Setelah Itu</th>
+    </tr>
+    <tr>
+      <td>Sakit (demam, flu, diare)</td>
+      <td>Sampai sembuh + 3 hari recovery</td>
+      <td>Lanjut dari titik terakhir</td>
+    </tr>
+    <tr>
+      <td>Travel/mudik &gt;3 hari</td>
+      <td>Selama travel + 2 hari setelahnya</td>
+      <td>Resume dengan ritual yang sama</td>
+    </tr>
+    <tr>
+      <td>Tumbuh gigi parah (rewel siang malam)</td>
+      <td>3-7 hari sampai gigi nampak</td>
+      <td>Lanjut</td>
+    </tr>
+    <tr>
+      <td>Vaksinasi dengan reaksi (demam, rewel)</td>
+      <td>2-3 hari</td>
+      <td>Lanjut</td>
+    </tr>
+    <tr>
+      <td>Pengasuh ganti / orang tua tidak ada</td>
+      <td>Selama transisi pengasuh</td>
+      <td>Mulai lagi setelah pengasuh konsisten 1 minggu</td>
+    </tr>
+    <tr>
+      <td>Pindah rumah / kamar tidur baru</td>
+      <td>1-2 minggu untuk adaptasi tempat</td>
+      <td>Lanjut transisi</td>
+    </tr>
+    <tr>
+      <td>Sleep regression (8-10 bln, 12 bln, 18 bln)</td>
+      <td>2-6 minggu, jangan revert kebiasaan</td>
+      <td>Tetap konsisten justru penting saat regresi</td>
+    </tr>
+    <tr>
+      <td>Stress family event (kelahiran adik, perceraian, dll)</td>
+      <td>Sampai stabilitas keluarga kembali</td>
+      <td>Resume saat siap</td>
+    </tr>
+  </table></div>
+
+  <h3>9.2 Yang BUKAN Alasan Valid Untuk Mundur</h3>
+
+  <div class="box box-warning">
+    <strong>&#9888;&#65039; Hindari Mundur Karena:</strong>
+    <ul style="margin-top:6px;">
+      <li>Tantrum 1-3 hari pertama (ini puncak normal)</li>
+      <li>Orang tua lelah/tidak tega (cari support, jangan mundur)</li>
+      <li>Komentar keluarga/tetangga (&quot;kasihan kok dibiarkan nangis&quot;)</li>
+      <li>Hari weekend mau santai &mdash; justru weekend ideal untuk konsisten</li>
+      <li>Cuaca dingin/hujan &mdash; tidak relevan dengan rutinitas</li>
+    </ul>
+  </div>
+
+  <h3>9.3 Resume Protocol Setelah Pause</h3>
+
+  <ol>
+    <li>Hari pertama resume: <strong>tidak perlu kembali ke baseline awal</strong>. Mulai dari 1 langkah sebelum titik terakhir berhasil</li>
+    <li>Beri waktu 2-3 hari untuk re-adaptasi sebelum maju</li>
+    <li>Jika selama pause Abi balik ke pola lama (misal: dot lagi), butuh weaning lagi tapi biasanya lebih cepat dari pertama kali</li>
+    <li>Catat penyebab pause untuk pola di masa depan (mis: setiap mudik akan butuh 3 hari recovery)</li>
+  </ol>
+</section>
+
+<!-- SECTION 10: SAKIT -->
+<section id="sakit-transisi">
+  <h2 class="section-title">10. Saat Abi Sakit di Tengah Transisi</h2>
+
+  <h3>10.1 Aturan Umum: Sakit = Pause Total</h3>
+
+  <p>Saat sakit, sistem imun bekerja keras. Memaksakan transisi (yang juga stress fisiologis) akan memperpanjang sakit dan memperburuk pola tidur jangka panjang.</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Sakit</th>
+      <th>Yang Dilakukan</th>
+      <th>Yang Dihentikan Sementara</th>
+    </tr>
+    <tr>
+      <td>Demam &gt;38&deg;C</td>
+      <td>Hidrasi cukup, ASI/sufor on demand, paracetamol jika &gt;38.5&deg;C</td>
+      <td>Sleep training, pengurangan susu malam</td>
+    </tr>
+    <tr>
+      <td>Pilek/batuk</td>
+      <td>Tidur dengan kepala sedikit elevasi (tinggikan kasur, BUKAN bantal)</td>
+      <td>Milk ladder (tunggu sembuh + 1 minggu)</td>
+    </tr>
+    <tr>
+      <td>Diare</td>
+      <td>Oralit, hindari makanan baru, tetap susu &amp; MPASI familiar</td>
+      <td>Eksperimen makanan baru, milk ladder</td>
+    </tr>
+    <tr>
+      <td>Tumbuh gigi</td>
+      <td>Teether dingin, makanan dingin (yogurt jika sudah lulus tangga 4)</td>
+      <td>Reduksi susu malam (mungkin tambah comfort feeding sementara)</td>
+    </tr>
+    <tr>
+      <td>Roseola/HFMD/cacar</td>
+      <td>Total rest sampai sembuh + 7 hari</td>
+      <td>Semua transisi</td>
+    </tr>
+  </table></div>
+
+  <h3>10.2 Sleep Selama Sakit</h3>
+
+  <ul>
+    <li>Boleh respond lebih cepat saat sakit (gendong, tenangkan, beri susu di malam hari)</li>
+    <li>Ini TIDAK akan merusak progress jangka panjang &mdash; bayi mengerti konteks</li>
+    <li>Setelah sembuh, lakukan &quot;reset&quot; 2-3 hari untuk kembalikan ekspektasi</li>
+  </ul>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Mindell JA &amp; Owens JA (2015) - "A Clinical Guide to Pediatric Sleep" 3rd ed., Lippincott. Bab sleep during illness.
+  </div>
+
+  <h3>10.3 Tanda Sakit Berat &mdash; Stop Transisi &amp; ke DSA</h3>
+
+  <div class="box box-danger">
+    <strong>&#128680; Segera ke DSA/IGD jika:</strong>
+    <ul style="margin-top:6px;">
+      <li>Demam &gt;39&deg;C tidak turun dengan paracetamol</li>
+      <li>Demam &gt;3 hari berturut-turut</li>
+      <li>Lethargy berat (tidak responsif, tidur terus)</li>
+      <li>Muntah hebat &gt;6x/hari</li>
+      <li>Diare cair lebih dari 8x/hari atau ada darah</li>
+      <li>Tanda dehidrasi: ubun-ubun cekung, mata cekung, popok kering &gt;6 jam, tidak ada air mata saat menangis</li>
+      <li>Sesak napas, retraksi dada, napas cepat</li>
+      <li>Kejang</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 11: TUMBUH GIGI -->
+<section id="tumbuh-gigi">
+  <h2 class="section-title">11. Tumbuh Gigi &amp; Pengaruhnya</h2>
+
+  <h3>11.1 Timeline Tumbuh Gigi 10-12 Bulan</h3>
+
+  <p>Berdasarkan ADA/AAP eruption chart, di usia 10-12 bulan biasanya muncul:</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Gigi</th>
+      <th>Usia Tumbuh (rata-rata)</th>
+      <th>Catatan untuk Abi</th>
+    </tr>
+    <tr>
+      <td>Gigi seri bawah tengah</td>
+      <td>6-10 bulan</td>
+      <td>Mungkin sudah ada</td>
+    </tr>
+    <tr>
+      <td>Gigi seri atas tengah</td>
+      <td>8-12 bulan</td>
+      <td>Mungkin sedang tumbuh</td>
+    </tr>
+    <tr>
+      <td>Gigi seri samping</td>
+      <td>9-13 bulan</td>
+      <td>Sangat mungkin di periode ini</td>
+    </tr>
+    <tr>
+      <td>Gigi geraham pertama</td>
+      <td>13-19 bulan</td>
+      <td>Belum, di transisi 12-24 bln</td>
+    </tr>
+  </table></div>
+
+  <h3>11.2 Gejala Tumbuh Gigi yang Sering Disalahartikan</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Gejala</th>
+      <th>Tumbuh Gigi?</th>
+      <th>Catatan</th>
+    </tr>
+    <tr>
+      <td>Ngiler banyak, gigit semua</td>
+      <td>&#9989; Klasik</td>
+      <td>Berlangsung 1-2 minggu sebelum gigi muncul</td>
+    </tr>
+    <tr>
+      <td>Demam ringan &lt;38&deg;C</td>
+      <td>&#9989; Mungkin</td>
+      <td>Hanya ringan; demam tinggi bukan dari gigi</td>
+    </tr>
+    <tr>
+      <td>Tidur terganggu, bangun lebih sering</td>
+      <td>&#9989; Sering</td>
+      <td>Diskomfor saat malam meningkat</td>
+    </tr>
+    <tr>
+      <td>Tolak makan</td>
+      <td>&#9989; Wajar</td>
+      <td>Mulut sakit, tetap tawarkan tapi dingin/lunak</td>
+    </tr>
+    <tr>
+      <td>Diare, demam tinggi, ruam luas</td>
+      <td>&#10060; BUKAN tumbuh gigi</td>
+      <td>Cek penyakit lain (rotavirus, infeksi telinga, dll)</td>
+    </tr>
+    <tr>
+      <td>Pipi merah, ruam ringan di dagu</td>
+      <td>&#9989; Ngiler iritasi</td>
+      <td>Lap kering, pakai barrier cream</td>
+    </tr>
+  </table></div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Macknin ML et al. (2000) - "Symptoms associated with infant teething: A prospective study." Pediatrics 105(4 Pt 1):747-52.<br>
+    &#128279; <a href="https://publications.aap.org/pediatrics/article/105/4/747/65990" target="_blank">publications.aap.org - Symptoms of Infant Teething</a>
+  </div>
+
+  <h3>11.3 Penanganan</h3>
+
+  <ul>
+    <li><strong>Teether dingin</strong> dari kulkas (bukan freezer &mdash; bisa cedera)</li>
+    <li><strong>Makanan dingin</strong>: yogurt (jika lulus tangga 4), buah dingin, mentimun lunak</li>
+    <li><strong>Pijat gusi</strong> dengan jari bersih atau silicone finger brush</li>
+    <li><strong>Paracetamol</strong> sesuai dosis berat badan, hanya jika sangat rewel (konsultasi DSA)</li>
+    <li><strong>HINDARI</strong>: gel benzocaine (FDA warning untuk &lt;2 tahun), amber teething necklace (risiko strangulasi)</li>
+  </ul>
+
+  <h3>11.4 Tumbuh Gigi &amp; Karies Dini</h3>
+
+  <p>Sejak gigi pertama muncul, mulai sikat gusi/gigi 2x/hari dengan:</p>
+
+  <ul>
+    <li>Sikat gigi bayi soft / silicone finger brush</li>
+    <li>Pasta gigi flouride sebesar butiran beras (rice grain) untuk anak &lt;3 tahun &mdash; AAPD/AAP guideline 2014</li>
+    <li>Tidak perlu kumur (anak belum bisa) &mdash; lap dengan kain bersih</li>
+    <li>JANGAN tidur dengan susu di mulut (BBTD)</li>
+  </ul>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> AAP &amp; AAPD (2014) - "Fluoride Use in Caries Prevention in the Primary Care Setting." Pediatrics 134(3):626-33.<br>
+    &#128279; <a href="https://publications.aap.org/pediatrics/article/134/3/626/74205" target="_blank">publications.aap.org - Fluoride Use in Caries Prevention</a>
+  </div>
+</section>
+
+<!-- SECTION 12: TRAVEL -->
+<section id="travel">
+  <h2 class="section-title">12. Travel/Mudik di Tengah Transisi</h2>
+
+  <h3>12.1 Aturan Umum: Jaga Yang Bisa, Lepas Yang Tidak Bisa</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Yang HARUS Konsisten Saat Travel</th>
+      <th>Yang BOLEH Fleksibel</th>
+    </tr>
+    <tr>
+      <td>Bedtime routine (urutan aktivitas)</td>
+      <td>Jam pasti (boleh geser 30-60 menit)</td>
+    </tr>
+    <tr>
+      <td>White noise / sleep aid</td>
+      <td>Tempat tidur (boks, travel bed, kasur lantai)</td>
+    </tr>
+    <tr>
+      <td>Sleep cue (lagu, kalimat penutup)</td>
+      <td>Cahaya kamar (gelap pekat sulit di tempat baru)</td>
+    </tr>
+    <tr>
+      <td>Susu &amp; MPASI yang familiar</td>
+      <td>Variasi MPASI lebih sedikit (terbatas)</td>
+    </tr>
+    <tr>
+      <td>Comfort item (selimut/lovey)</td>
+      <td>Mood pengasuh (kakek-nenek mungkin lebih permisif)</td>
+    </tr>
+  </table></div>
+
+  <h3>12.2 Packing List Sleep-Critical</h3>
+
+  <ul>
+    <li>White noise machine portable atau aplikasi di HP cadangan</li>
+    <li>Sprei / sarung guling dari rumah (bau familiar)</li>
+    <li>Lampu tidur warna kuning hangat (jika kamar tujuan terlalu terang)</li>
+    <li>Sleep sack / baju tidur favorit</li>
+    <li>Buku/lagu pre-tidur favorit</li>
+    <li>Stok P-HP 1.5x kebutuhan (cadangan jika travel diperpanjang)</li>
+    <li>Termometer, paracetamol drop, oralit (kotak P3K)</li>
+  </ul>
+
+  <h3>12.3 Jet Lag / Beda Zona Waktu</h3>
+
+  <p>Indonesia 3 zona waktu (WIB, WITA, WIT). Jika travel lintas zona:</p>
+
+  <ul>
+    <li><strong>Beda 1 jam (WIB &harr; WITA):</strong> Geser jadwal 30 menit di hari 1, sisanya hari 2. Adaptasi 1-2 hari</li>
+    <li><strong>Beda 2 jam (WIB &harr; WIT):</strong> Geser bertahap 30-45 menit per hari. Adaptasi 3-4 hari</li>
+    <li><strong>Beda &gt;3 jam (luar negeri):</strong> Anak-anak biasanya adaptasi lebih cepat dari dewasa, ~1 hari per 1 jam perbedaan</li>
+  </ul>
+
+  <h3>12.4 Pasca-Travel: Reset 3 Hari</h3>
+
+  <ol>
+    <li>Hari 1 pulang: kembali ke ritual rumah, bedtime mungkin masih kacau</li>
+    <li>Hari 2: lebih dekat ke jadwal normal</li>
+    <li>Hari 3: kembali konsisten</li>
+    <li>Hari 4+: jika belum kembali ke pola, mungkin butuh reset sleep training (graduated extinction 3-5 hari)</li>
+  </ol>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Owens JA (2014) - "Insufficient sleep in adolescents and young adults: an update on causes and consequences." Pediatrics 134(3):e921-32. Mekanisme jet lag &amp; circadian disruption.<br>
+    &#128279; <a href="https://publications.aap.org/pediatrics/article/134/3/e921/74201" target="_blank">publications.aap.org - Sleep &amp; Circadian Disruption</a>
+  </div>
+</section>
+
+<!-- SECTION 13: PENGASUH -->
+<section id="pengasuh">
+  <h2 class="section-title">13. Konsistensi Pengasuh (Ortu, Kakek-Nenek, ART, Daycare)</h2>
+
+  <div class="box box-warning">
+    <strong>&#9888;&#65039; Masalah #1 Yang Membatalkan Sleep Training:</strong>
+    Inkonsistensi antar pengasuh. Bayi sangat sensitif terhadap perbedaan respon &mdash; jika ibu menerapkan extinction tapi nenek langsung menggendong saat bayi nangis, sleep training akan gagal &amp; tantrum bisa makin parah karena Abi belajar bahwa &quot;menangis cukup lama akan dapat reward (digendong nenek)&quot;.
+  </div>
+
+  <h3>13.1 Briefing Pengasuh Lain</h3>
+
+  <p>Sebelum mulai transisi, briefing semua pengasuh dengan dokumen 1 halaman:</p>
+
+  <div class="box box-info">
+    <strong>&#128203; Template Briefing Pengasuh (1 halaman):</strong>
+    <ol style="margin-top:8px;">
+      <li><strong>Nama anak:</strong> Muhammad Abizar Kurniawan, 10 bulan, BB 10.72 kg</li>
+      <li><strong>Susu:</strong> Morinaga Chil&middot;Mil P-HP, takaran ___ scoop per ___ ml. Maksimal 700 ml/hari. Jadwal: pagi, siang opsional, malam.</li>
+      <li><strong>MPASI:</strong> 3x makan utama (jam ___), 2x snack. Selalu ada protein hewani.</li>
+      <li><strong>Bedtime:</strong> Jam ___. Routine: mandi/lap &rarr; pijat &rarr; baju tidur &rarr; baca buku &rarr; susu &rarr; lagu ___ &rarr; boks.</li>
+      <li><strong>Saat bangun malam:</strong> TUNGGU ___ menit dulu. Tepuk pelan, suara &quot;sshhh&quot;, JANGAN angkat dari boks. Air putih sippy cup boleh, susu/dot TIDAK.</li>
+      <li><strong>Yang dilarang:</strong> tidur sambil ngedot, susu &gt;700 ml/hari, gula tambahan, garam, madu.</li>
+      <li><strong>Emergency contact:</strong> Ortu ___, DSA ___, RS terdekat ___.</li>
+    </ol>
+  </div>
+
+  <h3>13.2 Saat Pengasuh Tidak Mau Ikut Aturan</h3>
+
+  <p>Konflik klasik dengan kakek-nenek atau ART yang punya cara sendiri. Strategi diplomatis:</p>
+
+  <ul>
+    <li><strong>Tunjukkan riset</strong>: print 1-2 artikel berbahasa Indonesia dari IDAI atau halaman ramah-keluarga AAP. Bukan opinion ortu, tapi rekomendasi medis</li>
+    <li><strong>Mulai dari yang non-negotiable</strong>: keselamatan dulu (no madu, no garam, no tidur dengan botol). Nego di hal yang flexible (jam tidur sedikit beda)</li>
+    <li><strong>Pilih waktu tepat</strong>: jangan diskusi saat semua lelah. Pagi setelah kopi, suasana santai</li>
+    <li><strong>Akui niat baik mereka</strong>: &quot;Mama tahu mama sayang banget Abi, dan ini juga buat Abi lebih sehat&quot;</li>
+    <li><strong>Jika gagal total</strong>: minimalkan exposure pengasuh tersebut selama fase kritis transisi (2-4 minggu pertama)</li>
+  </ul>
+
+  <h3>13.3 Daycare/Penitipan</h3>
+
+  <p>Jika Abi nantinya akan di daycare:</p>
+
+  <ul>
+    <li>Diskusi dengan caregiver soal pola tidur, makan, susu</li>
+    <li>Minta laporan harian (jam tidur siang, jumlah susu, MPASI dimakan)</li>
+    <li>Jadwal di rumah bisa disesuaikan dengan jadwal daycare untuk konsistensi</li>
+    <li>Bring familiar items: lovey (setelah 12 bln), botol kebiasaan, sleep sack</li>
+  </ul>
+</section>
+
+<!-- SECTION 14: MENTAL ORTU -->
+<section id="mental-ortu">
+  <h2 class="section-title">14. Mental &amp; Energi Orang Tua</h2>
+
+  <div class="box box-info">
+    <strong>&#129489;&#127995;&#8205;&#9877;&#65039; Sering Diabaikan, Tapi Krusial:</strong>
+    Sleep training Abi membutuhkan stamina ortu. Riset Hiscock et al. (2008) menunjukkan saat tidur bayi membaik, depresi maternal turun signifikan (efek 2 arah: ortu yang well-rested lebih konsisten, anak tidur lebih baik).
+  </div>
+
+  <h3>14.1 Persiapan Mental Sebelum Mulai</h3>
+
+  <ul>
+    <li><strong>Pilih waktu strategis</strong>: minggu yang relatif tenang, bukan saat ortu deadline kerja besar atau sakit</li>
+    <li><strong>Sepakat antar pasangan</strong>: diskusikan metode &amp; ekspektasi sebelum mulai. Jangan satu pasangan diam-diam &quot;menyelamatkan&quot;</li>
+    <li><strong>Briefing keluarga besar</strong>: kasih tahu eyang/saudara bahwa rumah sedang transisi, mohon support</li>
+    <li><strong>Siapkan support sistem</strong>: siapa yang bisa back-up jika ortu kelelahan? Pasangan, ART, keluarga</li>
+    <li><strong>Set ekspektasi realistis</strong>: 2 minggu pertama akan berat, hari 1-3 paling berat</li>
+  </ul>
+
+  <h3>14.2 Selama Transisi</h3>
+
+  <ul>
+    <li><strong>Tidur saat Abi tidur</strong> (siang) jika memungkinkan</li>
+    <li><strong>Bagi shift</strong> dengan pasangan: malam gantian, satu malam shift awal, satu malam shift akhir</li>
+    <li><strong>Hidrasi &amp; nutrisi ortu</strong>: jangan skip makan, minum cukup, multivitamin jika perlu</li>
+    <li><strong>Jangan scrolling HP saat menunggu di kamar Abi</strong>: cahaya biru &amp; konten stress justru memperburuk mood ortu &amp; bikin susah tidur lagi</li>
+    <li><strong>Jurnal singkat</strong>: catat 3 hal kemajuan tiap pagi (mis: bangun jam 04:30 bukan 03:30, tantrum 15 menit bukan 30, dll). Membantu lihat progress yang sering tidak terasa</li>
+  </ul>
+
+  <h3>14.3 Tanda Burnout &amp; Kapan Stop</h3>
+
+  <div class="box box-danger">
+    <strong>&#128680; Stop Transisi &amp; Cari Bantuan Jika Ortu Mengalami:</strong>
+    <ul style="margin-top:6px;">
+      <li>Pikiran menyakiti diri sendiri / bayi</li>
+      <li>Menangis hampir tiap hari &gt;2 minggu</li>
+      <li>Tidak bisa tidur meski Abi tidur</li>
+      <li>Anhedonia (kehilangan minat pada hal yang biasa disuka)</li>
+      <li>Marah/kesal berlebihan ke pasangan/anak</li>
+      <li>Mati rasa, perasaan &quot;tidak ada yang penting&quot;</li>
+    </ul>
+    Ini bisa jadi tanda postpartum depression yang masih berlanjut. Hubungi:<br>
+    - Hotline Kesehatan Jiwa Kementerian Kesehatan: 119 ext 8<br>
+    - Into The Light Indonesia: 0821-2580-7372<br>
+    - DSA / dokter umum &mdash; minta rujukan psikiater perinatal
+  </div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Hiscock H et al. (2008) - "Long-term mother and child mental health effects of a population-based infant sleep intervention." Pediatrics 122(3):e621-7.<br>
+    &#128279; <a href="https://publications.aap.org/pediatrics/article/122/3/e621/72027" target="_blank">publications.aap.org - Sleep Intervention &amp; Maternal Mental Health</a>
+  </div>
+
+  <div class="ref">
+    &#128214; <strong>Sumber:</strong> Bayer JK et al. (2007) - "Sleep problems in young infants and maternal mental and physical health." J Paediatr Child Health 43(1-2):66-73.<br>
+    &#128279; <a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1440-1754.2007.01005.x" target="_blank">onlinelibrary.wiley.com - Sleep Problems &amp; Maternal Health</a>
+  </div>
+
+  <h3>14.4 Self-Talk Yang Membantu</h3>
+
+  <ul>
+    <li>&quot;Nangis 15 menit tidak akan menyakiti Abi. Ortu yang exhausted yang lebih berisiko membuat keputusan buruk.&quot;</li>
+    <li>&quot;Konsistensi 7 hari adalah investasi untuk 5 tahun ke depan.&quot;</li>
+    <li>&quot;Pola tidur baik = otak Abi tumbuh lebih baik = pekerjaan paling penting saya sekarang.&quot;</li>
+    <li>&quot;Saya tidak menyiksa anak saya. Saya mengajarinya skill yang akan dia pakai seumur hidup.&quot;</li>
+  </ul>
+</section>
+
+<!-- SECTION 15: EMERGENCY -->
+<section id="emergency">
+  <h2 class="section-title">15. Tanda Emergency &amp; Kapan Telpon Dokter</h2>
+
+  <h3>15.1 Telpon DSA / Datang ke Klinik (24-48 jam)</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Gejala</th>
+      <th>Catatan</th>
+    </tr>
+    <tr>
+      <td>BB turun &gt;200 g dalam 1 minggu</td>
+      <td>Cek MPASI, susu, infeksi tersembunyi</td>
+    </tr>
+    <tr>
+      <td>Tidak makan/minum &gt;24 jam</td>
+      <td>Risiko dehidrasi</td>
+    </tr>
+    <tr>
+      <td>Diare 3-5x/hari &gt;3 hari</td>
+      <td>Cek penyebab, hidrasi</td>
+    </tr>
+    <tr>
+      <td>Demam 38-39&deg;C &gt;48 jam</td>
+      <td>Cek sumber infeksi</td>
+    </tr>
+    <tr>
+      <td>Ruam menetap &gt;3 hari</td>
+      <td>Mungkin alergi atau infeksi virus</td>
+    </tr>
+    <tr>
+      <td>Tantrum eksesif tidak bisa ditenangkan apapun</td>
+      <td>Cek sakit fisik (otitis, infeksi saluran kemih, tumbuh gigi)</td>
+    </tr>
+    <tr>
+      <td>Regresi perkembangan (lupa skill yang sudah bisa)</td>
+      <td>Evaluasi neurologi</td>
+    </tr>
+  </table></div>
+
+  <h3>15.2 IGD / 119 SEGERA</h3>
+
+  <div class="box box-danger">
+    <strong>&#128680; Tanda Wajib Emergency:</strong>
+    <ul style="margin-top:6px;">
+      <li>Sesak napas, retraksi dada, napas &gt;60x/menit</li>
+      <li>Kejang (apapun durasi)</li>
+      <li>Bibir/lidah biru (sianosis)</li>
+      <li>Bibir/kelopak mata sangat bengkak</li>
+      <li>Demam &gt;39.5&deg;C tidak turun, atau &gt;38&deg;C dengan kaku kuduk</li>
+      <li>Muntah hijau (bilious)</li>
+      <li>BAB hitam/berdarah</li>
+      <li>Lethargy berat (tidak responsif terhadap nama, suara, sentuhan)</li>
+      <li>Cedera kepala dengan muntah berulang atau kehilangan kesadaran</li>
+      <li>Ubun-ubun cekung dalam (tanda dehidrasi berat)</li>
+    </ul>
+  </div>
+
+  <h3>15.3 Daftar Kontak Penting (Isi Sekarang)</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Kontak</th>
+      <th>Nama / No</th>
+    </tr>
+    <tr>
+      <td>DSA Abi</td>
+      <td>____________________</td>
+    </tr>
+    <tr>
+      <td>Klinik 24 jam terdekat</td>
+      <td>____________________</td>
+    </tr>
+    <tr>
+      <td>RS dengan IGD anak terdekat</td>
+      <td>____________________</td>
+    </tr>
+    <tr>
+      <td>Apotek 24 jam</td>
+      <td>____________________</td>
+    </tr>
+    <tr>
+      <td>Asuransi kesehatan</td>
+      <td>____________________</td>
+    </tr>
+    <tr>
+      <td>Hotline Kemenkes (119 ext 8)</td>
+      <td>119 ext 8</td>
+    </tr>
+    <tr>
+      <td>Posyandu / Puskesmas</td>
+      <td>____________________</td>
+    </tr>
+  </table></div>
+
+  <p style="font-size:12px; color:#64748b;">Catat di kulkas atau wallpaper HP supaya bisa diakses cepat saat panik.</p>
+</section>
+
+<!-- SECTION 16: REFERENSI -->
+<section id="referensi">
+  <h2 class="section-title">16. Referensi &amp; Sumber Riset</h2>
+
+  <ol class="source-list">
+    <li>
+      <strong>WHO Multicentre Growth Reference Study Group (2006)</strong> &mdash; "WHO Child Growth Standards: Length/height-for-age, weight-for-age, weight-for-length, weight-for-height and body mass index-for-age."<br>
+      Standar pertumbuhan global untuk anak 0-5 tahun.<br>
+      &#128279; <a href="https://www.who.int/tools/child-growth-standards/standards/weight-for-age" target="_blank">who.int - Weight-for-age boys 0-5 years</a>
+    </li>
+    <li>
+      <strong>WHO (2009)</strong> &mdash; "WHO Child Growth Standards: Growth velocity based on weight, length and head circumference."<br>
+      Standar kecepatan pertumbuhan untuk evaluasi tracking.<br>
+      &#128279; <a href="https://www.who.int/publications/i/item/9789241547635" target="_blank">who.int - Growth Velocity Standards</a>
+    </li>
+    <li>
+      <strong>Haghayegh S et al. (2019)</strong> &mdash; "Before-bedtime passive body heating by warm shower or bath to improve sleep: A systematic review and meta-analysis." Sleep Medicine Reviews 46:124-135.<br>
+      Meta-analisis dampak mandi air hangat terhadap onset tidur.<br>
+      &#128279; <a href="https://www.sciencedirect.com/science/article/abs/pii/S1087079218301552" target="_blank">sciencedirect.com - Warm bath meta-analysis</a>
+    </li>
+    <li>
+      <strong>Mindell JA et al. (2009)</strong> &mdash; "A Nightly Bedtime Routine: Impact on Sleep in Young Children and Maternal Mood." Sleep 32(5):599-606.<br>
+      Bukti efek bedtime routine konsisten.<br>
+      &#128279; <a href="https://academic.oup.com/sleep/article/32/5/599/2454322" target="_blank">academic.oup.com - Bedtime Routine &amp; Sleep</a>
+    </li>
+    <li>
+      <strong>Mindell JA, Williamson AA (2018)</strong> &mdash; "Benefits of a bedtime routine in young children: Sleep, development, and beyond." Sleep Medicine Reviews 40:93-108.<br>
+      Manfaat luas bedtime routine pada perkembangan anak.<br>
+      &#128279; <a href="https://www.sciencedirect.com/science/article/abs/pii/S1087079217301399" target="_blank">sciencedirect.com - Benefits of Bedtime Routine</a>
+    </li>
+    <li>
+      <strong>Mindell JA et al. (2006)</strong> &mdash; "Behavioral treatment of bedtime problems and night wakings in infants and young children: An American Academy of Sleep Medicine review." Sleep 29(10):1263-76.<br>
+      Review AASM tentang metode behavioral sleep training.<br>
+      &#128279; <a href="https://academic.oup.com/sleep/article/29/10/1263/2708292" target="_blank">academic.oup.com - AASM Behavioral Treatment Review</a>
+    </li>
+    <li>
+      <strong>Hiscock H et al. (2007)</strong> &mdash; "Improving infant sleep and maternal mental health: a cluster randomised trial." Arch Dis Child 92(11):952-8.<br>
+      RCT 328 keluarga, efektivitas sleep training.<br>
+      &#128279; <a href="https://adc.bmj.com/content/92/11/952" target="_blank">adc.bmj.com - Improving Infant Sleep RCT</a>
+    </li>
+    <li>
+      <strong>Hiscock H et al. (2008)</strong> &mdash; "Long-term mother and child mental health effects of a population-based infant sleep intervention." Pediatrics 122(3):e621-7.<br>
+      Follow-up jangka panjang efek sleep training pada ibu &amp; anak.<br>
+      &#128279; <a href="https://publications.aap.org/pediatrics/article/122/3/e621/72027" target="_blank">publications.aap.org - Long-term Sleep Intervention Effects</a>
+    </li>
+    <li>
+      <strong>Gradisar M et al. (2016)</strong> &mdash; "Behavioral Interventions for Infant Sleep Problems: A Randomized Controlled Trial." Pediatrics 137(6):e20151486.<br>
+      RCT graduated extinction vs bedtime fading vs kontrol.<br>
+      &#128279; <a href="https://publications.aap.org/pediatrics/article/137/6/e20151486/52571" target="_blank">publications.aap.org - Behavioral Sleep RCT</a>
+    </li>
+    <li>
+      <strong>Bayer JK et al. (2007)</strong> &mdash; "Sleep problems in young infants and maternal mental and physical health." J Paediatr Child Health 43(1-2):66-73.<br>
+      Hubungan sleep problems bayi dengan kesehatan mental ibu.<br>
+      &#128279; <a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1440-1754.2007.01005.x" target="_blank">onlinelibrary.wiley.com - Sleep &amp; Maternal Health</a>
+    </li>
+    <li>
+      <strong>Niemela M et al. (2000)</strong> &mdash; "Pacifier as a risk factor for acute otitis media: A randomized, controlled trial of parental counseling." Pediatrics 106(3):483-8.<br>
+      Risiko otitis media pengguna dot.<br>
+      &#128279; <a href="https://publications.aap.org/pediatrics/article/106/3/483/64938" target="_blank">publications.aap.org - Pacifier &amp; Otitis Media</a>
+    </li>
+    <li>
+      <strong>AAP (2022)</strong> &mdash; "Sleep-Related Infant Deaths: Updated 2022 Recommendations for Reducing Infant Deaths in the Sleep Environment." Pediatrics 150(1):e2022057990.<br>
+      Panduan safe sleep terbaru AAP.<br>
+      &#128279; <a href="https://publications.aap.org/pediatrics/article/150/1/e2022057990/188304" target="_blank">publications.aap.org - AAP Safe Sleep 2022</a>
+    </li>
+    <li>
+      <strong>Grigg-Damberger MM (2016)</strong> &mdash; "The Visual Scoring of Sleep in Infants 0 to 2 Months of Age." J Clin Sleep Med 12(3):429-45.<br>
+      Karakteristik sleep cycle bayi.<br>
+      &#128279; <a href="https://jcsm.aasm.org/doi/10.5664/jcsm.5600" target="_blank">jcsm.aasm.org - Sleep Scoring Infants</a>
+    </li>
+    <li>
+      <strong>Satter E (2007)</strong> &mdash; "Eating competence: definition and evidence for the Satter Eating Competence model." J Nutr Educ Behav 39(5 Suppl):S142-53.<br>
+      Division of Responsibility framework.<br>
+      &#128279; <a href="https://www.jneb.org/article/S1499-4046(07)00432-8/fulltext" target="_blank">jneb.org - Satter Eating Competence</a>
+    </li>
+    <li>
+      <strong>Black MM, Aboud FE (2011)</strong> &mdash; "Responsive Feeding Is Embedded in a Theoretical Framework of Responsive Parenting." J Nutr 141(3):490-4.<br>
+      Framework responsive feeding.<br>
+      &#128279; <a href="https://academic.oup.com/jn/article/141/3/490/4630508" target="_blank">academic.oup.com - Responsive Feeding</a>
+    </li>
+    <li>
+      <strong>Caton SJ et al. (2014)</strong> &mdash; "Repetition counts: Repeated exposure increases intake of a novel vegetable in UK pre-school children." Br J Nutr 109(11):2089-97.<br>
+      Bukti 10-15 kali eksposur untuk anak menerima makanan baru.<br>
+      &#128279; <a href="https://www.cambridge.org/core/journals/british-journal-of-nutrition/article/repetition-counts/" target="_blank">cambridge.org - Repeated Exposure</a>
+    </li>
+    <li>
+      <strong>Macknin ML et al. (2000)</strong> &mdash; "Symptoms associated with infant teething: A prospective study." Pediatrics 105(4 Pt 1):747-52.<br>
+      Studi gejala tumbuh gigi bayi.<br>
+      &#128279; <a href="https://publications.aap.org/pediatrics/article/105/4/747/65990" target="_blank">publications.aap.org - Infant Teething Symptoms</a>
+    </li>
+    <li>
+      <strong>AAP &amp; AAPD (2014)</strong> &mdash; "Fluoride Use in Caries Prevention in the Primary Care Setting." Pediatrics 134(3):626-33.<br>
+      Dosis fluoride untuk anak &lt;3 tahun.<br>
+      &#128279; <a href="https://publications.aap.org/pediatrics/article/134/3/626/74205" target="_blank">publications.aap.org - Fluoride in Caries Prevention</a>
+    </li>
+    <li>
+      <strong>AAPD</strong> &mdash; "Policy on Early Childhood Caries: Classifications, Consequences, and Preventive Strategies."<br>
+      Pencegahan karies dini.<br>
+      &#128279; <a href="https://www.aapd.org/research/oral-health-policies--recommendations/early-childhood-caries-classifications-consequences-and-preventive-strategies/" target="_blank">aapd.org - Early Childhood Caries</a>
+    </li>
+    <li>
+      <strong>Owens JA (2014)</strong> &mdash; "Insufficient sleep in adolescents and young adults: an update on causes and consequences." Pediatrics 134(3):e921-32.<br>
+      Mekanisme circadian disruption.<br>
+      &#128279; <a href="https://publications.aap.org/pediatrics/article/134/3/e921/74201" target="_blank">publications.aap.org - Sleep &amp; Circadian</a>
+    </li>
+    <li>
+      <strong>Mindell JA &amp; Owens JA (2015)</strong> &mdash; "A Clinical Guide to Pediatric Sleep: Diagnosis and Management of Sleep Problems." 3rd ed., Lippincott Williams &amp; Wilkins.<br>
+      Buku referensi klinis pediatric sleep.
+    </li>
+    <li>
+      <strong>Weissbluth M (2015)</strong> &mdash; "Healthy Sleep Habits, Happy Child." 4th ed., Ballantine Books.<br>
+      Buku praktis pediatric sleep berbasis riset.
+    </li>
+  </ol>
+
+  <div class="box box-warning" style="margin-top:24px;">
+    <strong>&#9888;&#65039; Disclaimer Penting:</strong>
+    Panduan troubleshooting ini disusun berdasarkan riset peer-reviewed dan rekomendasi organisasi kesehatan internasional, bukan pengganti saran medis profesional. Setiap anak unik &mdash; respons terhadap intervensi tidur, makanan, dan transisi sangat individual. Selalu konsultasikan dengan DSA jika ada concern, terutama untuk: BB tidak naik, gejala alergi, gangguan tidur ekstrim, atau tanda emergency. Dokumen ini melengkapi (bukan menggantikan) panduan utama "Panduan Susu &amp; MPASI Usia 10 Bulan" dan "Panduan Transisi Susu Toddler 12-24 Bulan".
+  </div>
+</section>
+
+</div>
+
+<footer>
+  Panduan Troubleshooting Transisi &middot; Disusun khusus untuk Muhammad Abizar Kurniawan (lahir 28 Juli 2025) &middot; BB 10.72 kg &middot; Berbasis riset WHO, AAP, AASM, ESPGHAN, AAPD<br>
+  &#128197; Disusun: 26 Mei 2026 &middot; Dokumen pendamping panduan utama
+</footer>
+
+</body>
+</html>

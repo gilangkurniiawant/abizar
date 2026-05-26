@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+<title>Panduan Transisi Susu — Muhammad Abizar Kurniawan</title>
+<style>
+  :root {
+    --blue-dark: #1a3a5c;
+    --blue-mid: #2563a8;
+    --blue-light: #dbeafe;
+    --green-dark: #166534;
+    --green-light: #dcfce7;
+    --yellow-light: #fefce8;
+    --yellow-border: #ca8a04;
+    --red-light: #fff1f2;
+    --red-border: #e11d48;
+    --gray-100: #f8fafc;
+    --gray-200: #e2e8f0;
+    --gray-700: #374151;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.75;
+    color: #1e293b;
+    background: #f0f4f8;
+  }
+
+  .cover {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2563a8 100%);
+    color: white;
+    padding: 48px 40px 40px;
+    text-align: center;
+  }
+
+  .cover h1 {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .cover p {
+    font-size: 14px;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+
+  .cover .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    margin: 4px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+  }
+
+  .toc {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  }
+
+  .toc h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--blue-mid);
+    margin-bottom: 16px;
+  }
+
+  .toc ol {
+    padding-left: 20px;
+    columns: 2;
+    column-gap: 32px;
+  }
+
+  .toc li {
+    font-size: 13px;
+    padding: 3px 0;
+    color: var(--blue-dark);
+  }
+
+  .toc a { color: var(--blue-mid); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  section {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  }
+
+  h2.section-title {
+    font-size: 18px;
+    color: var(--blue-dark);
+    border-left: 5px solid var(--blue-mid);
+    padding-left: 14px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 15px;
+    color: var(--blue-dark);
+    margin: 20px 0 10px;
+  }
+
+  h4 {
+    font-size: 13px;
+    color: var(--gray-700);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 16px 0 8px;
+  }
+
+  p { margin-bottom: 10px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+
+  th {
+    background: var(--blue-dark);
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--gray-200);
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td { background: var(--gray-100); }
+  tr:hover td { background: var(--blue-light); }
+
+  .box {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13px;
+  }
+
+  .box-info {
+    background: var(--blue-light);
+    border-left: 5px solid var(--blue-mid);
+  }
+
+  .box-success {
+    background: var(--green-light);
+    border-left: 5px solid #16a34a;
+  }
+
+  .box-warning {
+    background: var(--yellow-light);
+    border-left: 5px solid var(--yellow-border);
+  }
+
+  .box-danger {
+    background: var(--red-light);
+    border-left: 5px solid var(--red-border);
+  }
+
+  .box strong { display: block; margin-bottom: 6px; font-size: 13px; }
+
+  .ref {
+    font-size: 11px;
+    color: #6b7280;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .ref a {
+    color: var(--blue-mid);
+    word-break: break-all;
+    text-decoration: none;
+  }
+
+  .ref a:hover { text-decoration: underline; }
+
+  .month-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .month-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: linear-gradient(90deg, var(--blue-dark), var(--blue-mid));
+    color: white;
+  }
+
+  .month-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .month-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 16px;
+  }
+
+  .month-header p {
+    margin: 0;
+    font-size: 12px;
+    opacity: 0.8;
+  }
+
+  .month-body {
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  @media (max-width: 600px) {
+    .month-body { grid-template-columns: 1fr; }
+    .toc ol { columns: 1; }
+  }
+
+  .month-col h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #9ca3af;
+    margin-bottom: 8px;
+  }
+
+  .month-col ul {
+    padding-left: 18px;
+    font-size: 13px;
+  }
+
+  .month-col li { margin-bottom: 5px; }
+
+  .eval-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    margin-top: 12px;
+    grid-column: 1 / -1;
+  }
+
+  .eval-box strong { color: #92400e; }
+
+  .progress-bar {
+    background: var(--gray-200);
+    border-radius: 10px;
+    height: 10px;
+    margin: 6px 0 12px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #2563a8, #16a34a);
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin: 2px;
+  }
+
+  .tag-blue { background: #dbeafe; color: #1e40af; }
+  .tag-green { background: #dcfce7; color: #166534; }
+  .tag-yellow { background: #fef9c3; color: #854d0e; }
+  .tag-red { background: #ffe4e6; color: #9f1239; }
+
+  .checklist li {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+
+  .checklist li::before {
+    content: "☐ ";
+    color: var(--blue-mid);
+    font-weight: bold;
+  }
+
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--blue-mid);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  .step-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+
+  .formula-visual {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 8px 0;
+    font-size: 13px;
+  }
+
+  .formula-block {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .fb-sufor { background: #fce7f3; color: #9d174d; border: 1px solid #f9a8d4; }
+  .fb-uht   { background: #e0f2fe; color: #075985; border: 1px solid #7dd3fc; }
+  .fb-air   { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+  .fb-plus  { color: #9ca3af; font-size: 16px; }
+
+  hr.divider {
+    border: none;
+    border-top: 2px solid var(--gray-200);
+    margin: 20px 0;
+  }
+
+  .source-list {
+    font-size: 12px;
+  }
+
+  .source-list li {
+    margin-bottom: 10px;
+    padding-left: 8px;
+    border-left: 3px solid var(--blue-mid);
+  }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: #9ca3af;
+    padding: 20px;
+  }
+  /* ===== Mobile-first base ===== */
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    overflow-x: hidden;
+    background-color: #f0f4f8;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='460' height='240' viewBox='0 0 460 240'><text x='230' y='120' text-anchor='middle' fill='rgba(26,58,92,0.06)' font-family='Segoe UI, Arial, sans-serif' font-size='20' font-weight='700' letter-spacing='2' transform='rotate(-28 230 120)'>ABIZAR · 28 JUL 2025</text></svg>");
+    background-repeat: repeat;
+    background-attachment: fixed;
+  }
+  a, button, summary, .tag, .step-num, .month-num, .month-card, .toc a, .badge, .month-header { touch-action: manipulation; }
+  img, iframe, video { max-width: 100%; height: auto; }
+  table { width: 100%; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0; border-radius: 8px; }
+  .table-scroll table { margin: 0; min-width: 480px; }
+
+  /* ===== Cover refinement ===== */
+  .cover h1 { font-size: clamp(20px, 4.6vw, 28px); }
+  .cover p  { font-size: clamp(12px, 2.4vw, 14px); }
+
+  /* ===== Profile card (inside container, subtle) ===== */
+  .child-profile {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    border-left: 5px solid #2563a8;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 18px;
+    align-items: center;
+  }
+  .child-profile .avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, #1a3a5c, #2563a8);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 800; letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+  .child-profile .pc-text { min-width: 0; }
+  .child-profile .pc-title {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+    color: #2563a8; font-weight: 700; margin-bottom: 4px;
+  }
+  .child-profile .pc-name {
+    font-size: 16px; color: #1a3a5c; font-weight: 700; margin: 0 0 4px;
+    line-height: 1.3;
+  }
+  .child-profile .pc-meta {
+    font-size: 12.5px; color: #475569; line-height: 1.55;
+  }
+  .child-profile .pc-meta strong { color: #1a3a5c; font-weight: 600; }
+  .child-profile .pc-pills {
+    display: flex; flex-direction: column; gap: 6px;
+    flex-shrink: 0; align-items: flex-end;
+  }
+  .child-profile .pill {
+    display: inline-block;
+    background: #dbeafe; color: #1e40af;
+    border-radius: 999px; padding: 3px 10px;
+    font-size: 11px; font-weight: 600; white-space: nowrap;
+  }
+  .child-profile .pill.pill-green { background: #dcfce7; color: #166534; }
+
+  /* ===== Month-card date badge ===== */
+  .month-date {
+    display: inline-block; background: rgba(255,255,255,0.22);
+    border: 1px solid rgba(255,255,255,0.45); color: #fff;
+    font-size: 11px; font-weight: 600; padding: 2px 10px;
+    border-radius: 10px; margin-top: 4px; letter-spacing: 0.3px;
+  }
+
+  /* ===== Tablet ===== */
+  @media (max-width: 768px) {
+    .container { padding: 24px 16px 50px; }
+    section { padding: 22px 20px; }
+    .toc ol { columns: 1; }
+    .month-body { grid-template-columns: 1fr; }
+  }
+
+  /* ===== Mobile ===== */
+  @media (max-width: 600px) {
+    body { font-size: 14px; line-height: 1.65; }
+    .cover { padding: 28px 18px 22px; }
+    .cover .badge { font-size: 11px; padding: 3px 10px; margin: 2px; }
+    .container { padding: 18px 12px 40px; }
+    section { padding: 18px 14px; border-radius: 10px; margin-bottom: 18px; }
+    h2.section-title { font-size: 15px; padding-left: 10px; line-height: 1.35; }
+    h3 { font-size: 14px; margin: 16px 0 8px; }
+    h4 { font-size: 12px; }
+    p { margin-bottom: 8px; }
+    table { font-size: 12px; }
+    th { padding: 8px 9px; font-size: 11px; }
+    td { padding: 7px 9px; }
+    .month-header { padding: 12px 14px; gap: 10px; }
+    .month-header h3 { font-size: 14px; }
+    .month-header p { font-size: 11px; line-height: 1.45; }
+    .month-num { width: 36px; height: 36px; font-size: 14px; }
+    .month-body { padding: 14px; gap: 12px; }
+    .month-col ul { font-size: 12.5px; }
+    .formula-block { font-size: 11px; padding: 5px 10px; }
+    .step-row { font-size: 12.5px; }
+    .ref { font-size: 11px; padding: 8px 10px; }
+    .ref a { word-break: break-word; }
+    .box { padding: 12px 14px; font-size: 12.5px; }
+    .toc { padding: 18px 16px; }
+    .toc li { font-size: 12.5px; }
+
+    /* Profile card stack */
+    .child-profile {
+      grid-template-columns: auto 1fr;
+      grid-template-areas:
+        "avatar text"
+        "pills pills";
+      padding: 14px 16px;
+      gap: 12px;
+    }
+    .child-profile .avatar { grid-area: avatar; width: 48px; height: 48px; font-size: 20px; }
+    .child-profile .pc-text { grid-area: text; }
+    .child-profile .pc-pills {
+      grid-area: pills;
+      flex-direction: row; flex-wrap: wrap; gap: 6px;
+      align-items: flex-start; justify-content: flex-start;
+    }
+    .child-profile .pc-name { font-size: 14px; }
+    .child-profile .pc-meta { font-size: 12px; }
+  }
+
+  /* ===== Small phones ===== */
+  @media (max-width: 380px) {
+    .cover { padding: 24px 14px 20px; }
+    section { padding: 16px 12px; }
+    .child-profile { padding: 12px 14px; }
+    .child-profile .avatar { width: 44px; height: 44px; font-size: 18px; }
+  }
+
+  /* ===== Print ===== */
+  @media print {
+    body { background-color: #fff; background-image: none; }
+    section, .month-card, .toc, .child-profile { box-shadow: none; }
+    .child-profile, .month-card { page-break-inside: avoid; }
+    .cover { background: #1a3a5c !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  /* === URL wrap fix === */
+  a { overflow-wrap: anywhere; word-break: break-word; }
+  .ref, .ref a, .source-list, .source-list a, .source-list li {
+    overflow-wrap: anywhere; word-break: break-word;
+  }
+  .source-list li { padding-right: 4px; }
+  /* Safety net: cegah elemen apa pun memaksa scroll horizontal */
+  html, body { max-width: 100%; }
+  section, .month-card, .toc, .child-profile { max-width: 100%; }
+  pre, code { white-space: pre-wrap; word-break: break-word; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>PANDUAN TRANSISI SUSU TODDLER<br>untuk Muhammad Abizar Kurniawan</h1>
+  <p>Transisi bertahap dari Susu Formula (Sufor) → UHT → Air Putih<br>
+  Evaluasi target tiap bulan untuk Abi (lahir 28 Juli 2025) — Fase aktif: Jul 2026 hingga Jul 2027</p>
+  <div>
+    <span class="badge">📚 WHO Guidelines</span>
+    <span class="badge">🏥 AAP (American Academy of Pediatrics)</span>
+    <span class="badge">🔬 ESPGHAN</span>
+    <span class="badge">🏛️ CDC</span>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="child-profile">
+  <div class="avatar">A</div>
+  <div class="pc-text">
+    <div class="pc-title">Profil Anak</div>
+    <div class="pc-name">Muhammad Abizar Kurniawan <span style="font-weight:500; color:#475569;">(Abi)</span></div>
+    <div class="pc-meta">
+      <strong>Lahir:</strong> 28 Juli 2025 &nbsp;·&nbsp;
+      Tiap bulan dilengkapi tanggal kalender real Abi.
+    </div>
+  </div>
+  <div class="pc-pills">
+    <span class="pill">Mulai Fase 1: 28 Jul 2026</span>
+    <span class="pill pill-green">Target tuntas: 28 Jul 2027</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <h2>📋 Daftar Isi</h2>
+  <ol>
+    <li><a href="#konsep">Landasan Ilmiah & Konsep Dasar</a></li>
+    <li><a href="#mengapa">Mengapa Transisi Diperlukan?</a></li>
+    <li><a href="#target">Target & Batas Aman Per Usia</a></li>
+    <li><a href="#fase">Peta Fase Transisi Besar</a></li>
+    <li><a href="#campuran">Panduan Campuran Sufor:UHT</a></li>
+    <li><a href="#bulanan">Panduan Bulanan (Bulan 12–24)</a></li>
+    <li><a href="#evaluasi">Checklist Evaluasi Bulanan</a></li>
+    <li><a href="#stop">Stop Mendadak: Risiko & Cara Aman</a></li>
+    <li><a href="#tanda">Tanda Berhasil Transisi</a></li>
+    <li><a href="#referensi">Referensi & Sumber Riset</a></li>
+  </ol>
+</div>
+
+<!-- SECTION 1 -->
+<section id="konsep">
+  <h2 class="section-title">1. Landasan Ilmiah & Konsep Dasar</h2>
+
+  <p>Panduan ini disusun berdasarkan rekomendasi dari organisasi kesehatan internasional dan studi peer-reviewed. Berikut adalah konsep inti yang mendasari seluruh langkah transisi ini.</p>
+
+  <h3>1.1 Peran Susu Berubah Setelah Usia 12 Bulan</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Usia</th>
+      <th>Prioritas Nutrisi</th>
+      <th>Peran Susu</th>
+      <th>Sumber Kalori Utama</th>
+    </tr>
+    <tr>
+      <td>0–6 bulan</td>
+      <td>ASI/Sufor eksklusif</td>
+      <td>Satu-satunya sumber</td>
+      <td>100% dari susu</td>
+    </tr>
+    <tr>
+      <td>6–12 bulan</td>
+      <td>ASI/Sufor + MPASI</td>
+      <td>Dominan</td>
+      <td>~60–70% dari susu</td>
+    </tr>
+    <tr>
+      <td>12–24 bulan</td>
+      <td>Makanan keluarga + susu pelengkap</td>
+      <td>Pelengkap</td>
+      <td>Mayoritas dari makanan</td>
+    </tr>
+    <tr>
+      <td>>2 tahun</td>
+      <td>Makanan keluarga dominan</td>
+      <td>Opsional</td>
+      <td>Hampir seluruhnya dari makanan</td>
+    </tr>
+  </table></div>
+
+  <div class="ref">
+    📖 <strong>Sumber:</strong> AAP (American Academy of Pediatrics) – Healthy Beverage Quick Reference Guide, 2019.<br>
+    🔗 <a href="https://downloads.aap.org/AAP/PDF/HealthyBeverageQuickReferenceGuideDownload.pdf" target="_blank">downloads.aap.org/AAP/PDF/HealthyBeverageQuickReferenceGuideDownload.pdf</a>
+  </div>
+
+  <h3>1.2 Sufor Toddler Tidak Lebih Baik dari Susu Sapi Biasa</h3>
+
+  <div class="box box-warning">
+    <strong>⚠️ Temuan AAP (2023):</strong>
+    Susu formula toddler (sufor stage 3/4) tidak memiliki keunggulan nutrisi dibanding susu sapi full cream biasa untuk anak sehat usia >12 bulan. Klaim marketing seperti "brain development" dan "whole nutrition" dinilai menyesatkan oleh AAP.
+  </div>
+
+  <div class="ref">
+    📖 <strong>Sumber:</strong> AAP Clinical Report – "Toddler Milk", 2023. University of Utah Health.<br>
+    🔗 <a href="https://healthcare.utah.edu/healthfeed/2023/12/skip-toddler-formula-why-cows-milk-better-option" target="_blank">healthcare.utah.edu/healthfeed/2023/12/skip-toddler-formula-why-cows-milk-better-option</a>
+  </div>
+
+  <div class="ref">
+    📖 <strong>Sumber:</strong> ESPGHAN (European Society for Paediatric Gastroenterology) – "A Comparison of Young Child Formulas and Cow's Milk on Nutrient Intakes in Polish Children Aged 13–24 Months", PMC 2021.<br>
+    🔗 <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8398400/" target="_blank">pmc.ncbi.nlm.nih.gov/articles/PMC8398400/</a>
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section id="mengapa">
+  <h2 class="section-title">2. Mengapa Transisi Diperlukan?</h2>
+
+  <h3>2.1 Risiko Konsumsi Susu Berlebih pada Toddler</h3>
+
+  <p>Ini bukan sekadar soal hemat biaya — konsumsi susu berlebih pada toddler memiliki risiko medis yang nyata dan terdokumentasi.</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Risiko</th>
+      <th>Mekanisme</th>
+      <th>Ambang Batas Berbahaya</th>
+    </tr>
+    <tr>
+      <td><strong>Anemia Defisiensi Besi</strong></td>
+      <td>Susu menghalangi penyerapan zat besi non-heme; kalsium dan kasein menginhibisi absorpsi Fe; susu menyebabkan micro-bleeding usus</td>
+      <td>>480–500 ml/hari</td>
+    </tr>
+    <tr>
+      <td><strong>Gangguan Makan (GTM)</strong></td>
+      <td>Anak kenyang dari susu sehingga tidak nafsu makan makanan padat</td>
+      <td>>500 ml/hari</td>
+    </tr>
+    <tr>
+      <td><strong>Keterlambatan Neurokognitif</strong></td>
+      <td>Anemia defisiensi besi berdampak langsung pada perkembangan otak</td>
+      <td>Bila anemia tidak ditangani</td>
+    </tr>
+    <tr>
+      <td><strong>Gagal Jantung & Stroke</strong></td>
+      <td>Kasus ekstrem anemia berat akibat susu >700 ml/hari jangka panjang</td>
+      <td>Kasus di atas 900–1000 ml/hari</td>
+    </tr>
+  </table></div>
+
+  <div class="ref">
+    📖 <strong>Sumber:</strong> Nationwide Children's Hospital – "Iron-Deficiency Anemia Related to Milk Consumption"<br>
+    🔗 <a href="https://www.nationwidechildrens.org/-/media/nch/for-medical-professionals/practice-tools-new/iron-deficiency-anemia-related-to-milk-consumption.pdf" target="_blank">nationwidechildrens.org – Iron-Deficiency Anemia Related to Milk Consumption (PDF)</a>
+  </div>
+
+  <div class="ref">
+    📖 <strong>Sumber:</strong> Gotou et al. (2026) – "Severe Iron-Deficiency Anemia and Hypoalbuminemia Associated With Excessive Cow's Milk Intake in a 16-Month-Old Girl." Cureus. DOI: 10.7759/cureus.101657<br>
+    🔗 <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12906667/" target="_blank">ncbi.nlm.nih.gov/pmc/articles/PMC12906667/</a>
+  </div>
+
+  <div class="ref">
+    📖 <strong>Sumber:</strong> ASH (American Society of Hematology) 2025 – "Morbidity and mortality in 128 otherwise healthy Canadian children with severe IDA from excessive cow's milk intake". Blood. 2025;146(S1):2903.<br>
+    🔗 <a href="https://ashpublications.org/blood/article/146/Supplement%201/2903/552569/" target="_blank">ashpublications.org/blood/article/146/Supplement%201/2903/552569/</a>
+  </div>
+
+  <h3>2.2 Ketergantungan Dot sebagai Faktor Komplikasi</h3>
+
+  <div class="box box-info">
+    Riset dari American Society of Hematology (2025) menemukan bahwa dari 128 anak dengan anemia berat akibat susu, hampir semuanya masih menggunakan botol dot. Penggunaan dot memperpanjang kebiasaan minum susu malam hari dan mempersulit transisi ke makanan padat.
+  </div>
+
+  <div class="ref">
+    📖 <strong>Sumber:</strong> ASH 2025 (sama di atas) – dot use identified as compounding risk factor.<br>
+    🔗 <a href="https://ashpublications.org/blood/article/146/Supplement%201/2903/552569/" target="_blank">ashpublications.org/blood/article/146/Supplement%201/2903/552569/</a>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<section id="target">
+  <h2 class="section-title">3. Target & Batas Aman Susu Per Usia</h2>
+
+  <h3>3.1 Rekomendasi Volume Susu Harian</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Volume Susu/Hari</th>
+      <th>Status Klinis</th>
+      <th>Catatan</th>
+    </tr>
+    <tr>
+      <td>< 200 ml</td>
+      <td><span class="tag tag-green">✅ Sangat Aman</span></td>
+      <td>Asalkan makan padat sangat baik dan beragam</td>
+    </tr>
+    <tr>
+      <td>200–400 ml</td>
+      <td><span class="tag tag-green">✅ Ideal</span></td>
+      <td>Sesuai rekomendasi AAP (~1⅔–2 cups). Makan biasanya lebih baik</td>
+    </tr>
+    <tr>
+      <td>400–480 ml</td>
+      <td><span class="tag tag-blue">☑️ Batas Atas Aman</span></td>
+      <td>Masih dalam batas AAP (max ~16 oz / 480 ml)</td>
+    </tr>
+    <tr>
+      <td>480–700 ml</td>
+      <td><span class="tag tag-yellow">⚠️ Perlu Hati-hati</span></td>
+      <td>Melebihi rekomendasi; risiko GTM dan anemia mulai meningkat</td>
+    </tr>
+    <tr>
+      <td>>700 ml</td>
+      <td><span class="tag tag-red">❌ Berbahaya</span></td>
+      <td>Risiko anemia defisiensi besi signifikan. Perlu dikurangi segera</td>
+    </tr>
+  </table></div>
+
+  <div class="ref">
+    📖 <strong>Sumber:</strong> AAP HealthyChildren.org – "Why Formula Instead of Cow's Milk"<br>
+    🔗 <a href="https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/Why-Formula-Instead-of-Cows-Milk.aspx" target="_blank">healthychildren.org – Why Formula Instead of Cow's Milk</a>
+  </div>
+
+  <div class="ref">
+    📖 <strong>Sumber:</strong> CDC – "Cow's Milk and Milk Alternatives", April 2026.<br>
+    🔗 <a href="https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/cows-milk-and-milk-alternatives.html" target="_blank">cdc.gov/infant-toddler-nutrition/foods-and-drinks/cows-milk-and-milk-alternatives.html</a>
+  </div>
+
+  <h3>3.2 Jenis Susu yang Direkomendasikan per Usia</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Usia</th>
+      <th>Jenis Susu</th>
+      <th>Catatan</th>
+    </tr>
+    <tr>
+      <td>12–24 bulan</td>
+      <td>Susu sapi <strong>full cream (whole milk)</strong> atau UHT full cream</td>
+      <td>Lemak tinggi penting untuk perkembangan otak. JANGAN low-fat</td>
+    </tr>
+    <tr>
+      <td>>2 tahun</td>
+      <td>Bisa mulai low-fat atau skim</td>
+      <td>Kecuali ada risiko obesitas, bisa lebih awal</td>
+    </tr>
+  </table></div>
+
+  <div class="ref">
+    📖 <strong>Sumber:</strong> AAFP (American Academy of Family Physicians) – "Nutrition in Toddlers", 2018.<br>
+    🔗 <a href="https://www.aafp.org/pubs/afp/issues/2018/0815/p227.html" target="_blank">aafp.org/pubs/afp/issues/2018/0815/p227.html</a>
+  </div>
+</section>
+
+<!-- SECTION 4 -->
+<section id="fase">
+  <h2 class="section-title">4. Peta Fase Transisi Besar (12–24 Bulan)</h2>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Fase</th>
+      <th>Periode</th>
+      <th>Fokus Utama</th>
+      <th>Hasil yang Diharapkan</th>
+    </tr>
+    <tr>
+      <td><strong>Fase 1</strong></td>
+      <td>Bulan 12–16</td>
+      <td>Lepas sufor → full UHT</td>
+      <td>Anak menerima rasa UHT, sufor tidak lagi dibutuhkan</td>
+    </tr>
+    <tr>
+      <td><strong>Fase 2</strong></td>
+      <td>Bulan 17–19</td>
+      <td>Kurangi volume UHT & stop susu malam</td>
+      <td>Susu hanya pagi & sore. Malam = air putih</td>
+    </tr>
+    <tr>
+      <td><strong>Fase 3</strong></td>
+      <td>Bulan 20–22</td>
+      <td>Encerkan UHT + kurangi frekuensi dot</td>
+      <td>Air putih mulai menjadi minuman default</td>
+    </tr>
+    <tr>
+      <td><strong>Fase 4</strong></td>
+      <td>Bulan 23–24</td>
+      <td>Susu menjadi opsional</td>
+      <td>Anak makan keluarga normal, minum air putih, tidak tergantung susu</td>
+    </tr>
+  </table></div>
+
+  <div class="box box-success">
+    <strong>✅ Prinsip Emas Transisi:</strong>
+    Setiap perubahan dilakukan secara bertahap <em>(gradual weaning)</em> selama minimal 2–4 minggu per langkah.
+    Perubahan mendadak meningkatkan risiko rewel, tantrum, dan penolakan makan.
+  </div>
+</section>
+
+<!-- SECTION 5 -->
+<section id="campuran">
+  <h2 class="section-title">5. Panduan Campuran Sufor → UHT (Botol 180 ml)</h2>
+
+  <h3>5.1 Cara Membuat Campuran yang Benar</h3>
+
+  <div class="box box-danger">
+    <strong>❌ JANGAN lakukan ini:</strong>
+    Jangan mencampur bubuk sufor langsung ke dalam UHT. Bubuk sufor harus dilarutkan dengan air sesuai aturan takaran terlebih dahulu, BARU kemudian dicampur dengan UHT.
+  </div>
+
+  <div class="step-row"><span class="step-num">1</span> Buat sufor normal terlebih dahulu sesuai takaran (misalnya: 2 sendok bubuk + 60 ml air = 60 ml sufor jadi)</div>
+  <div class="step-row"><span class="step-num">2</span> Setelah sufor jadi, tuang ke dalam botol</div>
+  <div class="step-row"><span class="step-num">3</span> Tambahkan UHT sesuai rasio yang diinginkan</div>
+  <div class="step-row"><span class="step-num">4</span> Aduk perlahan, sajikan dalam keadaan hangat-suam</div>
+
+  <h3>5.2 Tabel Campuran Lengkap (Botol 180 ml)</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Tahap</th>
+      <th>Rasio Sufor:UHT</th>
+      <th>Sufor Jadi (ml)</th>
+      <th>UHT (ml)</th>
+      <th>Durasi Tahap</th>
+      <th>Periode Bulan</th>
+    </tr>
+    <tr>
+      <td>Full Sufor</td>
+      <td>100:0</td>
+      <td>180</td>
+      <td>0</td>
+      <td>–</td>
+      <td>Sebelum 12 bln</td>
+    </tr>
+    <tr>
+      <td>Transisi 1</td>
+      <td>3:1</td>
+      <td>135</td>
+      <td>45</td>
+      <td>2 minggu</td>
+      <td>Bln 12</td>
+    </tr>
+    <tr>
+      <td>Transisi 2</td>
+      <td>2:1</td>
+      <td>120</td>
+      <td>60</td>
+      <td>2 minggu</td>
+      <td>Bln 12–13</td>
+    </tr>
+    <tr>
+      <td>Transisi 3</td>
+      <td>1:1</td>
+      <td>90</td>
+      <td>90</td>
+      <td>2–3 minggu</td>
+      <td>Bln 13–14</td>
+    </tr>
+    <tr>
+      <td>Transisi 4</td>
+      <td>1:2</td>
+      <td>60</td>
+      <td>120</td>
+      <td>2–3 minggu</td>
+      <td>Bln 14–15</td>
+    </tr>
+    <tr>
+      <td>Transisi 5</td>
+      <td>1:3</td>
+      <td>45</td>
+      <td>135</td>
+      <td>2 minggu</td>
+      <td>Bln 15–16</td>
+    </tr>
+    <tr>
+      <td><strong>Full UHT</strong></td>
+      <td>0:100</td>
+      <td>0</td>
+      <td>180</td>
+      <td>Stabil</td>
+      <td>Bln 17+</td>
+    </tr>
+    <tr>
+      <td>UHT encer 75%</td>
+      <td>–</td>
+      <td>0</td>
+      <td>135 UHT + 45 air</td>
+      <td>2 minggu</td>
+      <td>Bln 19–20</td>
+    </tr>
+    <tr>
+      <td>UHT encer 50%</td>
+      <td>–</td>
+      <td>0</td>
+      <td>90 UHT + 90 air</td>
+      <td>2–3 minggu</td>
+      <td>Bln 20–21</td>
+    </tr>
+    <tr>
+      <td>UHT encer 25%</td>
+      <td>–</td>
+      <td>0</td>
+      <td>45 UHT + 135 air</td>
+      <td>2 minggu</td>
+      <td>Bln 22–23</td>
+    </tr>
+    <tr>
+      <td><strong>Full Air Putih</strong></td>
+      <td>–</td>
+      <td>0</td>
+      <td>0 + 180 air</td>
+      <td>Target akhir</td>
+      <td>Bln 24</td>
+    </tr>
+  </table></div>
+
+  <div class="box box-warning">
+    <strong>⚠️ Catatan Penting:</strong>
+    Penyesuaian di atas bisa diperlambat atau dipercepat tergantung respons anak. Jika anak menolak, kembali ke rasio sebelumnya selama 1 minggu lalu coba lagi.
+  </div>
+</section>
+
+<!-- SECTION 6: BULANAN -->
+<section id="bulanan">
+  <h2 class="section-title">6. Panduan Bulanan Lengkap (Bulan 12–24)</h2>
+
+  <!-- BULAN 12 -->
+  <div class="month-card">
+    <div class="month-header">
+      <div class="month-num">12</div>
+      <div>
+        <h3>Bulan ke-12 — Mulai Transisi Sufor → UHT</h3>
+        <p>Fase 1 dimulai | Target: Abi mulai mengenal rasa UHT <span class="month-date">📅 28 Jul - 27 Agt 2026 (Abi 12 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Target Volume</h4>
+        <ul>
+          <li>Total susu: <strong>600–700 ml/hari</strong></li>
+          <li>Komposisi: 75% sufor + 25% UHT</li>
+          <li>Frekuensi: 3–4 kali/hari</li>
+        </ul>
+        <div class="formula-visual">
+          <div class="formula-block fb-sufor">Sufor 75%</div>
+          <div class="formula-block fb-plus">+</div>
+          <div class="formula-block fb-uht">UHT 25%</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <h4>📋 Langkah Praktis</h4>
+        <ul>
+          <li>Mulai campuran 3:1 (sufor:UHT) pada botol pagi</li>
+          <li>Botol malam masih full sufor dulu</li>
+          <li>Perkenalkan makan keluarga 3x/hari</li>
+          <li>Jangan beri susu <strong>sebelum</strong> makan utama</li>
+          <li>Mulai kenalkan minum dari sippy cup</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>⚠️ Yang Harus Dihindari</h4>
+        <ul>
+          <li>Susu sebelum makan (bikin kenyang)</li>
+          <li>Susu saat malam lebih dari 1 botol</li>
+          <li>Panik jika Abi sedikit menolak UHT</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil Bulan Ini</h4>
+        <ul>
+          <li>Abi mau minum campuran tanpa menolak keras</li>
+          <li>Makan 3x sehari dengan porsi cukup</li>
+          <li>Tidak rewel berat saat botol diganti</li>
+        </ul>
+      </div>
+      <div class="eval-box">
+        <strong>📊 Evaluasi Akhir Bulan 12:</strong> Apakah Abi sudah bisa menerima campuran 3:1? Jika YA → lanjut ke rasio 2:1 minggu ke-3. Jika TIDAK → pertahankan rasio 3:1 selama 1 bulan penuh sebelum lanjut.
+      </div>
+    </div>
+  </div>
+
+  <!-- BULAN 13 -->
+  <div class="month-card">
+    <div class="month-header">
+      <div class="month-num">13</div>
+      <div>
+        <h3>Bulan ke-13 — Perkuat Campuran 2:1</h3>
+        <p>Fase 1 lanjut | Target: UHT mulai dominan sebagian <span class="month-date">📅 28 Agt - 27 Sep 2026 (Abi 13 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Target Volume</h4>
+        <ul>
+          <li>Total susu: <strong>550–600 ml/hari</strong></li>
+          <li>Komposisi: 65–70% sufor + 30–35% UHT (rasio 2:1)</li>
+          <li>Frekuensi: 3 kali/hari (pagi, sore, malam)</li>
+        </ul>
+        <div class="formula-visual">
+          <div class="formula-block fb-sufor">Sufor 2/3</div>
+          <div class="formula-block fb-plus">+</div>
+          <div class="formula-block fb-uht">UHT 1/3</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <h4>📋 Langkah Praktis</h4>
+        <ul>
+          <li>Semua botol sudah campuran 2:1</li>
+          <li>Mulai latih minum air putih dari gelas antara waktu minum susu</li>
+          <li>Pastikan sarapan bergizi (telur, bubur, roti) sebelum susu pagi</li>
+          <li>Kurangi susu sore jika makan siang sudah bagus</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>⚠️ Yang Harus Dihindari</h4>
+        <ul>
+          <li>Memberikan susu sebagai "hadiah" atau pengganti makan</li>
+          <li>Membiarkan Abi tidur dengan dot masih di mulut</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil Bulan Ini</h4>
+        <ul>
+          <li>Rasio 2:1 diterima dengan baik</li>
+          <li>Abi mau minum sedikit air putih</li>
+          <li>Makan utama tidak terganggu</li>
+        </ul>
+      </div>
+      <div class="eval-box">
+        <strong>📊 Evaluasi Akhir Bulan 13:</strong> Apakah Abi menerima rasio 2:1 dengan baik? Apakah porsi makan utama stabil? Jika YA → lanjut ke 1:1. Jika makan utama menurun → tahan dulu, prioritaskan perbaikan pola makan dulu.
+      </div>
+    </div>
+  </div>
+
+  <!-- BULAN 14 -->
+  <div class="month-card">
+    <div class="month-header">
+      <div class="month-num">14</div>
+      <div>
+        <h3>Bulan ke-14 — Rasio 1:1, Titik Tengah</h3>
+        <p>Fase 1 lanjut | Target: Sufor dan UHT seimbang <span class="month-date">📅 28 Sep - 27 Okt 2026 (Abi 14 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Target Volume</h4>
+        <ul>
+          <li>Total susu: <strong>500–550 ml/hari</strong></li>
+          <li>Komposisi: 50% sufor + 50% UHT</li>
+          <li>Frekuensi: 2–3 kali/hari</li>
+        </ul>
+        <div class="formula-visual">
+          <div class="formula-block fb-sufor">Sufor 1/2</div>
+          <div class="formula-block fb-plus">+</div>
+          <div class="formula-block fb-uht">UHT 1/2</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <h4>📋 Langkah Praktis</h4>
+        <ul>
+          <li>Semua botol dengan rasio 1:1 (90 ml sufor + 90 ml UHT)</li>
+          <li>Coba eliminasi 1 waktu minum susu (misal: susu sore diganti camilan + air putih)</li>
+          <li>Perkenalkan yogurt plain atau keju sebagai sumber kalsium alternatif</li>
+          <li>Makan malam harus kaya zat besi (daging merah, hati ayam, bayam)</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>⚠️ Yang Harus Dihindari</h4>
+        <ul>
+          <li>Memberikan susu >2 jam sebelum makan besar</li>
+          <li>Menambah porsi susu jika Abi GTM (justru kurangi)</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil Bulan Ini</h4>
+        <ul>
+          <li>Abi menerima rasa UHT murni (coba tes 1 botol full UHT)</li>
+          <li>Frekuensi minum susu mulai berkurang sendiri</li>
+          <li>Abi haus mencari air putih</li>
+        </ul>
+      </div>
+      <div class="eval-box">
+        <strong>📊 Evaluasi Akhir Bulan 14:</strong> Coba beri 1 botol full UHT — apakah Abi menerimanya? Jika YA → bisa percepat ke rasio 1:2. Jika TIDAK → lanjut di 1:1 dan coba kembali minggu depan.
+      </div>
+    </div>
+  </div>
+
+  <!-- BULAN 15 -->
+  <div class="month-card">
+    <div class="month-header">
+      <div class="month-num">15</div>
+      <div>
+        <h3>Bulan ke-15 — UHT Mulai Dominan (1:2)</h3>
+        <p>Fase 1 akhir | Target: UHT mendominasi, sufor hampir lepas <span class="month-date">📅 28 Okt - 27 Nov 2026 (Abi 15 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Target Volume</h4>
+        <ul>
+          <li>Total susu: <strong>450–500 ml/hari</strong></li>
+          <li>Komposisi: 33% sufor + 67% UHT (rasio 1:2)</li>
+          <li>Frekuensi: 2 kali/hari (pagi & malam)</li>
+        </ul>
+        <div class="formula-visual">
+          <div class="formula-block fb-sufor">Sufor 1/3</div>
+          <div class="formula-block fb-plus">+</div>
+          <div class="formula-block fb-uht">UHT 2/3</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <h4>📋 Langkah Praktis</h4>
+        <ul>
+          <li>Botol pagi & malam: 60 ml sufor + 120 ml UHT</li>
+          <li>Susu sore dihapus total, diganti camilan bergizi</li>
+          <li>Mulai latih tidur siang tanpa botol susu</li>
+          <li>Perkaya variasi makanan: ikan, tahu, tempe, kacang-kacangan</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>⚠️ Yang Harus Dihindari</h4>
+        <ul>
+          <li>Menambah kembali susu sore jika Abi rewel lapar — beri makan dulu</li>
+          <li>Menggunakan susu sebagai penenang/pengalih perhatian</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil Bulan Ini</h4>
+        <ul>
+          <li>Abi bisa tidur siang tanpa botol susu</li>
+          <li>Makan 3 kali + 2 snack/hari dengan porsi baik</li>
+          <li>Total susu sudah di bawah 500 ml/hari</li>
+        </ul>
+      </div>
+      <div class="eval-box">
+        <strong>📊 Evaluasi Akhir Bulan 15:</strong> Apakah total susu sudah di bawah 500 ml? Apakah frekuensi sudah 2x/hari? Apakah Abi bisa tidur siang tanpa susu? Semua TIDAK → tahan di bulan ini lebih lama.
+      </div>
+    </div>
+  </div>
+
+  <!-- BULAN 16 -->
+  <div class="month-card">
+    <div class="month-header">
+      <div class="month-num">16</div>
+      <div>
+        <h3>Bulan ke-16 — Hampir Lepas Sufor (1:3)</h3>
+        <p>Fase 1 tuntas | Target: Sufor tinggal sedikit, segera full UHT <span class="month-date">📅 28 Nov - 27 Des 2026 (Abi 16 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Target Volume</h4>
+        <ul>
+          <li>Total susu: <strong>400–500 ml/hari</strong></li>
+          <li>Komposisi: 25% sufor + 75% UHT (rasio 1:3)</li>
+          <li>Frekuensi: 2 kali/hari</li>
+        </ul>
+        <div class="formula-visual">
+          <div class="formula-block fb-sufor">Sufor 1/4</div>
+          <div class="formula-block fb-plus">+</div>
+          <div class="formula-block fb-uht">UHT 3/4</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <h4>📋 Langkah Praktis</h4>
+        <ul>
+          <li>Botol: 45 ml sufor + 135 ml UHT</li>
+          <li>Minggu ke-3: coba 1 hari full UHT semua botol</li>
+          <li>Kurangi beli stok sufor — jangan beli kaleng baru</li>
+          <li>Perkuat rutinitas makan keluarga bersama di meja</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>⚠️ Yang Harus Dihindari</h4>
+        <ul>
+          <li>Panik dan membeli sufor baru jika stok habis — ini saat yang tepat untuk lepas</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil Bulan Ini</h4>
+        <ul>
+          <li>Sudah bisa beberapa hari full UHT tanpa protes</li>
+          <li>Pertumbuhan berat badan dan tinggi normal</li>
+          <li>Aktif, energi baik</li>
+        </ul>
+      </div>
+      <div class="eval-box">
+        <strong>📊 Evaluasi Akhir Bulan 16:</strong> Apakah Abi sudah menerima full UHT setidaknya 3–4 hari berturut-turut? Jika YA → mulai bulan 17 langsung full UHT. Jika TIDAK → perpanjang 1:3 selama 2 minggu lagi.
+      </div>
+    </div>
+  </div>
+
+  <!-- BULAN 17 -->
+  <div class="month-card">
+    <div class="month-header">
+      <div class="month-num">17</div>
+      <div>
+        <h3>Bulan ke-17 — FULL UHT, Sufor Selesai</h3>
+        <p>Fase 2 dimulai | Target: Sufor lepas total, stabilkan UHT <span class="month-date">📅 28 Des 2026 - 27 Jan 2027 (Abi 17 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Target Volume</h4>
+        <ul>
+          <li>Total susu: <strong>400–480 ml/hari</strong></li>
+          <li>Komposisi: 100% UHT full cream</li>
+          <li>Frekuensi: 2 kali/hari (pagi bangun & sebelum tidur)</li>
+        </ul>
+        <div class="formula-visual">
+          <div class="formula-block fb-uht">UHT Full Cream 100%</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <h4>📋 Langkah Praktis</h4>
+        <ul>
+          <li>Semua botol/gelas: UHT full cream murni</li>
+          <li>Habiskan stok sufor terakhir, tidak beli lagi</li>
+          <li>Siang hari: air putih, tidak ada susu ekstra</li>
+          <li>Pantau pertumbuhan BB dan TB bulan ini</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>⚠️ Yang Harus Dihindari</h4>
+        <ul>
+          <li>Memberi UHT lebih dari 480 ml/hari</li>
+          <li>Mengganti UHT dengan susu kental manis</li>
+          <li>Susu low-fat — Abi 12–24 bln butuh lemak penuh</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil Bulan Ini</h4>
+        <ul>
+          <li>Tidak ada tantrum soal sufor</li>
+          <li>Makan 3 kali + snack dengan baik</li>
+          <li>BB/TB dalam kurva normal KMS</li>
+        </ul>
+      </div>
+      <div class="eval-box">
+        <strong>📊 Evaluasi Akhir Bulan 17:</strong> FASE 1 SELESAI jika Abi minum full UHT selama 1 bulan penuh tanpa masalah. Periksa BB/TB. Lanjut ke Fase 2: kurangi volume dan lepas susu malam.
+      </div>
+    </div>
+  </div>
+
+  <!-- BULAN 18 -->
+  <div class="month-card">
+    <div class="month-header">
+      <div class="month-num">18</div>
+      <div>
+        <h3>Bulan ke-18 — Stop Susu Tengah Malam</h3>
+        <p>Fase 2 | Target: Tidak ada lagi susu malam hari/dini hari <span class="month-date">📅 28 Jan - 27 Feb 2027 (Abi 18 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Target Volume</h4>
+        <ul>
+          <li>Total susu: <strong>350–400 ml/hari</strong></li>
+          <li>Waktu: Pagi bangun + sebelum tidur malam saja</li>
+          <li>Tengah malam: air putih SAJA</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>📋 Cara Stop Susu Malam</h4>
+        <ul>
+          <li>Langkah 1: Encerkan susu malam dengan air (50:50) selama 1 minggu</li>
+          <li>Langkah 2: Ganti botol susu malam dengan botol air putih</li>
+          <li>Langkah 3: Jika bangun tengah malam, tawarkan air putih dulu</li>
+          <li>Langkah 4: Konsistensi dan tenangkan Abi jika rewel (peluk, nyanyian)</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>⚠️ Efek Normal yang Akan Terjadi</h4>
+        <ul>
+          <li>Rewel 3–7 hari pertama — NORMAL</li>
+          <li>Bangun malam lebih sering 3–5 hari — NORMAL</li>
+          <li>Tantrum saat botol diganti air — NORMAL</li>
+          <li>Makan siang/malam lebih lahap — ini tanda BERHASIL</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil Bulan Ini</h4>
+        <ul>
+          <li>Abi bisa tidur malam tanpa susu tengah malam selama 5+ hari</li>
+          <li>Jika bangun malam, mau minum air putih</li>
+          <li>Tidak menangis keras lebih dari 10 menit saat ditawarkan air</li>
+        </ul>
+      </div>
+      <div class="eval-box">
+        <strong>📊 Evaluasi Akhir Bulan 18:</strong> Berapa kali masih bangun malam minta susu? Target: nol. Jika masih 1–2x/minggu, toleransi masih oke. Jika setiap malam → lanjutkan proses lebih ketat bulan 19.
+      </div>
+    </div>
+  </div>
+
+  <!-- BULAN 19 -->
+  <div class="month-card">
+    <div class="month-header">
+      <div class="month-num">19</div>
+      <div>
+        <h3>Bulan ke-19 — Air Putih Mulai Dominan</h3>
+        <p>Fase 2 akhir | Target: Air putih jadi default minuman harian <span class="month-date">📅 28 Feb - 27 Mar 2027 (Abi 19 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Target Volume</h4>
+        <ul>
+          <li>Total susu: <strong>300–400 ml/hari</strong></li>
+          <li>Air putih: 500–700 ml/hari (ditawarkan aktif)</li>
+          <li>Susu: hanya pagi dan sebelum tidur</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>📋 Langkah Praktis</h4>
+        <ul>
+          <li>Selalu sediakan botol/sippy cup air putih di meja makan</li>
+          <li>Tawarkan air putih setiap 1–2 jam</li>
+          <li>Mulai encerkan UHT sore dengan air (75% UHT + 25% air)</li>
+          <li>Buat susu terasa "tidak terlalu spesial" — tidak perlu buru-buru memberikan</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>⚠️ Yang Harus Dihindari</h4>
+        <ul>
+          <li>Memberikan jus buah kemasan sebagai pengganti susu</li>
+          <li>Memberikan minuman manis apapun</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil Bulan Ini</h4>
+        <ul>
+          <li>Abi minta air putih sendiri saat haus</li>
+          <li>Tidak mencari susu di luar jam pagi/malam</li>
+          <li>Makan siang dan malam makin baik</li>
+        </ul>
+      </div>
+      <div class="eval-box">
+        <strong>📊 Evaluasi Akhir Bulan 19:</strong> Apakah Abi sudah terbiasa minum air putih sendiri? Apakah total susu sudah di bawah 400 ml? Apakah tidak ada lagi susu tengah malam? Semua YA → lanjut ke Fase 3.
+      </div>
+    </div>
+  </div>
+
+  <!-- BULAN 20 -->
+  <div class="month-card">
+    <div class="month-header">
+      <div class="month-num">20</div>
+      <div>
+        <h3>Bulan ke-20 — Encerkan UHT Secara Bertahap</h3>
+        <p>Fase 3 | Target: Rasa susu berkurang, air makin dominan <span class="month-date">📅 28 Mar - 27 Apr 2027 (Abi 20 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Target Volume</h4>
+        <ul>
+          <li>Total susu murni: <strong>250–350 ml/hari</strong></li>
+          <li>Campuran: 75% UHT + 25% air (pagi)</li>
+          <li>Malam: UHT murni atau encerkan juga</li>
+          <li>Air putih: 600–800 ml/hari</li>
+        </ul>
+        <div class="formula-visual">
+          <div class="formula-block fb-uht">UHT 75%</div>
+          <div class="formula-block fb-plus">+</div>
+          <div class="formula-block fb-air">Air 25%</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <h4>📋 Langkah Praktis</h4>
+        <ul>
+          <li>Mulai kurangi frekuensi dot — targetkan gelas/sippy cup</li>
+          <li>Tidur malam tanpa dot sebagai target utama bulan ini</li>
+          <li>Ganti rutinitas tidur: mandi → sikat gigi → buku cerita → tidur (tanpa susu botol)</li>
+          <li>Jika Abi minta susu sebelum tidur, beri di gelas biasa (bukan botol)</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>⚠️ Yang Harus Dihindari</h4>
+        <ul>
+          <li>Membiarkan Abi tidur dengan dot berisi susu di mulut (risiko karies gigi)</li>
+          <li>Menggunakan susu sebagai alat penenang semua jenis rewel</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil Bulan Ini</h4>
+        <ul>
+          <li>Bisa tidur malam tanpa botol (mungkin dengan pelukan/ritual lain)</li>
+          <li>Menerima susu dalam gelas biasa</li>
+          <li>Makan 3 kali/hari porsi normal seperti orang dewasa kecil</li>
+        </ul>
+      </div>
+      <div class="eval-box">
+        <strong>📊 Evaluasi Akhir Bulan 20:</strong> Apakah sudah bisa tidur tanpa dot minimal 3x/minggu? Apakah bisa minum dari gelas? Apakah total susu sudah di bawah 350 ml?
+      </div>
+    </div>
+  </div>
+
+  <!-- BULAN 21 -->
+  <div class="month-card">
+    <div class="month-header">
+      <div class="month-num">21</div>
+      <div>
+        <h3>Bulan ke-21 — Susu Hanya 2 Waktu (Pagi & Malam)</h3>
+        <p>Fase 3 lanjut | Target: Ritualkan susu, bukan kebutuhan <span class="month-date">📅 28 Apr - 27 Mei 2027 (Abi 21 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Target Volume</h4>
+        <ul>
+          <li>Total susu: <strong>200–300 ml/hari</strong></li>
+          <li>Maksimal 2 kali: setelah bangun pagi & setelah makan malam</li>
+          <li>Siang: TIDAK ADA susu — hanya air putih dan makanan</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>📋 Langkah Praktis</h4>
+        <ul>
+          <li>Jadikan susu sebagai "ritual kecil" bukan kebutuhan darurat</li>
+          <li>Pagi: bangun → ganti popok → susu di gelas → sarapan</li>
+          <li>Malam: makan malam → mandi → sikat gigi → susu sedikit (100–150 ml) → tidur</li>
+          <li>Encerkan UHT menjadi 50:50 (UHT:air)</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>⚠️ Yang Harus Dihindari</h4>
+        <ul>
+          <li>Memberikan susu ekstra saat Abi rewel non-lapar</li>
+          <li>Menggunakan susu sebagai bujukan atau hadiah</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil Bulan Ini</h4>
+        <ul>
+          <li>Abi tidak mencari susu di luar 2 waktu yang ditetapkan</li>
+          <li>Makan siang porsi lebih besar dari sebelumnya</li>
+          <li>Minum air putih 600+ ml/hari</li>
+        </ul>
+      </div>
+      <div class="eval-box">
+        <strong>📊 Evaluasi Akhir Bulan 21:</strong> Apakah total susu berhasil di bawah 300 ml? Apakah hanya 2x minum susu per hari? Apakah siang hari sudah tidak minta susu?
+      </div>
+    </div>
+  </div>
+
+  <!-- BULAN 22 -->
+  <div class="month-card">
+    <div class="month-header">
+      <div class="month-num">22</div>
+      <div>
+        <h3>Bulan ke-22 — Kurangi ke 1 Kali Susu/Hari</h3>
+        <p>Fase 3 akhir | Target: Lepas habituasi dot & susu rutin <span class="month-date">📅 28 Mei - 27 Jun 2027 (Abi 22 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Target Volume</h4>
+        <ul>
+          <li>Total susu: <strong>150–250 ml/hari</strong></li>
+          <li>Hanya 1 kali: pilih pagi ATAU malam</li>
+          <li>Mulai encerkan ke 25% UHT + 75% air</li>
+        </ul>
+        <div class="formula-visual">
+          <div class="formula-block fb-uht">UHT 25%</div>
+          <div class="formula-block fb-plus">+</div>
+          <div class="formula-block fb-air">Air 75%</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <h4>📋 Langkah Praktis</h4>
+        <ul>
+          <li>Pilih salah satu waktu susu yang paling mudah dihapus (biasanya pagi lebih mudah)</li>
+          <li>Ganti waktu yang dihapus dengan: air putih + sarapan langsung</li>
+          <li>Kurangi penggunaan dot — idealnya sudah tidak ada dot sama sekali bulan ini</li>
+          <li>Jika masih pakai dot: ganti dengan cup atau gelas biasa</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>⚠️ Yang Harus Dihindari</h4>
+        <ul>
+          <li>Terburu-buru atau memaksa jika Abi belum siap</li>
+          <li>Menghukum Abi yang minta susu</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil Bulan Ini</h4>
+        <ul>
+          <li>Tidak pakai dot lagi</li>
+          <li>Total susu di bawah 200 ml</li>
+          <li>Bangun pagi langsung minta makan, bukan susu</li>
+        </ul>
+      </div>
+      <div class="eval-box">
+        <strong>📊 Evaluasi Akhir Bulan 22:</strong> Apakah sudah 1 kali susu/hari? Apakah dot sudah tidak dipakai? Apakah pertumbuhan tetap normal (cek KMS)?
+      </div>
+    </div>
+  </div>
+
+  <!-- BULAN 23 -->
+  <div class="month-card">
+    <div class="month-header">
+      <div class="month-num">23</div>
+      <div>
+        <h3>Bulan ke-23 — Susu Hampir Opsional</h3>
+        <p>Fase 4 mulai | Target: Air putih = minuman default <span class="month-date">📅 28 Jun - 27 Jul 2027 (Abi 23 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Target Volume</h4>
+        <ul>
+          <li>Total susu: <strong>0–150 ml/hari</strong></li>
+          <li>Frekuensi: opsional — bisa ada bisa tidak</li>
+          <li>Air putih: 700–900 ml/hari</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>📋 Langkah Praktis</h4>
+        <ul>
+          <li>Beberapa hari tidak beri susu sama sekali — tes respons Abi</li>
+          <li>Jika Abi tidak minta → tidak perlu diberikan</li>
+          <li>Jika Abi minta → beri sedikit (100 ml) dalam gelas biasa</li>
+          <li>Fokus pada variasi makanan bergizi: susu bisa dari yogurt, keju, makanan sumber kalsium lain</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>⚠️ Yang Harus Dihindari</h4>
+        <ul>
+          <li>Menawari susu secara aktif jika Abi tidak meminta</li>
+          <li>Merasa bersalah jika Abi tidak minum susu hari itu</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil Bulan Ini</h4>
+        <ul>
+          <li>Ada hari-hari tanpa susu sama sekali dan Abi tetap ceria</li>
+          <li>Abi tidak tantrum saat tidak diberi susu</li>
+          <li>Makan utama sangat baik dan beragam</li>
+        </ul>
+      </div>
+      <div class="eval-box">
+        <strong>📊 Evaluasi Akhir Bulan 23:</strong> Berapa hari dalam seminggu Abi tidak minta susu? Target: minimal 3–4 hari/minggu tidak perlu susu. Apakah makan utama sudah sangat baik?
+      </div>
+    </div>
+  </div>
+
+  <!-- BULAN 24 -->
+  <div class="month-card">
+    <div class="month-header" style="background: linear-gradient(90deg, #166534, #16a34a);">
+      <div class="month-num">24</div>
+      <div>
+        <h3>Bulan ke-24 — TARGET TERCAPAI 🎉</h3>
+        <p>Fase 4 selesai | Susu opsional, makan keluarga normal, air putih default <span class="month-date">📅 28 Jul - 27 Agt 2027 (Abi 24 bln)</span></p>
+      </div>
+    </div>
+    <div class="month-body">
+      <div class="month-col">
+        <h4>🎯 Status Ideal</h4>
+        <ul>
+          <li>Susu: <strong>0–200 ml/hari</strong> (opsional)</li>
+          <li>Air putih: 800–1000 ml/hari</li>
+          <li>Makan keluarga: 3x/hari penuh</li>
+          <li>Tidak ada lagi ketergantungan dot</li>
+        </ul>
+      </div>
+      <div class="month-col">
+        <h4>✅ Tanda Berhasil (Akhir Target)</h4>
+        <ul>
+          <li>Tidak menangis jika tidak ada susu</li>
+          <li>Bisa tidur malam tanpa susu/dot</li>
+          <li>Haus → langsung cari air putih</li>
+          <li>Makan utama bagus, tidak GTM</li>
+          <li>Pertumbuhan BB/TB normal di kurva KMS</li>
+          <li>Aktif, energik, tidak pucat</li>
+        </ul>
+      </div>
+      <div class="eval-box" style="grid-column: 1/-1; background: #dcfce7; border-color: #86efac;">
+        <strong style="color: #166534;">🎉 EVALUASI AKHIR BULAN 24 — CHECKLIST KEBERHASILAN PENUH:</strong><br><br>
+        ☐ Tidak tergantung susu formula apapun<br>
+        ☐ UHT hanya jika mau, tidak dipaksa<br>
+        ☐ Air putih adalah minuman utama<br>
+        ☐ Tidak ada dot<br>
+        ☐ Makan 3x/hari porsi Abi normal<br>
+        ☐ BB/TB dalam kurva normal<br>
+        ☐ Tidak ada tanda anemia (tidak pucat, aktif, konjungtiva merah muda)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7 -->
+<section id="evaluasi">
+  <h2 class="section-title">7. Checklist Evaluasi Bulanan</h2>
+  <p>Gunakan checklist ini setiap akhir bulan untuk menentukan apakah transisi bisa dilanjutkan atau perlu diperlambat.</p>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Pertanyaan Evaluasi</th>
+      <th>Jika YA</th>
+      <th>Jika TIDAK</th>
+    </tr>
+    <tr>
+      <td>Apakah Abi menerima campuran baru tanpa protes berat?</td>
+      <td>Lanjut ke langkah berikutnya</td>
+      <td>Tahan di rasio saat ini 1–2 minggu lagi</td>
+    </tr>
+    <tr>
+      <td>Apakah total volume susu sesuai target bulan ini?</td>
+      <td>Lanjut</td>
+      <td>Cari tahu apa yang membuat susu berlebih (comfort feeding? GTM?)</td>
+    </tr>
+    <tr>
+      <td>Apakah makan 3 kali sehari dengan porsi cukup?</td>
+      <td>Lanjut</td>
+      <td>Prioritaskan perbaikan pola makan dulu sebelum kurangi susu</td>
+    </tr>
+    <tr>
+      <td>Apakah pertumbuhan BB/TB normal di KMS?</td>
+      <td>Lanjut</td>
+      <td>Konsultasi dokter/bidan — jangan kurangi susu dulu</td>
+    </tr>
+    <tr>
+      <td>Apakah tidak ada tanda anemia (pucat, lesu, tidak nafsu makan)?</td>
+      <td>Lanjut</td>
+      <td>Periksa Hb ke dokter — mungkin perlu suplementasi zat besi</td>
+    </tr>
+    <tr>
+      <td>Apakah Abi mau minum air putih (tidak hanya susu)?</td>
+      <td>Lanjut</td>
+      <td>Aktifkan penawaran air putih, buat menarik dengan cup lucu</td>
+    </tr>
+  </table></div>
+
+  <div class="box box-info">
+    <strong>📌 Prinsip Evaluasi:</strong>
+    Transisi BOLEH diperlambat sesuai kebutuhan Abi. Tidak ada "terlambat" selama arahnya benar. Abi yang baru bisa full UHT di usia 18 bulan, atau baru bisa lepas susu malam di usia 20 bulan — tetap berhasil.
+  </div>
+</section>
+
+<!-- SECTION 8 -->
+<section id="stop">
+  <h2 class="section-title">8. Stop Mendadak: Risiko & Cara Aman</h2>
+
+  <h3>8.1 Apa yang Terjadi Jika Stop Mendadak?</h3>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Efek</th>
+      <th>Normal?</th>
+      <th>Durasi</th>
+      <th>Cara Tangani</th>
+    </tr>
+    <tr>
+      <td>Rewel, menangis</td>
+      <td>✅ Normal</td>
+      <td>3–7 hari</td>
+      <td>Tenangkan dengan pelukan, distraksi, mainan</td>
+    </tr>
+    <tr>
+      <td>Bangun lebih sering malam hari</td>
+      <td>✅ Normal</td>
+      <td>5–10 hari</td>
+      <td>Tawarkan air putih, pelukan, nyanyian</td>
+    </tr>
+    <tr>
+      <td>Tantrum saat botol diganti</td>
+      <td>✅ Normal</td>
+      <td>Sementara</td>
+      <td>Konsisten, jangan menyerah saat puncak tantrum</td>
+    </tr>
+    <tr>
+      <td>Makan lebih lahap setelah beberapa hari</td>
+      <td>✅ Tanda baik</td>
+      <td>Dimulai hari 3–7</td>
+      <td>Ini tanda keberhasilan! Teruskan</td>
+    </tr>
+    <tr>
+      <td>Penolakan total selama >2 minggu</td>
+      <td>❌ Perlu evaluasi</td>
+      <td>>2 minggu</td>
+      <td>Kembali ke pendekatan bertahap, konsultasi dokter</td>
+    </tr>
+  </table></div>
+
+  <div class="box box-warning">
+    <strong>⚠️ Kapan Harus ke Dokter:</strong>
+    Hentikan proses dan konsultasi dokter/bidan jika: Abi kehilangan BB signifikan dalam 2 minggu, tampak sangat lesu/pucat, demam, atau menolak semua makanan dan minuman selama >3 hari.
+  </div>
+</section>
+
+<!-- SECTION 9 -->
+<section id="tanda">
+  <h2 class="section-title">9. Tanda Abi Telah Berhasil Transisi</h2>
+
+  <div class="box box-success">
+    <strong>✅ Checklist Keberhasilan Final:</strong>
+  </div>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th>Indikator</th>
+      <th>Deskripsi</th>
+    </tr>
+    <tr>
+      <td>🍽️ Makan utama baik</td>
+      <td>3 kali makan utama + 2 snack/hari dengan porsi dan variasi yang cukup</td>
+    </tr>
+    <tr>
+      <td>💧 Air putih default</td>
+      <td>Saat haus, Abi spontan mencari air putih — bukan susu</td>
+    </tr>
+    <tr>
+      <td>😴 Tidur mandiri</td>
+      <td>Bisa tidur siang dan malam tanpa membutuhkan botol susu</td>
+    </tr>
+    <tr>
+      <td>😊 Tidak tantrum soal susu</td>
+      <td>Tidak menangis/tantrum jika tidak diberi susu</td>
+    </tr>
+    <tr>
+      <td>📈 Tumbuh normal</td>
+      <td>BB dan TB dalam kurva normal di KMS/WHO Growth Chart</td>
+    </tr>
+    <tr>
+      <td>⚡ Aktif & energik</td>
+      <td>Bermain aktif, tidak lesu, tidak pucat</td>
+    </tr>
+    <tr>
+      <td>🦷 Kesehatan gigi</td>
+      <td>Tidak ada karies dini akibat susu malam (tidur tanpa dot)</td>
+    </tr>
+  </table></div>
+</section>
+
+<!-- SECTION 10 -->
+<section id="referensi">
+  <h2 class="section-title">10. Referensi & Sumber Riset</h2>
+
+  <ol class="source-list">
+    <li>
+      <strong>AAP – Healthy Beverage Quick Reference Guide (2019)</strong><br>
+      American Academy of Pediatrics. Rekomendasi resmi volume dan jenis minuman anak usia 0–5 tahun.<br>
+      🔗 <a href="https://downloads.aap.org/AAP/PDF/HealthyBeverageQuickReferenceGuideDownload.pdf" target="_blank">downloads.aap.org/AAP/PDF/HealthyBeverageQuickReferenceGuideDownload.pdf</a>
+    </li>
+    <li>
+      <strong>AAP / University of Utah Health – "Skip the Toddler Formula" (2023)</strong><br>
+      AAP menyatakan sufor toddler tidak memiliki keunggulan nutrisi untuk anak sehat >12 bulan.<br>
+      🔗 <a href="https://healthcare.utah.edu/healthfeed/2023/12/skip-toddler-formula-why-cows-milk-better-option" target="_blank">healthcare.utah.edu/healthfeed/2023/12/skip-toddler-formula-why-cows-milk-better-option</a>
+    </li>
+    <li>
+      <strong>AAFP – "Nutrition in Toddlers" (2018)</strong><br>
+      American Academy of Family Physicians. Rekomendasi susu sapi whole milk untuk usia 1–2 tahun.<br>
+      🔗 <a href="https://www.aafp.org/pubs/afp/issues/2018/0815/p227.html" target="_blank">aafp.org/pubs/afp/issues/2018/0815/p227.html</a>
+    </li>
+    <li>
+      <strong>CDC – "Cow's Milk and Milk Alternatives" (2026)</strong><br>
+      Centers for Disease Control and Prevention. Panduan susu sapi untuk toddler.<br>
+      🔗 <a href="https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/cows-milk-and-milk-alternatives.html" target="_blank">cdc.gov/infant-toddler-nutrition/foods-and-drinks/cows-milk-and-milk-alternatives.html</a>
+    </li>
+    <li>
+      <strong>Nationwide Children's Hospital – "Iron-Deficiency Anemia Related to Milk Consumption"</strong><br>
+      Penjelasan klinis mekanisme anemia akibat konsumsi susu berlebih pada toddler.<br>
+      🔗 <a href="https://www.nationwidechildrens.org/-/media/nch/for-medical-professionals/practice-tools-new/iron-deficiency-anemia-related-to-milk-consumption.pdf" target="_blank">nationwidechildrens.org – Iron-Deficiency Anemia Related to Milk Consumption (PDF)</a>
+    </li>
+    <li>
+      <strong>Bondi & Lieuw (2009) – "Excessive Cow's Milk Consumption and Iron Deficiency in Toddlers"</strong><br>
+      SAGE Journals. Dua kasus klinis anemia berat akibat susu berlebih pada toddler.<br>
+      🔗 <a href="https://journals.sagepub.com/doi/10.1177/1941406409335481" target="_blank">journals.sagepub.com/doi/10.1177/1941406409335481</a>
+    </li>
+    <li>
+      <strong>Gotou et al. (2026) – "Severe IDA and Hypoalbuminemia from Excessive Cow's Milk"</strong><br>
+      Cureus. DOI: 10.7759/cureus.101657. Kasus klinis bayi 16 bulan.<br>
+      🔗 <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12906667/" target="_blank">ncbi.nlm.nih.gov/pmc/articles/PMC12906667/</a>
+    </li>
+    <li>
+      <strong>ASH (2025) – "Morbidity and Mortality in 128 Children with Severe IDA from Cow's Milk"</strong><br>
+      American Society of Hematology. Blood. 2025;146(S1):2903.<br>
+      🔗 <a href="https://ashpublications.org/blood/article/146/Supplement%201/2903/552569/" target="_blank">ashpublications.org/blood/article/146/Supplement%201/2903/552569/</a>
+    </li>
+    <li>
+      <strong>ESPGHAN (2021) – "Young Child Formulas and Cow's Milk on Nutrient Intakes"</strong><br>
+      PMC. ncbi.nlm.nih.gov/articles/PMC8398400. Tidak ada alasan rutin memberi sufor toddler untuk anak sehat.<br>
+      🔗 <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8398400/" target="_blank">pmc.ncbi.nlm.nih.gov/articles/PMC8398400/</a>
+    </li>
+    <li>
+      <strong>WHO – "Guideline for Complementary Feeding of Infants and Young Children 6–23 months" (NCBI)</strong><br>
+      Panduan WHO untuk pemberian makan pendamping usia 6–23 bulan.<br>
+      🔗 <a href="https://www.ncbi.nlm.nih.gov/books/NBK596423/" target="_blank">ncbi.nlm.nih.gov/books/NBK596423/</a>
+    </li>
+    <li>
+      <strong>AAP HealthyChildren.org – "Why Formula Instead of Cow's Milk"</strong><br>
+      Batas aman konsumsi susu untuk toddler: max ~480 ml/hari.<br>
+      🔗 <a href="https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/Why-Formula-Instead-of-Cows-Milk.aspx" target="_blank">healthychildren.org – Why Formula Instead of Cow's Milk</a>
+    </li>
+  </ol>
+
+  <div class="box box-warning" style="margin-top:24px;">
+    <strong>⚠️ Disclaimer Penting:</strong>
+    Panduan ini disusun berdasarkan riset ilmiah dan rekomendasi organisasi kesehatan internasional, bukan sebagai pengganti saran medis profesional. Setiap anak memiliki kebutuhan yang berbeda. Selalu konsultasikan dengan dokter anak atau ahli gizi jika ada kekhawatiran pertumbuhan, tanda anemia, atau penolakan makan berkepanjangan.
+  </div>
+</section>
+
+</div>
+
+<footer>
+  Panduan Transisi Susu Toddler · Disusun khusus untuk Muhammad Abizar Kurniawan (lahir 28 Juli 2025) · Berbasis riset WHO, AAP, CDC, ESPGHAN
+</footer>
+
+</body>
+</html>

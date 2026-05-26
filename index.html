@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+<title>Panduan Tumbuh Kembang Abi &mdash; Muhammad Abizar Kurniawan</title>
+<meta name="description" content="Kumpulan panduan susu, MPASI, transisi, dan troubleshooting untuk Muhammad Abizar Kurniawan, berbasis riset WHO, AAP, AASM, IDAI, ESPGHAN.">
+<style>
+  :root {
+    --blue-dark: #1a3a5c;
+    --blue-mid: #2563a8;
+    --blue-light: #dbeafe;
+    --green-dark: #166534;
+    --green-light: #dcfce7;
+    --red-dark: #7c1d1d;
+    --red-mid: #b91c1c;
+    --red-light: #fee2e2;
+    --yellow-light: #fef3c7;
+    --gray-100: #f8fafc;
+    --gray-200: #e2e8f0;
+    --gray-700: #374151;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { overflow-x: hidden; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 14px; line-height: 1.7; color: #1e293b;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f0f4f8 50%, #fef3c7 100%);
+    min-height: 100vh;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  .hero {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2563a8 50%, #7c1d1d 100%);
+    color: white; padding: 60px 20px 80px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><text x='100' y='100' text-anchor='middle' fill='rgba(255,255,255,0.04)' font-family='Segoe UI, Arial, sans-serif' font-size='14' font-weight='800' transform='rotate(-30 100 100)'>ABIZAR &#183; 28 JUL 2025</text></svg>");
+    background-repeat: repeat;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+  .hero .avatar-big {
+    width: 96px; height: 96px; border-radius: 50%;
+    background: rgba(255,255,255,0.2); border: 3px solid rgba(255,255,255,0.6);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 18px; backdrop-filter: blur(8px); overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+  .hero .avatar-big img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+  }
+  .photo-banner {
+    background: white; border-radius: 16px; padding: 0; margin-bottom: 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08); overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  }
+  .photo-banner img {
+    width: 100%; height: 320px; object-fit: cover; object-position: center 20%; display: block;
+  }
+  .photo-banner .photo-caption {
+    padding: 18px 24px; display: flex; flex-direction: column; justify-content: center;
+    background: linear-gradient(135deg, #f0f9ff, #fef3c7);
+  }
+  .photo-banner .photo-caption h3 {
+    color: #1a3a5c; font-size: 16px; margin-bottom: 8px;
+  }
+  .photo-banner .photo-caption p {
+    color: #475569; font-size: 13px; margin: 0;
+  }
+  @media (max-width: 600px) {
+    .photo-banner { grid-template-columns: 1fr; }
+    .photo-banner img { height: 280px; object-position: center 15%; }
+  }
+  .hero h1 {
+    font-size: clamp(22px, 5vw, 34px); font-weight: 800; letter-spacing: -0.5px;
+    margin-bottom: 12px; line-height: 1.25;
+  }
+  .hero .subtitle {
+    font-size: clamp(13px, 2.5vw, 16px); opacity: 0.9; max-width: 600px;
+    margin: 0 auto 24px;
+  }
+  .hero-stats {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+    margin-top: 18px;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
+    padding: 8px 16px; border-radius: 24px;
+    font-size: 12.5px; font-weight: 600; backdrop-filter: blur(8px);
+  }
+  .hero-stat strong { font-size: 14px; }
+
+  .container { max-width: 1100px; margin: -50px auto 0; padding: 0 20px 60px; position: relative; z-index: 2; }
+
+  .info-card {
+    background: white; border-radius: 16px; padding: 24px 28px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    margin-bottom: 28px; border-left: 5px solid var(--blue-mid);
+  }
+  .info-card h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--blue-mid); margin-bottom: 14px;
+  }
+  .info-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .info-item {
+    padding: 12px 14px; background: var(--gray-100); border-radius: 8px;
+    border-left: 3px solid var(--blue-mid);
+  }
+  .info-item .label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .info-item .value { font-size: 14px; color: var(--blue-dark); font-weight: 600; }
+
+  .docs-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px; margin-bottom: 32px;
+  }
+
+  .doc-card {
+    background: white; border-radius: 16px; padding: 28px 26px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; flex-direction: column;
+    border-top: 6px solid var(--blue-mid);
+    cursor: pointer;
+  }
+  .doc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+  }
+  .doc-card.utama { border-top-color: #16a34a; }
+  .doc-card.transisi { border-top-color: var(--blue-mid); }
+  .doc-card.trouble { border-top-color: var(--red-mid); }
+
+  .doc-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; margin-bottom: 16px;
+  }
+  .doc-card.utama .doc-icon { background: var(--green-light); }
+  .doc-card.transisi .doc-icon { background: var(--blue-light); }
+  .doc-card.trouble .doc-icon { background: var(--red-light); }
+
+  .doc-tag {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    padding: 3px 10px; border-radius: 12px; letter-spacing: 0.5px;
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+  .doc-card.utama .doc-tag { background: var(--green-light); color: var(--green-dark); }
+  .doc-card.transisi .doc-tag { background: var(--blue-light); color: var(--blue-dark); }
+  .doc-card.trouble .doc-tag { background: var(--red-light); color: var(--red-dark); }
+
+  .doc-card h3 {
+    font-size: 17px; color: var(--blue-dark); margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .doc-card .doc-period {
+    font-size: 12px; color: #64748b; margin-bottom: 12px; font-weight: 600;
+  }
+  .doc-card .doc-desc {
+    font-size: 13px; color: #475569; line-height: 1.65; margin-bottom: 16px;
+    flex-grow: 1;
+  }
+  .doc-features {
+    list-style: none; padding: 0; margin-bottom: 18px;
+  }
+  .doc-features li {
+    font-size: 12.5px; color: #475569; padding: 4px 0;
+    padding-left: 18px; position: relative;
+  }
+  .doc-features li::before {
+    content: '\2713'; position: absolute; left: 0; color: var(--blue-mid);
+    font-weight: 700;
+  }
+  .doc-card.utama .doc-features li::before { color: #16a34a; }
+  .doc-card.trouble .doc-features li::before { color: var(--red-mid); }
+
+  .doc-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 18px; border-radius: 10px;
+    font-size: 13.5px; font-weight: 700; color: #fff;
+    text-align: center; transition: opacity 0.2s; margin-top: auto;
+  }
+  .doc-card.utama .doc-btn { background: linear-gradient(135deg, #16a34a, #166534); }
+  .doc-card.transisi .doc-btn { background: linear-gradient(135deg, var(--blue-mid), var(--blue-dark)); }
+  .doc-card.trouble .doc-btn { background: linear-gradient(135deg, var(--red-mid), var(--red-dark)); }
+  .doc-btn:hover { opacity: 0.92; }
+
+  .roadmap {
+    background: white; border-radius: 16px; padding: 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08); margin-bottom: 28px;
+  }
+  .roadmap h2 {
+    font-size: 16px; color: var(--blue-dark); margin-bottom: 18px;
+    border-left: 4px solid var(--blue-mid); padding-left: 12px;
+  }
+  .timeline {
+    position: relative; padding-left: 28px; margin-left: 8px;
+  }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 6px; bottom: 6px;
+    width: 3px; background: linear-gradient(180deg, #16a34a, var(--blue-mid), var(--red-mid));
+    border-radius: 2px;
+  }
+  .timeline-item {
+    position: relative; padding-bottom: 16px; padding-left: 4px;
+  }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -32px; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: white; border: 3px solid var(--blue-mid);
+  }
+  .timeline-item.now::before { border-color: #16a34a; background: #16a34a; box-shadow: 0 0 0 4px rgba(22,163,74,0.2); }
+  .timeline-item h4 {
+    font-size: 13px; color: var(--blue-dark); margin-bottom: 4px;
+  }
+  .timeline-item p {
+    font-size: 12.5px; color: #475569; margin: 0;
+  }
+  .timeline-item .badge-now {
+    background: #16a34a; color: #fff; font-size: 10px; padding: 2px 8px;
+    border-radius: 8px; margin-left: 6px; vertical-align: middle;
+    font-weight: 700; letter-spacing: 0.5px;
+  }
+
+  .quick-actions {
+    background: white; border-radius: 16px; padding: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08); margin-bottom: 28px;
+  }
+  .quick-actions h2 {
+    font-size: 14px; color: var(--blue-dark); margin-bottom: 14px;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .actions-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+  }
+  .action-link {
+    display: block; padding: 14px 16px; background: var(--gray-100);
+    border-radius: 10px; border-left: 3px solid var(--blue-mid);
+    transition: background 0.2s, transform 0.15s;
+  }
+  .action-link:hover { background: var(--blue-light); transform: translateX(2px); }
+  .action-link .icon { font-size: 18px; margin-right: 6px; }
+  .action-link .title { font-size: 13px; font-weight: 700; color: var(--blue-dark); }
+  .action-link .desc { font-size: 11.5px; color: #64748b; margin-top: 2px; }
+
+  footer {
+    text-align: center; padding: 30px 20px; color: #64748b; font-size: 12px;
+    line-height: 1.7;
+  }
+  footer strong { color: var(--blue-dark); }
+
+  @media (max-width: 600px) {
+    .hero { padding: 44px 18px 60px; }
+    .hero .avatar-big { width: 64px; height: 64px; font-size: 28px; }
+    .container { padding: 0 14px 40px; }
+    .info-card, .roadmap, .quick-actions { padding: 20px 18px; }
+    .doc-card { padding: 22px 20px; }
+    .docs-grid { gap: 18px; }
+    .info-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 380px) {
+    .info-grid { grid-template-columns: 1fr; }
+  }
+
+  .parents-card {
+    background: linear-gradient(135deg, #fff5f5 0%, #fef3c7 50%, #f0f9ff 100%);
+    border-radius: 16px; padding: 36px 28px; margin-bottom: 28px;
+    box-shadow: 0 4px 20px rgba(220, 38, 127, 0.08);
+    border: 1px solid #fce7f3; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .parents-card::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #f472b6, #fbbf24, #60a5fa);
+  }
+  .parents-icon {
+    font-size: 38px; margin-bottom: 12px;
+  }
+  .parents-card h3 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 2px;
+    color: #be185d; font-weight: 600; margin-bottom: 6px;
+  }
+  .parents-names {
+    font-family: 'Segoe Script', 'Brush Script MT', cursive;
+    font-size: 32px; color: #1a3a5c; font-weight: 700;
+    margin-bottom: 18px; letter-spacing: 1px;
+  }
+  .parents-quote {
+    font-style: italic; color: #475569; font-size: 14px; line-height: 1.7;
+    max-width: 560px; margin: 0 auto 18px; padding: 0 8px;
+  }
+  .parents-mission {
+    color: #334155; font-size: 13.5px; line-height: 1.7;
+    max-width: 560px; margin: 0 auto 18px;
+  }
+  .parents-divider {
+    color: #f472b6; font-size: 18px; margin: 18px 0;
+    letter-spacing: 12px;
+  }
+  .parents-tagline-strong {
+    color: #1a3a5c; font-size: 14px; font-weight: 800;
+    margin: 18px 0 0; letter-spacing: 1.5px; line-height: 1.8;
+  }
+  .parents-quote em {
+    font-style: italic; display: inline-block; line-height: 1.85;
+  }
+  @media (max-width: 600px) {
+    .parents-card { padding: 28px 20px; }
+    .parents-names { font-size: 26px; }
+    .parents-quote, .parents-mission { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="avatar-big"><img src="img/abi-avatar.jpg" alt="Abi"></div>
+    <h1>Panduan Tumbuh Kembang Abi</h1>
+    <p class="subtitle">Kumpulan panduan susu, MPASI, tidur, transisi, dan troubleshooting untuk Muhammad Abizar Kurniawan. Berbasis riset WHO, AAP, AASM, IDAI, ESPGHAN.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>10 bulan</strong> &middot; lahir 28 Jul 2025</div>
+      <div class="hero-stat"><strong>10.72 kg</strong> &middot; P92 WHO</div>
+      <div class="hero-stat">Morinaga P-HP</div>
+      <div class="hero-stat">CMPA ringan resolved</div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="photo-banner">
+    <img src="img/abi-portrait.jpg" alt="Abizar" loading="lazy">
+    <div class="photo-caption">
+      <h3>&#127870; Abi Saat Ini</h3>
+      <p>Muhammad Abizar Kurniawan, 10 bulan, BB 10.72 kg. Dokumen ini disusun khusus untuk mendukung tumbuh kembang Abi sampai usia 2 tahun, dengan pertimbangan riwayat alergi ringan susu sapi yang sudah resolved sejak pindah ke Morinaga P-HP.</p>
+    </div>
+  </section>
+
+  <section class="info-card">
+    <h2>&#128218; Profil Anak</h2>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="label">Nama Lengkap</div>
+        <div class="value">Muhammad Abizar Kurniawan</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Tanggal Lahir</div>
+        <div class="value">28 Juli 2025</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Usia Saat Ini</div>
+        <div class="value">9 bulan 28 hari (10 bln)</div>
+      </div>
+      <div class="info-item">
+        <div class="label">BB Terakhir</div>
+        <div class="value">10.72 kg (P92, normal)</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Susu Saat Ini</div>
+        <div class="value">Morinaga Chil&middot;Mil P-HP</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Riwayat Alergi</div>
+        <div class="value">CMPA ringan (resolved on P-HP)</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Pola Tidur</div>
+        <div class="value">18:30 &rarr; 03:30 (perlu dioptimasi)</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Update Terakhir</div>
+        <div class="value">26 Mei 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="docs-grid">
+
+    <a href="panduan-utama-10-bulan.html" class="doc-card utama">
+      <div class="doc-icon">&#127868;</div>
+      <span class="doc-tag">Panduan Utama &middot; Sekarang</span>
+      <h3>Panduan Susu &amp; MPASI Usia 10 Bulan</h3>
+      <p class="doc-period">&#128197; Bulan 10 - 12 (Mei - Agustus 2026)</p>
+      <p class="doc-desc">Konsolidasi P-HP, MPASI bergizi, persiapan transisi susu sapi, milk ladder bertahap, dan pola tidur optimal.</p>
+      <ul class="doc-features">
+        <li>Volume susu 500-700 ml/hari</li>
+        <li>MPASI 3x utama + zat besi prioritas</li>
+        <li>Milk ladder 5 tangga aman</li>
+        <li>Pola tidur 13-15 jam (target)</li>
+        <li>Roadmap bulan 10, 11, 12</li>
+      </ul>
+      <span class="doc-btn">Buka Panduan Utama &rarr;</span>
+    </a>
+
+    <a href="panduan-transisi-12-24-bulan.html" class="doc-card transisi">
+      <div class="doc-icon">&#129371;</div>
+      <span class="doc-tag">Panduan Lanjutan</span>
+      <h3>Panduan Transisi Susu Toddler</h3>
+      <p class="doc-period">&#128197; Bulan 12 - 24 (Agt 2026 - Jul 2027)</p>
+      <p class="doc-desc">Transisi bertahap dari sufor ke UHT full cream, lepas susu malam, kurangi dot, dan menuju makan keluarga normal.</p>
+      <ul class="doc-features">
+        <li>Fase 1: Sufor &rarr; UHT (rasio 3:1 sd 1:3)</li>
+        <li>Fase 2: Stop susu malam</li>
+        <li>Fase 3: Encerkan UHT, kurangi dot</li>
+        <li>Fase 4: Susu opsional, makan keluarga</li>
+        <li>Peta bulanan 12-24 dengan tanggal</li>
+      </ul>
+      <span class="doc-btn">Buka Panduan Transisi &rarr;</span>
+    </a>
+
+    <a href="panduan-troubleshooting.html" class="doc-card trouble">
+      <div class="doc-icon">&#128736;&#65039;</div>
+      <span class="doc-tag">Pendamping &middot; Saat Bermasalah</span>
+      <h3>Panduan Troubleshooting Transisi</h3>
+      <p class="doc-period">&#128197; Untuk Bulan 10 - 24 (Periode Transisi)</p>
+      <p class="doc-desc">Solusi praktis untuk tantrum malam, asosiasi dot, GTM, penolakan UHT, sleep training, sakit, travel, dan mental ortu.</p>
+      <ul class="doc-features">
+        <li>Analisis BB Abi vs kurva WHO</li>
+        <li>Strategi tantrum &amp; bangun nangis</li>
+        <li>Asosiasi dot kosong (3 pendekatan)</li>
+        <li>Kapan boleh mundur ke pola lama</li>
+        <li>Tanda emergency &amp; kontak DSA</li>
+      </ul>
+      <span class="doc-btn">Buka Troubleshooting &rarr;</span>
+    </a>
+
+  </section>
+
+  <section class="roadmap">
+    <h2>&#128205; Roadmap Tumbuh Kembang Abi</h2>
+    <div class="timeline">
+      <div class="timeline-item now">
+        <h4>Mei - Agustus 2026 &middot; Bulan 10-12 <span class="badge-now">SEKARANG</span></h4>
+        <p>Konsolidasi P-HP &amp; MPASI, pola tidur optimal, milk ladder tangga 1-3.<br>&rarr; <strong>Panduan Utama</strong></p>
+      </div>
+      <div class="timeline-item">
+        <h4>Agustus - Desember 2026 &middot; Bulan 12-16</h4>
+        <p>Fase 1 transisi: sufor &rarr; UHT bertahap (rasio 3:1 sampai 1:3).<br>&rarr; <strong>Panduan Transisi (Fase 1)</strong></p>
+      </div>
+      <div class="timeline-item">
+        <h4>Januari - Maret 2027 &middot; Bulan 17-19</h4>
+        <p>Fase 2: full UHT, stop susu malam, biasakan air putih.<br>&rarr; <strong>Panduan Transisi (Fase 2)</strong></p>
+      </div>
+      <div class="timeline-item">
+        <h4>April - Juni 2027 &middot; Bulan 20-22</h4>
+        <p>Fase 3: encerkan UHT, kurangi dot, transisi ke gelas/sippy cup.<br>&rarr; <strong>Panduan Transisi (Fase 3)</strong></p>
+      </div>
+      <div class="timeline-item">
+        <h4>Juli - Agustus 2027 &middot; Bulan 23-24</h4>
+        <p>Fase 4: susu opsional, makan keluarga normal, target tercapai.<br>&rarr; <strong>Panduan Transisi (Fase 4)</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quick-actions">
+    <h2>&#9889; Akses Cepat</h2>
+    <div class="actions-grid">
+      <a href="panduan-utama-10-bulan.html#susu" class="action-link">
+        <div><span class="icon">&#127868;</span><span class="title">Volume Susu Harian</span></div>
+        <div class="desc">P-HP 500-700 ml/hari</div>
+      </a>
+      <a href="panduan-utama-10-bulan.html#mpasi" class="action-link">
+        <div><span class="icon">&#127859;</span><span class="title">MPASI &amp; Tekstur</span></div>
+        <div class="desc">3x utama + 2 snack</div>
+      </a>
+      <a href="panduan-utama-10-bulan.html#zatbesi" class="action-link">
+        <div><span class="icon">&#129704;</span><span class="title">Zat Besi Prioritas</span></div>
+        <div class="desc">11 mg/hari, sumber heme</div>
+      </a>
+      <a href="panduan-utama-10-bulan.html#alergi" class="action-link">
+        <div><span class="icon">&#129496;</span><span class="title">Milk Ladder</span></div>
+        <div class="desc">Tangga 1-5 protokol</div>
+      </a>
+      <a href="panduan-utama-10-bulan.html#tidur" class="action-link">
+        <div><span class="icon">&#128164;</span><span class="title">Pola Tidur Optimal</span></div>
+        <div class="desc">13-15 jam, 2 nap</div>
+      </a>
+      <a href="panduan-utama-10-bulan.html#jadwal" class="action-link">
+        <div><span class="icon">&#128197;</span><span class="title">Jadwal Harian</span></div>
+        <div class="desc">Contoh schedule lengkap</div>
+      </a>
+      <a href="panduan-troubleshooting.html#analisis-bb" class="action-link">
+        <div><span class="icon">&#128202;</span><span class="title">Analisis BB Abi</span></div>
+        <div class="desc">10.72 kg vs kurva WHO</div>
+      </a>
+      <a href="panduan-troubleshooting.html#tantrum-malam" class="action-link">
+        <div><span class="icon">&#128557;</span><span class="title">Tantrum Malam</span></div>
+        <div class="desc">Graduated extinction</div>
+      </a>
+      <a href="panduan-troubleshooting.html#asosiasi-dot" class="action-link">
+        <div><span class="icon">&#128132;</span><span class="title">Asosiasi Dot</span></div>
+        <div class="desc">Weaning bertahap</div>
+      </a>
+      <a href="panduan-troubleshooting.html#emergency" class="action-link">
+        <div><span class="icon">&#128680;</span><span class="title">Tanda Emergency</span></div>
+        <div class="desc">Kapan ke DSA/IGD</div>
+      </a>
+      <a href="panduan-troubleshooting.html#mental-ortu" class="action-link">
+        <div><span class="icon">&#128153;</span><span class="title">Mental Ortu</span></div>
+        <div class="desc">Support &amp; burnout</div>
+      </a>
+      <a href="panduan-utama-10-bulan.html#referensi" class="action-link">
+        <div><span class="icon">&#128218;</span><span class="title">Semua Referensi</span></div>
+        <div class="desc">WHO, AAP, IDAI, dll</div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<section class="parents-card">
+    <div class="parents-icon">&#128150;</div>
+    <h3>Disusun dengan cinta oleh</h3>
+    <div class="parents-names">Gilang &amp; Rhuka</div>
+    <p class="parents-quote">
+      <em>&ldquo;Nak, ini hidupmu sayang.<br>
+      Kamu tidak ada kewajiban untuk membalas<br>
+      atas semua yang telah kami berikan.<br><br>
+      Untuk kami,<br>
+      membesarkanmu adalah tanggung jawab,<br>
+      bukan hutang yang nantinya harus kamu bayar.&rdquo;</em>
+    </p>
+    <p class="parents-tagline-strong">
+      TUMBUHLAH DENGAN BAHAGIA.<br>
+      TUMBUHLAH DENGAN BAIK.
+    </p>
+    <div class="parents-divider">&#129293;</div>
+  </section>
+
+<footer>
+  <strong>Panduan Tumbuh Kembang Muhammad Abizar Kurniawan</strong><br>
+  Lahir 28 Juli 2025 &middot; Disusun: 26 Mei 2026<br>
+  Berbasis riset peer-reviewed dari WHO, AAP, AASM, IDAI, ESPGHAN, EAACI, BSACI, AAPD, CDC<br><br>
+  <em style="color:#94a3b8; font-size:11px;">Bukan pengganti saran medis profesional. Selalu konsultasikan ke DSA untuk concern spesifik.</em>
+</footer>
+
+</body>
+</html>
