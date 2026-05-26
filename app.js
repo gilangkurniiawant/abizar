@@ -210,6 +210,10 @@
     setText("abi-pts-pill-bb",    cfg.weight.value);
     setText("abi-pts-card-name",  cfg.child.fullName + ", " + ageMo + " bulan, BB " + cfg.weight.value);
     setText("abi-footer-bb",      cfg.weight.value);
+
+    // ---- Halaman progress.html ----
+    setText("abi-prog-nick",    cfg.child.nickname);
+    setText("abi-prog-updated", fmtFullDate(today));
   });
 
   function escapeHtml(s) {

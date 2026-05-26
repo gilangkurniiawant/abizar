@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+<title>Progress Sleep Training Abi</title>
+<meta name="description" content="Catatan harian sleep training tanpa dot kosong, berbasis riset Camping Out (Hiscock 2007). Update tiap malam.">
+<style>
+  :root {
+    --blue-dark: #1a3a5c;
+    --blue-mid: #2563a8;
+    --blue-light: #dbeafe;
+    --green-dark: #166534;
+    --green-light: #dcfce7;
+    --green-soft: #f0fdf4;
+    --red-dark: #7c1d1d;
+    --red-mid: #b91c1c;
+    --red-light: #fee2e2;
+    --yellow-light: #fef3c7;
+    --orange-mid: #ea580c;
+    --orange-light: #fed7aa;
+    --gray-100: #f8fafc;
+    --gray-200: #e2e8f0;
+    --gray-700: #374151;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { overflow-x: hidden; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 14px; line-height: 1.7; color: #1e293b;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f0f4f8 50%, #fef3c7 100%);
+    min-height: 100vh;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  .hero {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2563a8 50%, #166534 100%);
+    color: white; padding: 50px 20px 70px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero h1 {
+    font-size: clamp(22px, 5vw, 32px); font-weight: 800; letter-spacing: -0.5px;
+    margin-bottom: 10px; line-height: 1.25;
+  }
+  .hero .subtitle {
+    font-size: clamp(13px, 2.5vw, 15px); opacity: 0.92; max-width: 640px;
+    margin: 0 auto 18px;
+  }
+  .hero-stats {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+    margin-top: 14px;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
+    padding: 7px 14px; border-radius: 24px;
+    font-size: 12.5px; font-weight: 600; backdrop-filter: blur(8px);
+  }
+  .hero-stat strong { font-size: 13.5px; }
+
+  .back-link {
+    display: inline-block; margin-bottom: 14px; padding: 6px 14px;
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.4);
+    color: white; border-radius: 20px; font-size: 12px; font-weight: 600;
+  }
+  .back-link:hover { background: rgba(255,255,255,0.3); }
+
+  .container { max-width: 980px; margin: -45px auto 0; padding: 0 20px 60px; position: relative; z-index: 2; }
+
+  .strategy-card {
+    background: white; border-radius: 16px; padding: 24px 26px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    margin-bottom: 22px; border-left: 5px solid var(--green-dark);
+  }
+  .strategy-card h2 {
+    font-size: 14px; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--green-dark); margin-bottom: 12px;
+  }
+  .strategy-card .strategy-name {
+    font-size: 22px; font-weight: 800; color: var(--blue-dark);
+    margin-bottom: 8px;
+  }
+  .strategy-card .strategy-meta {
+    font-size: 12.5px; color: #475569; margin-bottom: 14px;
+  }
+  .strategy-card .strategy-rules {
+    list-style: none; padding: 0;
+  }
+  .strategy-card .strategy-rules li {
+    padding: 6px 0 6px 26px; position: relative; font-size: 13.5px;
+    color: #334155;
+  }
+  .strategy-card .strategy-rules li::before {
+    content: '\2713'; position: absolute; left: 0; top: 6px;
+    color: var(--green-dark); font-weight: 800;
+  }
+
+  .info-card {
+    background: white; border-radius: 16px; padding: 24px 26px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    margin-bottom: 22px; border-left: 5px solid var(--blue-mid);
+  }
+  .info-card h2 {
+    font-size: 14px; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--blue-mid); margin-bottom: 12px;
+  }
+
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px; margin-bottom: 8px;
+  }
+  .stat-item {
+    padding: 12px 14px; background: var(--gray-100); border-radius: 10px;
+    border-left: 3px solid var(--blue-mid); text-align: center;
+  }
+  .stat-item .stat-label {
+    font-size: 11px; color: #64748b; text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 4px;
+  }
+  .stat-item .stat-value {
+    font-size: 20px; color: var(--blue-dark); font-weight: 800;
+  }
+  .stat-item .stat-sub {
+    font-size: 11px; color: #94a3b8; margin-top: 2px;
+  }
+
+  .nights {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+
+  .night {
+    background: white; border-radius: 14px; padding: 22px 26px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border-top: 4px solid var(--gray-200);
+    transition: box-shadow 0.2s ease;
+  }
+  .night:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.09); }
+  .night.is-current { border-top-color: var(--orange-mid); }
+  .night.is-success { border-top-color: var(--green-dark); }
+  .night.is-rough   { border-top-color: var(--red-mid); }
+
+  .night-head {
+    display: flex; flex-wrap: wrap; align-items: baseline;
+    gap: 10px; margin-bottom: 14px; padding-bottom: 12px;
+    border-bottom: 1px dashed var(--gray-200);
+  }
+  .night-num {
+    font-size: 11px; font-weight: 800; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--blue-mid);
+    background: var(--blue-light); padding: 3px 10px; border-radius: 10px;
+  }
+  .night-date {
+    font-size: 16px; font-weight: 800; color: var(--blue-dark);
+  }
+  .night-tag {
+    margin-left: auto; font-size: 11px; font-weight: 700;
+    padding: 3px 10px; border-radius: 10px;
+    background: var(--gray-100); color: var(--gray-700);
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .night-tag.tag-rough   { background: var(--red-light);    color: var(--red-dark); }
+  .night-tag.tag-better  { background: var(--yellow-light); color: #92400e; }
+  .night-tag.tag-success { background: var(--green-light);  color: var(--green-dark); }
+
+  .night-section {
+    margin-bottom: 22px; padding-top: 4px;
+  }
+  .night-section:last-child { margin-bottom: 0; }
+  .night-section h4 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--blue-dark); margin-bottom: 12px; font-weight: 800;
+    padding: 6px 0 6px 12px;
+    border-left: 3px solid var(--orange-mid);
+    background: linear-gradient(90deg, #fff7ed 0%, transparent 70%);
+    border-radius: 0 6px 6px 0;
+  }
+  .night-section p {
+    font-size: 13.5px; color: #334155; line-height: 1.65;
+  }
+
+  /* Timeline pakai CSS Grid: kolom waktu | dot | konten */
+  .timeline-scroll {
+    overflow-x: visible;
+  }
+  .timeline-scroll::-webkit-scrollbar { height: 6px; }
+  .timeline-scroll::-webkit-scrollbar-thumb {
+    background: var(--gray-200); border-radius: 3px;
+  }
+  .timeline-scroll::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
+
+  .timeline {
+    list-style: none; padding: 6px 0 0; margin: 0;
+  }
+  /* === DESKTOP: 3-kolom grid (waktu | dot | konten) === */
+  .timeline li {
+    display: grid;
+    grid-template-columns: 70px 22px 1fr;
+    column-gap: 0;
+    align-items: start;
+    padding: 9px 0;
+    position: relative;
+    font-size: 13px; color: #334155; line-height: 1.55;
+  }
+  /* Garis vertikal anchor ke dot */
+  .timeline li:not(:last-child) .ev-dot::after {
+    content: ""; position: absolute;
+    left: 50%; top: 100%; transform: translateX(-50%);
+    width: 2px; height: calc(100% + 12px);
+    background: var(--gray-200); margin-top: 4px;
+  }
+  .timeline li .ev-time {
+    grid-column: 1;
+    text-align: right;
+    padding: 3px 8px 0 0;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--blue-dark);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+  .timeline li .ev-dot {
+    grid-column: 2;
+    width: 12px; height: 12px; border-radius: 50%;
+    margin-top: 5px; justify-self: center;
+    background: white;
+    border: 3px solid var(--blue-mid);
+    box-shadow: 0 0 0 2px white;
+    position: relative; z-index: 1;
+  }
+  .timeline li .ev-body {
+    grid-column: 3;
+    padding-left: 8px;
+    min-width: 0;
+  }
+  .timeline li[data-type="sleep"]  .ev-dot { border-color: var(--green-dark); }
+  .timeline li[data-type="wake"]   .ev-dot { border-color: var(--orange-mid); }
+  .timeline li[data-type="cry"]    .ev-dot { border-color: var(--red-mid);   background: var(--red-light); }
+  .timeline li[data-type="calm"]   .ev-dot { border-color: var(--blue-mid);  background: var(--blue-light); }
+  .timeline li[data-type="action"] .ev-dot { border-color: #9333ea;          background: #f3e8ff; }
+  .timeline li[data-type="win"]    .ev-dot { border-color: var(--green-dark); background: var(--green-light); }
+  .timeline li .ev-title {
+    font-weight: 700; color: #1e293b; display: block; margin-bottom: 2px;
+  }
+  .timeline li .ev-note {
+    font-size: 12.5px; color: #64748b; display: block;
+  }
+  .timeline li .ev-duration {
+    display: inline-block; margin-left: 6px;
+    font-size: 10px; font-weight: 700; padding: 1px 7px;
+    border-radius: 8px; background: var(--gray-100); color: #475569;
+    text-transform: uppercase; letter-spacing: 0.4px; vertical-align: middle;
+  }
+  .timeline li.is-highlight {
+    background: linear-gradient(90deg, transparent, #fef3c7 30%, #fef3c7 70%, transparent);
+    border-radius: 8px;
+  }
+
+  /* === MOBILE: stack waktu di atas, konten full lebar === */
+  @media (max-width: 600px) {
+    .timeline {
+      padding-left: 4px;
+    }
+    .timeline li {
+      grid-template-columns: 22px 1fr;
+      grid-template-rows: auto auto;
+      column-gap: 0;
+      row-gap: 2px;
+      padding: 11px 0;
+    }
+    /* Dot di kolom 1, span 2 baris, justify left */
+    .timeline li .ev-dot {
+      grid-column: 1; grid-row: 1 / span 2;
+      margin-top: 6px;
+      justify-self: start;
+    }
+    /* Waktu di kolom 2, baris 1 */
+    .timeline li .ev-time {
+      grid-column: 2; grid-row: 1;
+      text-align: left;
+      padding: 0 0 0 6px;
+      font-size: 11px;
+      color: var(--blue-mid);
+      letter-spacing: 0.3px;
+    }
+    /* Body di kolom 2, baris 2 */
+    .timeline li .ev-body {
+      grid-column: 2; grid-row: 2;
+      padding-left: 6px;
+    }
+    /* Garis vertikal lebih panjang karena 2 baris */
+    .timeline li:not(:last-child) .ev-dot::after {
+      height: calc(100% + 18px);
+    }
+  }
+
+  /* === HASIL: definition list + plain bullet list === */
+  .result-stats {
+    margin: 0 0 14px; padding: 0;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4px 28px;
+  }
+  .result-stats > div { padding: 4px 0; }
+  .result-stats dt {
+    font-size: 11px; color: #64748b; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 2px;
+  }
+  .result-stats dd {
+    margin: 0; font-size: 14px; font-weight: 700; color: var(--blue-dark);
+    font-variant-numeric: tabular-nums;
+  }
+  .result-stats dd span {
+    font-weight: 500; font-size: 12px; color: #94a3b8; margin-left: 4px;
+  }
+  .result-list {
+    list-style: disc; padding-left: 20px; margin: 0;
+    color: #334155;
+  }
+  .result-list li {
+    font-size: 13px; line-height: 1.65; padding: 2px 0;
+  }
+  .result-list li.result-break { color: #9a3412; }
+  .result-list li.result-break::marker { color: var(--orange-mid); }
+  @media (max-width: 600px) {
+    .result-stats { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  .insight-list {
+    list-style: none; padding: 0; margin: 4px 0 0;
+  }
+  .insight-list li {
+    padding: 5px 0 5px 22px; position: relative; font-size: 13px;
+    color: #334155;
+  }
+  .insight-list li::before {
+    content: '\2192'; position: absolute; left: 0; top: 5px;
+    color: var(--orange-mid); font-weight: 800;
+  }
+
+  .empty-night {
+    background: var(--gray-100); border: 2px dashed var(--gray-200);
+    border-radius: 14px; padding: 24px; text-align: center;
+    color: #64748b; font-size: 13px;
+  }
+  .empty-night strong { color: var(--blue-dark); }
+
+  footer {
+    text-align: center; padding: 28px 20px; color: #64748b; font-size: 12px;
+    line-height: 1.7;
+  }
+  footer strong { color: var(--blue-dark); }
+
+  @media (max-width: 600px) {
+    .hero { padding: 38px 16px 56px; }
+    .container { padding: 0 14px 40px; }
+    .strategy-card, .info-card, .night { padding: 18px 16px; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .timeline li { padding-left: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <a href="index.html" class="back-link">&larr; Kembali ke Panduan</a>
+  <h1>Progress Sleep Training <span id="abi-prog-nick">Abi</span></h1>
+  <p class="subtitle">Catatan harian transisi lepas dot kosong saat tidur, mengikuti protokol Camping Out berbasis riset Hiscock 2007. Update tiap pagi setelah malam berlangsung.</p>
+  <div class="hero-stats">
+    <div class="hero-stat" id="prog-night-count"><strong>Malam 1</strong> dari 21</div>
+    <div class="hero-stat">Strategi: Camping Out</div>
+    <div class="hero-stat" id="prog-bedtime">Bedtime: 19:45-20:00</div>
+    <div class="hero-stat">Goal: tanpa dot di malam hari</div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="strategy-card">
+    <h2>&#127919; Strategi Aktif</h2>
+    <div class="strategy-name">Camping Out (Hiscock 2007)</div>
+    <p class="strategy-meta">RCT 328 keluarga &middot; follow-up 5 tahun (Price 2012) &middot; cocok untuk co-sleep &middot; tantrum lebih ringan dari Ferber, butuh 14-21 hari.</p>
+    <ul class="strategy-rules">
+      <li>Ortu hadir di kamar, posisi PASIF: tubuh tenang, mata merem.</li>
+      <li>Tarik diri bertahap: Fase 1 menempel &rarr; Fase 4 keluar kamar.</li>
+      <li>Sentuhan saat eskalasi berat: 10-15 detik statis, lalu lepas.</li>
+      <li>Tanpa dot, tanpa gendong, tanpa pindah ruang sepanjang malam.</li>
+      <li>Konsisten minimal 7 malam sebelum evaluasi ulang.</li>
+    </ul>
+  </section>
+
+  <section class="info-card">
+    <h2>&#128202; Ringkasan Progress</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-label">Malam Berjalan</div>
+        <div class="stat-value" id="prog-stat-nights">1</div>
+        <div class="stat-sub" id="prog-stat-nights-sub">dari 21 target</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Fase Sekarang</div>
+        <div class="stat-value" id="prog-stat-phase">Fase 1</div>
+        <div class="stat-sub" id="prog-stat-phase-sub">menempel</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Bedtime</div>
+        <div class="stat-value" style="font-size:18px;" id="prog-stat-bedtime">19:45</div>
+        <div class="stat-sub">geser dari 19:30</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Strategi</div>
+        <div class="stat-value" style="font-size:16px;">Camping Out</div>
+        <div class="stat-sub">Hiscock 2007</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="nights">
+
+      <article class="night is-current">
+        <div class="night-head">
+          <span class="night-num">Malam 1</span>
+          <span class="night-date">26 Mei 2026 &middot; Selasa</span>
+          <span class="night-tag tag-rough">Rough Night &middot; ~3 jam 45 menit</span>
+        </div>
+
+        <div class="night-section">
+          <h4>Konteks</h4>
+          <p>Usia 9 bulan 28 hari, tidur di kasur samping kedua ortu (co-sleep). Riwayat: biasanya bangun ~22:00 dan dikasih dot kosong sampai tidur lagi. Goal malam ini: pertama kali tidak kasih dot saat night waking.</p>
+        </div>
+
+        <div class="night-section">
+          <h4>Timeline</h4>
+          <div class="timeline-scroll">
+          <ul class="timeline">
+            <li data-type="sleep">
+              <span class="ev-time">19:30</span>
+              <span class="ev-dot" aria-hidden="true"></span>
+              <span class="ev-body"><span class="ev-title">Tidur (bedtime onset)</span>
+              <span class="ev-note">Ritual normal, tanpa dot di mulut.</span></span>
+            </li>
+            <li data-type="wake">
+              <span class="ev-time">21:30</span>
+              <span class="ev-dot" aria-hidden="true"></span>
+              <span class="ev-body"><span class="ev-title">Night waking ke-1 <span class="ev-duration">cycle 2</span></span>
+              <span class="ev-note">Bangun, mulai cari dot. Ortu tidak kasih (komitmen Malam 1).</span></span>
+            </li>
+            <li data-type="cry">
+              <span class="ev-time">21:30-22:00</span>
+              <span class="ev-dot" aria-hidden="true"></span>
+              <span class="ev-body"><span class="ev-title">Tantrum awal <span class="ev-duration">30 mnt</span></span>
+              <span class="ev-note">Ibu di samping, puk-puk pelan kontinu.</span></span>
+            </li>
+            <li data-type="action">
+              <span class="ev-time">22:00</span>
+              <span class="ev-dot" aria-hidden="true"></span>
+              <span class="ev-body"><span class="ev-title">Air via sippy cup</span>
+              <span class="ev-note">Mau minum. (Catatan: bisa picu second wind &mdash; skip di Malam 2.)</span></span>
+            </li>
+            <li data-type="calm">
+              <span class="ev-time">22:00-22:15</span>
+              <span class="ev-dot" aria-hidden="true"></span>
+              <span class="ev-body"><span class="ev-title">Second wind aktif <span class="ev-duration">15 mnt</span></span>
+              <span class="ev-note">Tidak rewel tapi gerak-gerak, panjat ortu, tidak ngantuk.</span></span>
+            </li>
+            <li data-type="cry" class="is-highlight">
+              <span class="ev-time">22:15-22:45</span>
+              <span class="ev-dot" aria-hidden="true"></span>
+              <span class="ev-body"><span class="ev-title">Nangis kejer berat <span class="ev-duration">30 mnt</span></span>
+              <span class="ev-note">Eskalasi. Kontak pasif tidak juga meredakan. Cek fisik: aman (tidak demam, telinga, gusi, popok semua bersih).</span></span>
+            </li>
+            <li data-type="action">
+              <span class="ev-time">22:45</span>
+              <span class="ev-dot" aria-hidden="true"></span>
+              <span class="ev-body"><span class="ev-title">Digendong tegak di kursi</span>
+              <span class="ev-note">Posisi dada-ke-dada, tidak bicara, lampu redup. Eskalasi protokol setelah 1 jam tantrum.</span></span>
+            </li>
+            <li data-type="win">
+              <span class="ev-time">23:15</span>
+              <span class="ev-dot" aria-hidden="true"></span>
+              <span class="ev-body"><span class="ev-title">Tertidur <span class="ev-duration">total 1j 45m</span></span>
+              <span class="ev-note">~30 menit digendong, lalu drift off. Dipindah ke kasur tanpa terbangun. Dot tidak diberikan sepanjang malam.</span></span>
+            </li>
+          </ul>
+          </div>
+        </div>
+
+        <div class="night-section">
+          <h4>Strategi Yang Dipakai</h4>
+          <p>Awalnya tetap di kasur dengan puk-puk kontinu, lalu air sippy cup. Saat tantrum kejer >1 jam tidak juga reda, ortu beralih ke gendong tegak di kursi (rule out sakit dulu &mdash; cek demam, telinga, gusi, popok, semua bersih).
+            Tetap tanpa dot, tanpa pindah ruang. Gendong dianggap reset 1 hari progress, bukan kegagalan total.</p>
+        </div>
+
+        <div class="night-section">
+          <h4>Hasil</h4>
+          <dl class="result-stats">
+            <div>
+              <dt>Total proses</dt>
+              <dd>~3j 45m <span>(19:30 &rarr; 23:15)</span></dd>
+            </div>
+            <div>
+              <dt>Dari night waking</dt>
+              <dd>~1j 45m <span>(21:30 &rarr; 23:15)</span></dd>
+            </div>
+          </dl>
+          <ul class="result-list">
+            <li><strong>Tanpa dot sepanjang malam</strong> &mdash; komitmen utama dipegang.</li>
+            <li><strong>Tanpa pindah ruang</strong> &mdash; tetap di kasur/kursi kamar.</li>
+            <li class="result-break"><strong>Break: gendong di kursi</strong> &mdash; terpaksa untuk hentikan tantrum kejer >1 jam.</li>
+          </ul>
+        </div>
+
+        <div class="night-section">
+          <h4>Insight untuk Malam 2</h4>
+          <ul class="insight-list">
+            <li><strong>Geser bedtime ke 20:00.</strong> Tidur 19:30 lalu bangun 22:00 dengan tantrum 2.5 jam = sleep pressure kurang. Bedtime fading per Cooney 2018.</li>
+            <li><strong>Skip air sippy cup saat night waking.</strong> Air picu second wind dan menggandakan durasi proses Malam 1.</li>
+            <li><strong>Ganti puk-puk kontinu &rarr; kontak statis.</strong> Tangan tenang di dada/perut tanpa gerakan ritmis (puk-puk kontinu malah jadi sleep prop baru).</li>
+            <li><strong>Letakkan Abi <em>drowsy but awake</em> saat bedtime, tanpa dot.</strong> Kondisi onset = kondisi saat night waking (Sadeh 2009). Ini kunci.</li>
+            <li><strong>Threshold gendong eskalasi: 60 menit kejer berat.</strong> Bukan sebelum, supaya self-soothing dapat kesempatan. Bukan setelah, supaya cortisol tidak overload.</li>
+            <li><strong>Pre-bedtime ritual:</strong> ortu sudah berbaring di samping saat Abi mulai drowsy, bukan setelah dia tidur. Cegah panic saat dia bangun di cycle 2 dan tidak menemukan ortu.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="night">
+        <div class="night-head">
+          <span class="night-num">Malam 2</span>
+          <span class="night-date">27 Mei 2026 &middot; Rabu</span>
+        </div>
+        <div class="empty-night">Belum diisi.</div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Progress Sleep Training Abi</strong><br>
+  Berbasis riset Hiscock 2007, Mindell 2006 (AASM), Sadeh 2009<br>
+  Update terakhir: <span id="abi-prog-updated">26 Mei 2026</span><br><br>
+  <em style="color:#94a3b8; font-size:11px;">Bukan pengganti saran medis profesional. Konsultasi DSA jika tantrum &gt;3 malam berturut tidak ada penurunan, atau muncul red flag (demam &gt;38.5&deg;C, muntah, lethargy).</em>
+</footer>
+
+<script src="config.js?v=be52c7fd7a"></script>
+<script src="app.js?v=be52c7fd7a"></script>
+</body>
+</html>
