@@ -1,6 +1,6 @@
 # Panduan Tumbuh Kembang Abi
 
-Kumpulan panduan untuk Muhammad Abizar Kurniawan (lahir 28 Juli 2025).
+Dokumentasi tumbuh kembang Muhammad Abizar Kurniawan (lahir 28 Juli 2025): protokol susu, MPASI, tidur, dan penanganan masalah harian.
 
 ## File
 
