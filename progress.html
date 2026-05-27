@@ -336,6 +336,29 @@
     color: var(--orange-mid); font-weight: 800;
   }
 
+  .night details.night-toggle { padding: 0; margin: 0; }
+  .night details.night-toggle > summary {
+    list-style: none; cursor: pointer; outline: none;
+    margin: -22px -26px 0; padding: 22px 26px;
+    border-radius: 14px 14px 0 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .night details.night-toggle > summary::-webkit-details-marker { display: none; }
+  .night details.night-toggle > summary::after {
+    content: ''; flex: 0 0 auto; margin-left: auto;
+    width: 9px; height: 9px;
+    border-right: 2px solid #94a3b8; border-bottom: 2px solid #94a3b8;
+    transform: rotate(45deg) translate(-2px, -2px);
+    transition: transform 0.2s ease;
+    align-self: center;
+  }
+  .night details.night-toggle[open] > summary::after {
+    transform: rotate(-135deg) translate(-2px, -2px);
+  }
+  .night details.night-toggle:not([open]) > summary { margin-bottom: -22px; }
+  .night details.night-toggle:not([open]) > summary:hover { background: var(--gray-100); }
+  .night details.night-toggle > summary:focus-visible { box-shadow: inset 0 0 0 2px var(--blue-mid); }
+  .night details.night-toggle[open] > summary { margin-bottom: 8px; }
   .empty-night {
     background: var(--gray-100); border: 2px dashed var(--gray-200);
     border-radius: 14px; padding: 24px; text-align: center;
@@ -417,11 +440,12 @@
     <div class="nights">
 
       <article class="night is-success">
-        <div class="night-head">
+        <details class="night-toggle">
+        <summary class="night-head">
           <span class="night-num">Malam 1</span>
           <span class="night-date">26 Mei 2026 &middot; Selasa</span>
           <span class="night-tag tag-rough">Rough Night &middot; 2 night waking</span>
-        </div>
+        </summary>
 
         <div class="night-section">
           <h4>Konteks</h4>
@@ -533,14 +557,16 @@
             <li><strong>Pre-bedtime ritual:</strong> ortu sudah berbaring di samping saat Abi mulai drowsy, bukan setelah dia tidur. Cegah panic saat dia bangun di cycle 2 dan tidak menemukan ortu.</li>
           </ul>
         </div>
+      </details>
       </article>
 
       <article class="night is-success">
-        <div class="night-head">
+        <details class="night-toggle">
+        <summary class="night-head">
           <span class="night-num">Malam 2</span>
           <span class="night-date">27 Mei 2026 &middot; Rabu</span>
           <span class="night-tag tag-success">Success &middot; 3 NW, semua tanpa intervensi</span>
-        </div>
+        </summary>
 
         <div class="night-section">
           <h4>Konteks</h4>
@@ -668,6 +694,7 @@
             <li><strong>Bersiap kemungkinan regresi Malam 3-4.</strong> Pola membaik tidak linear; siap kalau ada NW lebih lama, JANGAN switch metode.</li>
           </ul>
         </div>
+      </details>
       </article>
 
       <article class="night is-current">
