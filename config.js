@@ -38,8 +38,8 @@ const ABIZAR_CONFIG = {
   },
 
   allergy: {
-    hero:    "CMPA ringan resolved",
-    profile: "CMPA ringan (resolved on P-HP)"
+    hero:    "Suspected CMPA ringan",
+    profile: "Suspected CMPA ringan, asimptomatik di P-HP"
   },
 
   sleep: "18:30 \u2192 03:30 (perlu dioptimasi)",
