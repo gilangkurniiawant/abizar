@@ -26,8 +26,8 @@ const ABIZAR_CONFIG = {
 
   weight: {
     value:      "10.72 kg",
-    percentile: "P92",
-    full:       "10.72 kg (P92, normal)",
+    percentile: "~P88-P92",
+    full:       "10.72 kg (~P88-P92, normal-tinggi)",
     vsWho:      "10.72 kg vs kurva WHO"
   },
 
