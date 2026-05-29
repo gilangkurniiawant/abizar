@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+<title>Jadwal Harian Abi &mdash; Tumbuh Kembang Abi</title>
+<meta name="description" content="Jadwal harian operasional Muhammad Abizar Kurniawan: susu P-HP, MPASI, mandi, nap, dan bedtime routine. Sinkron dengan panduan utama 10 bulan."><style>
+  :root {
+    --blue-dark: #1a3a5c;
+    --blue-mid: #2563a8;
+    --blue-light: #dbeafe;
+    --green-dark: #166534;
+    --green-light: #dcfce7;
+    --yellow-light: #fefce8;
+    --yellow-border: #ca8a04;
+    --red-light: #fff1f2;
+    --red-border: #e11d48;
+    --gray-100: #f8fafc;
+    --gray-200: #e2e8f0;
+    --gray-700: #374151;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 14px; line-height: 1.75; color: #1e293b; background: #f0f4f8;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='460' height='240' viewBox='0 0 460 240'><text x='230' y='120' text-anchor='middle' fill='rgba(26,58,92,0.06)' font-family='Segoe UI, Arial, sans-serif' font-size='20' font-weight='700' letter-spacing='2' transform='rotate(-28 230 120)'>ABIZAR &#183; 10 BULAN</text></svg>");
+    background-repeat: repeat; background-attachment: fixed;
+  }
+  a, button, summary, .tag, .step-num, .month-num, .month-card, .toc a, .badge, .month-header { touch-action: manipulation; }
+  img, iframe, video { max-width: 100%; height: auto; }
+  table { width: 100%; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0; border-radius: 8px; }
+  .table-scroll table { margin: 0; min-width: 480px; }
+  .cover {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2563a8 100%);
+    color: white; padding: 48px 40px 40px; text-align: center;
+  }
+  .cover h1 { font-size: clamp(20px, 4.6vw, 28px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; line-height: 1.3; }
+  .cover p  { font-size: clamp(12px, 2.4vw, 14px); opacity: 0.85; max-width: 600px; margin: 0 auto 20px; }
+  .cover .badge {
+    display: inline-block; background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4); border-radius: 20px;
+    padding: 4px 14px; font-size: 12px; margin: 4px;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+  .child-profile {
+    background: #fff; border-radius: 12px; padding: 18px 22px; margin-bottom: 24px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08); border-left: 5px solid #2563a8;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center;
+  }
+  .child-profile .avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, #1a3a5c, #2563a8);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 800; letter-spacing: 1px; flex-shrink: 0;
+  }
+  .child-profile .pc-text { min-width: 0; }
+  .child-profile .pc-title {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+    color: #2563a8; font-weight: 700; margin-bottom: 4px;
+  }
+  .child-profile .pc-name { font-size: 16px; color: #1a3a5c; font-weight: 700; margin: 0 0 4px; line-height: 1.3; }
+  .child-profile .pc-meta { font-size: 12.5px; color: #475569; line-height: 1.55; }
+  .child-profile .pc-meta strong { color: #1a3a5c; font-weight: 600; }
+  .child-profile .pc-pills { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; align-items: flex-end; }
+  .child-profile .pill {
+    display: inline-block; background: #dbeafe; color: #1e40af;
+    border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; white-space: nowrap;
+  }
+  .child-profile .pill.pill-green { background: #dcfce7; color: #166534; }
+  .child-profile .pill.pill-yellow { background: #fef3c7; color: #92400e; }
+  .toc { background: white; border-radius: 12px; padding: 24px 28px; margin-bottom: 32px; box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+  .toc h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--blue-mid); margin-bottom: 16px; }
+  .toc ol { padding-left: 20px; columns: 2; column-gap: 32px; }
+  .toc li { font-size: 13px; padding: 3px 0; color: var(--blue-dark); }
+  .toc a { color: var(--blue-mid); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  section { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+  h2.section-title { font-size: 18px; color: var(--blue-dark); border-left: 5px solid var(--blue-mid); padding-left: 14px; margin-bottom: 20px; line-height: 1.3; }
+  h3 { font-size: 15px; color: var(--blue-dark); margin: 20px 0 10px; }
+  h4 { font-size: 13px; color: var(--gray-700); text-transform: uppercase; letter-spacing: 0.5px; margin: 16px 0 8px; }
+  p { margin-bottom: 10px; }
+  ul, ol { padding-left: 20px; margin-bottom: 10px; }
+  li { margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+  th { background: var(--blue-dark); color: white; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 12px; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--gray-100); }
+  tr:hover td { background: var(--blue-light); }
+  .box { border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: 13px; }
+  .box-info { background: var(--blue-light); border-left: 5px solid var(--blue-mid); }
+  .box-success { background: var(--green-light); border-left: 5px solid #16a34a; }
+  .box-warning { background: var(--yellow-light); border-left: 5px solid var(--yellow-border); }
+  .box-danger { background: var(--red-light); border-left: 5px solid var(--red-border); }
+  .box strong { display: block; margin-bottom: 6px; font-size: 13px; }
+  .ref { font-size: 11px; color: #6b7280; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 6px 10px; margin-top: 8px; line-height: 1.5; }
+  .ref a { color: var(--blue-mid); word-break: break-all; text-decoration: none; }
+  .ref a:hover { text-decoration: underline; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-green { background: var(--green-light); color: var(--green-dark); }
+  .tag-blue  { background: var(--blue-light);  color: var(--blue-dark); }
+  .tag-yellow{ background: #fef3c7; color: #92400e; }
+  .tag-red   { background: var(--red-light);   color: var(--red-border); }
+  .step-row { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; font-size: 13px; }
+  .step-num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--blue-mid); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; }
+  .month-card { border: 1px solid var(--gray-200); border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+  .month-header { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: linear-gradient(90deg, var(--blue-dark), var(--blue-mid)); color: white; }
+  .month-num { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0; }
+  .month-header h3 { margin: 0; color: white; font-size: 16px; }
+  .month-header p { margin: 0; font-size: 12px; opacity: 0.85; }
+  .month-date { display: inline-block; background: rgba(255,255,255,0.22); border: 1px solid rgba(255,255,255,0.45); color: #fff; font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 10px; margin-top: 4px; letter-spacing: 0.3px; }
+  .month-body { padding: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .month-col h4 { margin-top: 0; }
+  .month-col ul { font-size: 13px; padding-left: 18px; }
+  .eval-box { grid-column: 1/-1; background: #f1f5f9; border: 1px dashed #94a3b8; border-radius: 8px; padding: 12px 14px; font-size: 12.5px; color: #334155; }
+  .eval-box strong { color: var(--blue-dark); }
+  .source-list { padding-left: 22px; }
+  .source-list li { margin-bottom: 12px; font-size: 12.5px; line-height: 1.6; }
+  .source-list strong { color: var(--blue-dark); }
+  footer { text-align: center; padding: 24px 16px 30px; font-size: 11.5px; color: #64748b; }
+  @media (max-width: 768px) {
+    .container { padding: 24px 16px 50px; }
+    section { padding: 22px 20px; }
+    .toc ol { columns: 1; }
+    .month-body { grid-template-columns: 1fr; }
+    .child-profile { grid-template-columns: auto 1fr; grid-template-areas: "avatar text" "pills pills"; padding: 14px 16px; gap: 12px; }
+    .child-profile .avatar { grid-area: avatar; width: 48px; height: 48px; font-size: 20px; }
+    .child-profile .pc-text { grid-area: text; }
+    .child-profile .pc-pills { grid-area: pills; flex-direction: row; flex-wrap: wrap; gap: 6px; align-items: flex-start; justify-content: flex-start; }
+  }
+  @media (max-width: 600px) {
+    body { font-size: 14px; line-height: 1.65; }
+    .cover { padding: 28px 18px 22px; }
+    .container { padding: 18px 12px 40px; }
+    section { padding: 18px 14px; border-radius: 10px; margin-bottom: 18px; }
+    h2.section-title { font-size: 15px; padding-left: 10px; line-height: 1.35; }
+    h3 { font-size: 14px; margin: 16px 0 8px; }
+    h4 { font-size: 12px; }
+    table { font-size: 12px; }
+    th { padding: 8px 9px; font-size: 11px; }
+    td { padding: 7px 9px; }
+    .month-header { padding: 12px 14px; gap: 10px; }
+    .month-header h3 { font-size: 14px; }
+    .month-num { width: 36px; height: 36px; font-size: 14px; }
+    .month-body { padding: 14px; gap: 12px; }
+    .month-col ul { font-size: 12.5px; }
+    .ref { font-size: 11px; padding: 8px 10px; }
+    .ref a { word-break: break-word; }
+    .box { padding: 12px 14px; font-size: 12.5px; }
+    .toc { padding: 18px 16px; }
+    .toc li { font-size: 12.5px; }
+  }
+  /* Prevent long URLs from overflowing on mobile */
+  .source-list a, .ref a, .box a, p a, li a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  .source-list, .source-list li, .ref, .box {
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
+  }
+  section { overflow: hidden; }
+  body { overflow-x: hidden; }
+  html { overflow-x: hidden; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>Jadwal Harian Abi</h1>
+  <p>Jadwal operasional usia 10 bulan: susu, MPASI, mandi, stimulasi, nap, dan bedtime. Sinkron dengan Section 8.6 panduan utama. Patokan, bukan aturan kaku per menit.</p>
+  <span class="badge">&#127868; 4x susu &middot; 500-700 ml</span>
+  <span class="badge">&#127859; 3 makan utama + 2 snack</span>
+  <span class="badge">&#128164; Bedtime 19:45-20:00</span>
+  <span class="badge">&#128683; Tanpa susu malam</span>
+</div>
+
+<div class="container">
+
+<div class="toc">
+  <h2>Daftar Isi</h2>
+  <ol>
+    <li><a href="#patokan">Patokan Hari</a></li>
+    <li><a href="#jadwal">Jadwal Detail Pagi-Malam</a></li>
+    <li><a href="#susu">Pembagian Susu Harian</a></li>
+    <li><a href="#mandi">Aturan Mandi</a></li>
+    <li><a href="#redflag">Kapan Jadwal Boleh Dihentikan</a></li>
+  </ol>
+</div>
+
+<section id="patokan">
+  <h2 class="section-title">1. Patokan Hari</h2>
+
+  <div class="box box-info">
+    <strong>&#127919; Anchor utama:</strong>
+    Bangun pagi 06:00-06:30 &middot; Nap pagi ~09:00 &middot; Nap siang 13:00-15:00 &middot; Bedtime 19:45-20:00 &middot; Tanpa susu tengah malam.
+  </div>
+
+  <ul>
+    <li><strong>MPASI:</strong> 3x makan utama + 1-2 snack, protein hewani tiap makan utama, prioritas zat besi.</li>
+    <li><strong>Susu P-HP:</strong> 4x sehari, total ~500-700 ml/hari (range, bukan target kaku &mdash; sesuaikan dengan intake MPASI).</li>
+    <li><strong>Tidur:</strong> rentang resmi AASM/AAP 12-16 jam termasuk nap. Target operasional Abi ~13-15 jam (zona tengah).</li>
+    <li><strong>Screen:</strong> hindari sepanjang hari, khususnya 1-2 jam menjelang tidur.</li>
+  </ul>
+
+  <h3>1.1 Ringkasan Cepat</h3>
+  <div class="table-scroll"><table>
+    <tr><th>Item</th><th>Patokan</th></tr>
+    <tr><td>Bangun resmi</td><td>06:00-06:30</td></tr>
+    <tr><td>Susu</td><td>4x/hari &middot; ~500-700 ml total</td></tr>
+    <tr><td>Mandi pagi</td><td>07:00-07:20</td></tr>
+    <tr><td>Mandi sore</td><td>16:30-16:50</td></tr>
+    <tr><td>Lap hangat malam</td><td>18:30-18:45</td></tr>
+    <tr><td>Tidur malam</td><td>19:45-20:00</td></tr>
+  </table></div>
+</section>
+
+<section id="jadwal">
+  <h2 class="section-title">2. Jadwal Detail: Sebelum Bangun sampai Tidur</h2>
+
+  <div class="table-scroll"><table>
+    <tr>
+      <th style="width:120px;">Jam</th>
+      <th style="width:200px;">Aktivitas</th>
+      <th>Yang Dilakukan</th>
+      <th>Catatan</th>
+    </tr>
+
+    <tr>
+      <td><strong>04:30-05:59</strong></td>
+      <td><strong>Jika bangun terlalu pagi</strong><br><span class="tag tag-yellow">Night waking</span> <span class="tag tag-red">Tanpa susu</span></td>
+      <td>Kamar tetap gelap, suara pelan, minim interaksi. Pakai passive presence, pura-pura tidur, atau kontak statis bila perlu.</td>
+      <td>Perlakukan 04:30 sebagai night waking, bukan mulai hari. Hindari pola "bangun pagi = digendong keluar kamar".</td>
+    </tr>
+    <tr>
+      <td><strong>06:00-06:30</strong></td>
+      <td><strong>Bangun pagi resmi</strong><br><span class="tag tag-blue">Anchor hari</span></td>
+      <td>Buka tirai, paparan cahaya pagi, sapa Abi, ganti popok, cek ruam/batuk/pilek/demam, pipis, BAB.</td>
+      <td>Usahakan hari tidak dimulai sebelum 06:00 kecuali ada kondisi khusus.</td>
+    </tr>
+    <tr>
+      <td><strong>06:30-07:00</strong></td>
+      <td><strong>Susu pagi</strong><br><span class="tag tag-blue">P-HP 150-180 ml</span></td>
+      <td>Berikan di luar kamar tidur atau setidaknya tidak dalam posisi tidur. Botol tidak dibawa ke kasur.</td>
+      <td>Setelah selesai, botol disimpan. Disosiasi feed-sleep.</td>
+    </tr>
+    <tr>
+      <td><strong>07:00-07:20</strong></td>
+      <td><strong>Mandi pagi</strong></td>
+      <td>Mandi air hangat suam-suam kuku. Bersihkan lipatan leher, ketiak, tangan, area popok. Keringkan benar-benar.</td>
+      <td>Jika tidak fit, cukup lap hangat dan ganti baju.</td>
+    </tr>
+    <tr>
+      <td><strong>07:20-07:40</strong></td>
+      <td><strong>Main ringan pagi</strong><br><span class="tag tag-green">Motorik</span></td>
+      <td>Floor time, merangkak, duduk, berdiri berpegangan, main bola lembut, interaksi wajah-suara.</td>
+      <td>Tanpa screen. Area aman dari benda kecil, kabel, sudut tajam.</td>
+    </tr>
+    <tr>
+      <td><strong>07:40-08:10</strong></td>
+      <td><strong>Sarapan MPASI</strong><br><span class="tag tag-yellow">Makan utama 1</span></td>
+      <td>Karbohidrat + protein hewani + sayur/buah + lemak. Contoh: nasi tim/cincang + ayam/daging/ikan/telur + sayur + minyak.</td>
+      <td>30-minute meal rule. Tidak dipaksa, tanpa distraksi layar. Tekstur tetap dinaikkan.</td>
+    </tr>
+    <tr>
+      <td><strong>08:10-08:25</strong></td>
+      <td><strong>Bersih-bersih makan</strong></td>
+      <td>Lap tangan dan mulut, air putih sedikit, bersihkan kursi makan, ganti baju bila kotor.</td>
+      <td>Hindari minuman manis.</td>
+    </tr>
+    <tr>
+      <td><strong>08:25-08:45</strong></td>
+      <td><strong>Main turun tempo</strong></td>
+      <td>Main lantai ringan, baca buku singkat, ngobrol pelan, lalu mulai turunkan intensitas.</td>
+      <td>Jangan terlalu heboh mendekati nap.</td>
+    </tr>
+    <tr>
+      <td><strong>08:45-09:00</strong></td>
+      <td><strong>Wind-down nap pagi</strong></td>
+      <td>Ganti popok, redupkan suasana, white noise rendah bila biasa dipakai, peluk sebentar, lalu tidur.</td>
+      <td>Tidak perlu susu sebagai syarat tidur.</td>
+    </tr>
+    <tr>
+      <td><strong>09:00-10:00</strong></td>
+      <td><strong>Nap pagi</strong><br><span class="tag tag-green">Tidur 45-60 menit</span></td>
+      <td>Target tidur pagi sekitar 45-60 menit (WW ~3 jam dari bangun).</td>
+      <td>Bila bangun cepat, beri kesempatan self-settle dulu sebelum intervensi.</td>
+    </tr>
+    <tr>
+      <td><strong>10:00-10:15</strong></td>
+      <td><strong>Bangun dari nap</strong></td>
+      <td>Buka tirai, sapa/peluk, ganti popok, cek mood dan tanda lapar.</td>
+      <td>Suasana bangun konsisten dan positif.</td>
+    </tr>
+    <tr>
+      <td><strong>10:15-10:45</strong></td>
+      <td><strong>Snack pagi</strong><br><span class="tag tag-yellow">Snack 1</span></td>
+      <td>Buah lunak, alpukat, ubi/kentang lembut, finger food aman.</td>
+      <td>Snack bukan pengganti makan utama.</td>
+    </tr>
+    <tr>
+      <td><strong>10:45-11:15</strong></td>
+      <td><strong>Susu kedua</strong><br><span class="tag tag-blue">P-HP 120-150 ml</span></td>
+      <td>Disesuaikan dengan sarapan, snack, dan total harian.</td>
+      <td>Bila MPASI bagus, volume di sisi bawah.</td>
+    </tr>
+    <tr>
+      <td><strong>11:15-12:00</strong></td>
+      <td><strong>Eksplorasi &amp; motorik</strong></td>
+      <td>Merangkak, latihan berdiri/merambat, main sensorik aman, baca buku, atau keluar rumah sebentar.</td>
+      <td>Pengawasan penuh. Hindari benda kecil yang bisa tertelan.</td>
+    </tr>
+    <tr>
+      <td><strong>12:00-12:30</strong></td>
+      <td><strong>Makan siang MPASI</strong><br><span class="tag tag-yellow">Makan utama 2</span></td>
+      <td>Prioritaskan protein hewani &amp; zat besi: daging sapi, ayam paha, ikan, telur, hati ayam 1-2x/minggu. Tambahkan vitamin C.</td>
+      <td>Jangan langsung diganti susu bila makan sedikit.</td>
+    </tr>
+    <tr>
+      <td><strong>12:30-12:45</strong></td>
+      <td><strong>Bersih-bersih &amp; air putih</strong></td>
+      <td>Bersihkan tangan/mulut, air putih sedikit, cek popok.</td>
+      <td>Tidak perlu mengejar makan dengan paksa.</td>
+    </tr>
+    <tr>
+      <td><strong>12:45-13:00</strong></td>
+      <td><strong>Wind-down nap siang</strong></td>
+      <td>Kamar tenang, lampu redup, rutinitas pendek, white noise rendah bila dipakai.</td>
+      <td>Hindari permainan aktif tepat sebelum nap siang.</td>
+    </tr>
+    <tr>
+      <td><strong>13:00-15:00</strong></td>
+      <td><strong>Nap siang utama</strong><br><span class="tag tag-green">1.5-2 jam</span></td>
+      <td>Target nap siang 1.5-2 jam (WW ~3.5 jam).</td>
+      <td>Jaga tidak terlalu sore supaya bedtime tetap ~20:00.</td>
+    </tr>
+    <tr>
+      <td><strong>15:00-15:15</strong></td>
+      <td><strong>Bangun nap siang</strong></td>
+      <td>Buka tirai, ganti popok, peluk, cek mood, beri waktu transisi.</td>
+      <td>Jangan langsung diberi screen.</td>
+    </tr>
+    <tr>
+      <td><strong>15:15-15:45</strong></td>
+      <td><strong>Susu ketiga</strong><br><span class="tag tag-blue">P-HP 150-180 ml</span></td>
+      <td>Jembatan sore agar Abi tidak butuh susu malam.</td>
+      <td>Bisa digabung dengan snack ringan kalau perlu.</td>
+    </tr>
+    <tr>
+      <td><strong>15:45-16:30</strong></td>
+      <td><strong>Main sore aktif</strong></td>
+      <td>Merangkak, berdiri berpegangan, jalan dituntun, main bola, musik lembut, interaksi keluarga.</td>
+      <td>Hindari overstimulasi mendekati malam.</td>
+    </tr>
+    <tr>
+      <td><strong>16:30-16:50</strong></td>
+      <td><strong>Mandi sore utama</strong></td>
+      <td>Mandi singkat air hangat suam-suam kuku, terutama bila Abi gerah/berkeringat. Keringkan lipatan dengan baik.</td>
+      <td>Lebih nyaman daripada mandi penuh jam 18:30 di area Surabaya/desa.</td>
+    </tr>
+    <tr>
+      <td><strong>16:50-17:15</strong></td>
+      <td><strong>Snack sore</strong><br><span class="tag tag-yellow">Snack 2</span></td>
+      <td>Snack kecil: buah, finger food lembut, ubi/kentang.</td>
+      <td>Bila milk ladder sudah disetujui DSA, test dairy dilakukan pagi, bukan sore/malam.</td>
+    </tr>
+    <tr>
+      <td><strong>17:15-17:45</strong></td>
+      <td><strong>Outdoor ringan / bonding</strong></td>
+      <td>Jalan sore, lihat luar rumah, ngobrol, bonding dengan keluarga.</td>
+      <td>Cahaya sore membantu ritme sirkadian.</td>
+    </tr>
+    <tr>
+      <td><strong>17:45-18:15</strong></td>
+      <td><strong>Makan malam MPASI</strong><br><span class="tag tag-yellow">Makan utama 3</span></td>
+      <td>Karbo + protein hewani + sayur + lemak. Tekstur cincang/chopped/soft finger food.</td>
+      <td>Jangan terlalu dekat bedtime bila membuat begah.</td>
+    </tr>
+    <tr>
+      <td><strong>18:15-18:30</strong></td>
+      <td><strong>Bersih-bersih makan</strong></td>
+      <td>Lap tangan/mulut, air putih sedikit, cek popok, mulai turunkan cahaya dan suara rumah.</td>
+      <td>Setelah ini masuk mode malam: tenang, tidak ramai, tidak screen.</td>
+    </tr>
+    <tr>
+      <td><strong>18:30-18:45</strong></td>
+      <td><strong>Lap hangat + piyama</strong></td>
+      <td>Lap hangat tangan, muka, leher, lipatan, area popok. Ganti piyama dan popok malam.</td>
+      <td>Bukan mandi penuh &mdash; mandi sudah di 16:30.</td>
+    </tr>
+    <tr>
+      <td><strong>18:45-19:00</strong></td>
+      <td><strong>Quiet play</strong></td>
+      <td>Buku, main lembut, ngobrol pelan, lagu tenang, bonding.</td>
+      <td>Tidak ada screen. Hindari kejar-kejaran, lampu terang, suara keras.</td>
+    </tr>
+    <tr>
+      <td><strong>19:00-19:20</strong></td>
+      <td><strong>Susu terakhir</strong><br><span class="tag tag-blue">P-HP 150-180 ml</span> <span class="tag tag-red">Terakhir hari ini</span></td>
+      <td>Diminum sebelum masuk rutinitas tidur inti.</td>
+      <td>Setelah selesai, botol disimpan. Tidak dibawa ke kasur.</td>
+    </tr>
+    <tr>
+      <td><strong>19:20-19:30</strong></td>
+      <td><strong>Bersihkan gigi/gusi</strong></td>
+      <td>Sikat gigi/gusi setelah susu terakhir.</td>
+      <td>Mencegah karies (BBTD) &amp; memutus asosiasi susu-tidur.</td>
+    </tr>
+    <tr>
+      <td><strong>19:30-19:45</strong></td>
+      <td><strong>Rutinitas tidur</strong></td>
+      <td>Lampu redup, buku pendek, lagu/nina bobo, peluk tenang, suasana konsisten.</td>
+      <td>Urutan konsisten. Total wind-down malam ~30 menit.</td>
+    </tr>
+    <tr>
+      <td><strong>19:45-20:00</strong></td>
+      <td><strong>Masuk tidur</strong><br><span class="tag tag-green">Bedtime</span></td>
+      <td>Kamar gelap, white noise rendah bila dipakai, Abi ditenangkan tanpa botol. Permukaan tidur firm, flat, non-inclined.</td>
+      <td>Target bedtime utama: ~20:00.</td>
+    </tr>
+    <tr>
+      <td><strong>20:00-04:30</strong></td>
+      <td><strong>Tidur malam</strong><br><span class="tag tag-red">No night milk</span></td>
+      <td>Bila terbangun, pakai Camping Out adaptasi: passive presence, kontak statis bila perlu, minim suara dan cahaya.</td>
+      <td>Tidak ada susu malam, tidak ada botol kosong, tidak ajak main, tidak lampu terang.</td>
+    </tr>
+
+  </table></div>
+</section>
+
+<section id="susu">
+  <h2 class="section-title">3. Pembagian Susu Harian</h2>
+
+  <p>Untuk fase 10 bulan, pola <strong>4x susu</strong> lebih stabil karena Abi sedang lepas susu malam. Range volume bukan target kaku &mdash; pantau BB di kurva, MPASI habis konsisten, frekuensi pipis 5-6x/hari.</p>
+
+  <div class="table-scroll"><table>
+    <tr><th>Jam</th><th>Volume P-HP</th><th>Konteks</th></tr>
+    <tr><td><strong>06:30</strong></td><td>150-180 ml</td><td>Susu pagi setelah bangun</td></tr>
+    <tr><td><strong>10:45</strong></td><td>120-150 ml</td><td>Pasca-snack, sebelum makan siang</td></tr>
+    <tr><td><strong>15:15</strong></td><td>150-180 ml</td><td>Pasca-nap siang, jembatan sore</td></tr>
+    <tr><td><strong>19:00</strong></td><td>150-180 ml</td><td>Susu terakhir, sebelum bedtime routine</td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>~570-690 ml</strong></td><td>Range, sesuaikan intake MPASI</td></tr>
+  </table></div>
+
+  <div class="box box-success">
+    <strong>&#9989; Contoh praktis:</strong>
+    180 + 150 + 150 + 150 = 630 ml, atau 180 + 150 + 180 + 150 = 660 ml. Tidak harus persis &mdash; sesuaikan dengan rasa lapar/kenyang Abi dan kualitas MPASI hari itu.
+  </div>
+</section>
+
+<section id="mandi">
+  <h2 class="section-title">4. Aturan Mandi</h2>
+
+  <div class="table-scroll"><table>
+    <tr><th>Jam</th><th>Mandi</th><th>Catatan</th></tr>
+    <tr><td><strong>07:00-07:20</strong></td><td>Mandi pagi</td><td>Setelah susu pagi, air hangat suam-suam kuku.</td></tr>
+    <tr><td><strong>16:30-16:50</strong></td><td>Mandi sore utama</td><td>Lebih nyaman untuk area Surabaya/desa, sebelum udara dingin.</td></tr>
+    <tr><td><strong>18:30-18:45</strong></td><td>Lap hangat + piyama</td><td>Bukan mandi penuh &mdash; cukup lipatan dan area popok.</td></tr>
+  </table></div>
+
+  <div class="box box-warning">
+    <strong>&#9888;&#65039; Penyesuaian kondisi:</strong>
+    Jika mandi sore membuat Abi terlalu segar dan susah tidur, cukup mandi sore singkat lalu malam hanya lap hangat. Jika Abi demam atau tidak fit, mandi diganti lap hangat.
+  </div>
+</section>
+
+<section id="redflag">
+  <h2 class="section-title">5. Kapan Jadwal Boleh Dihentikan</h2>
+
+  <div class="box box-danger">
+    <strong>&#128680; Prioritaskan DSA/IGD bila ada:</strong>
+    sesak napas, tarikan dada, bibir/kuku kebiruan, kejang, lemas berat, dehidrasi, pipis sangat berkurang, muntah hijau, BAB darah/hitam, bengkak bibir/kelopak/lidah, muntah berulang, demam tinggi menetap, atau Abi tampak sangat tidak seperti biasanya.
+  </div>
+
+  <p>Saat sakit berat, sleep training, milk ladder, dan transisi susu boleh di-pause. Kesehatan dan keselamatan lebih penting daripada konsistensi jadwal.</p>
+
+  <p style="margin-top:14px;"><a href="index.html" style="color:var(--blue-mid); font-weight:600;">&larr; Kembali ke Tumbuh Kembang Abi</a></p>
+</section>
+
+</div>
+
+<footer style="text-align:center; padding:28px 20px; color:#64748b; font-size:12px; line-height:1.7;">
+  <strong style="color:var(--blue-dark);">Jadwal Harian Tumbuh Kembang Abi</strong><br>
+  Sinkron dengan Section 8.6 Panduan Susu &amp; MPASI Usia 10 Bulan<br>
+  Sesuaikan dengan kondisi harian dan arahan DSA.
+</footer>
+
+<script src="config.js?v=622ba3d57a"></script>
+<script src="app.js?v=622ba3d57a"></script>
+</body>
+</html>
