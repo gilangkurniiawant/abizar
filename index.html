@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
 <title>Tumbuh Kembang Abi &mdash; Muhammad Abizar Kurniawan</title>
-<meta name="description" content="Dokumentasi tumbuh kembang Muhammad Abizar Kurniawan: protokol susu, MPASI, tidur, dan penanganan masalah harian, mengacu pada pedoman WHO, AAP, AASM, IDAI, dan ESPGHAN.">
+<meta name="description" content="Dokumentasi tumbuh kembang Muhammad Abizar Kurniawan: jadwal harian, panduan gizi, transisi susu UHT, dan penanganan masalah toddler, mengacu pada pedoman WHO, AAP, IDAI, dan ESPGHAN.">
 <style>
   :root {
     --blue-dark: #1a3a5c;
@@ -113,13 +113,15 @@
   }
   .info-item .label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
   .info-item .value { font-size: 14px; color: var(--blue-dark); font-weight: 600; }
+  .info-item.highlight { border-left-color: #16a34a; }
+  .info-item.highlight .value { color: #166534; }
 
   .docs-grid {
     display: grid; grid-template-columns: 1fr;
     gap: 24px; margin-bottom: 32px;
   }
   @media (min-width: 720px) {
-    .docs-grid { grid-template-columns: repeat(3, 1fr); }
+    .docs-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   .doc-card {
@@ -134,32 +136,30 @@
     transform: translateY(-4px);
     box-shadow: 0 12px 28px rgba(0,0,0,0.15);
   }
-  .doc-card.utama { border-top-color: #16a34a; }
   .doc-card.transisi { border-top-color: var(--blue-mid); }
   .doc-card.trouble { border-top-color: var(--red-mid); }
-  .doc-card.progress { border-top-color: #ea580c; }
 
   .doc-icon {
     width: 56px; height: 56px; border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
     font-size: 28px; margin-bottom: 16px;
   }
-  .doc-card.utama .doc-icon { background: var(--green-light); }
   .doc-card.transisi .doc-icon { background: var(--blue-light); }
   .doc-card.trouble .doc-icon { background: var(--red-light); }
-  .doc-card.progress .doc-icon { background: #fed7aa; }
 
   .doc-tag {
     display: inline-block; font-size: 11px; font-weight: 700;
     padding: 3px 10px; border-radius: 12px; letter-spacing: 0.5px;
     text-transform: uppercase; margin-bottom: 12px;
   }
-  .doc-card.utama .doc-tag { background: var(--green-light); color: var(--green-dark); }
   .doc-card.transisi .doc-tag { background: var(--blue-light); color: var(--blue-dark); }
   .doc-card.trouble .doc-tag { background: var(--red-light); color: var(--red-dark); }
-  .doc-card.progress .doc-tag { background: #fed7aa; color: #9a3412; }
-  .doc-card.jadwal .doc-tag { background: #fef3c7; color: #92400e; }
-  .doc-card.jadwal .doc-features li::before { color: #ea580c; }
+
+  .badge-now-inline {
+    background: #16a34a; color: #fff; font-size: 10px; padding: 2px 8px;
+    border-radius: 8px; margin-left: 6px; vertical-align: middle;
+    font-weight: 700; letter-spacing: 0.5px;
+  }
 
   .doc-card h3 {
     font-size: 17px; color: var(--blue-dark); margin-bottom: 8px;
@@ -183,7 +183,6 @@
     content: '\2713'; position: absolute; left: 0; color: var(--blue-mid);
     font-weight: 700;
   }
-  .doc-card.utama .doc-features li::before { color: #16a34a; }
   .doc-card.trouble .doc-features li::before { color: var(--red-mid); }
 
   .doc-btn {
@@ -192,10 +191,8 @@
     font-size: 13.5px; font-weight: 700; color: #fff;
     text-align: center; transition: opacity 0.2s; margin-top: auto;
   }
-  .doc-card.utama .doc-btn { background: linear-gradient(135deg, #16a34a, #166534); }
   .doc-card.transisi .doc-btn { background: linear-gradient(135deg, var(--blue-mid), var(--blue-dark)); }
   .doc-card.trouble .doc-btn { background: linear-gradient(135deg, var(--red-mid), var(--red-dark)); }
-  .doc-card.progress .doc-btn { background: linear-gradient(135deg, #ea580c, #9a3412); }
   .doc-btn:hover { opacity: 0.92; }
 
   .roadmap {
@@ -222,15 +219,23 @@
     width: 14px; height: 14px; border-radius: 50%;
     background: white; border: 3px solid var(--blue-mid);
   }
+  .timeline-item.done::before { border-color: #94a3b8; background: #94a3b8; }
   .timeline-item.now::before { border-color: #16a34a; background: #16a34a; box-shadow: 0 0 0 4px rgba(22,163,74,0.2); }
   .timeline-item h4 {
     font-size: 13px; color: var(--blue-dark); margin-bottom: 4px;
   }
+  .timeline-item.done h4 { color: #94a3b8; }
   .timeline-item p {
     font-size: 12.5px; color: #475569; margin: 0;
   }
-  .timeline-item .badge-now {
+  .timeline-item.done p { color: #94a3b8; }
+  .badge-now {
     background: #16a34a; color: #fff; font-size: 10px; padding: 2px 8px;
+    border-radius: 8px; margin-left: 6px; vertical-align: middle;
+    font-weight: 700; letter-spacing: 0.5px;
+  }
+  .badge-done {
+    background: #94a3b8; color: #fff; font-size: 10px; padding: 2px 8px;
     border-radius: 8px; margin-left: 6px; vertical-align: middle;
     font-weight: 700; letter-spacing: 0.5px;
   }
@@ -253,6 +258,8 @@
     transition: background 0.2s, transform 0.15s;
   }
   .action-link:hover { background: var(--blue-light); transform: translateX(2px); }
+  .action-link.red { border-left-color: var(--red-mid); }
+  .action-link.red:hover { background: var(--red-light); }
   .action-link .icon { font-size: 18px; margin-right: 6px; }
   .action-link .title { font-size: 13px; font-weight: 700; color: var(--blue-dark); }
   .action-link .desc { font-size: 11.5px; color: #64748b; margin-top: 2px; }
@@ -275,54 +282,6 @@
   @media (max-width: 380px) {
     .info-grid { grid-template-columns: 1fr; }
   }
-
-  .parents-card {
-    background: linear-gradient(135deg, #fff5f5 0%, #fef3c7 50%, #f0f9ff 100%);
-    border-radius: 16px; padding: 36px 28px; margin-bottom: 28px;
-    box-shadow: 0 4px 20px rgba(220, 38, 127, 0.08);
-    border: 1px solid #fce7f3; text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .parents-card::before {
-    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, #f472b6, #fbbf24, #60a5fa);
-  }
-  .parents-icon {
-    font-size: 38px; margin-bottom: 12px;
-  }
-  .parents-card h3 {
-    font-size: 13px; text-transform: uppercase; letter-spacing: 2px;
-    color: #be185d; font-weight: 600; margin-bottom: 6px;
-  }
-  .parents-names {
-    font-family: 'Segoe Script', 'Brush Script MT', cursive;
-    font-size: 32px; color: #1a3a5c; font-weight: 700;
-    margin-bottom: 18px; letter-spacing: 1px;
-  }
-  .parents-quote {
-    font-style: italic; color: #475569; font-size: 14px; line-height: 1.7;
-    max-width: 560px; margin: 0 auto 18px; padding: 0 8px;
-  }
-  .parents-mission {
-    color: #334155; font-size: 13.5px; line-height: 1.7;
-    max-width: 560px; margin: 0 auto 18px;
-  }
-  .parents-divider {
-    color: #f472b6; font-size: 18px; margin: 18px 0;
-    letter-spacing: 12px;
-  }
-  .parents-tagline-strong {
-    color: #1a3a5c; font-size: 14px; font-weight: 800;
-    margin: 18px 0 0; letter-spacing: 1.5px; line-height: 1.8;
-  }
-  .parents-quote em {
-    font-style: italic; display: inline-block; line-height: 1.85;
-  }
-  @media (max-width: 600px) {
-    .parents-card { padding: 28px 20px; }
-    .parents-names { font-size: 26px; }
-    .parents-quote, .parents-mission { font-size: 13px; }
-  }
 </style>
 </head>
 <body>
@@ -331,12 +290,12 @@
   <div class="hero-content">
     <div class="avatar-big"><img src="img/abi-avatar.jpg" alt="Abi"></div>
     <h1>Tumbuh Kembang Abi</h1>
-    <p class="subtitle">Dokumentasi tumbuh kembang <span id="abi-subtitle-name">Muhammad Abizar Kurniawan</span>: protokol susu, MPASI, tidur, dan penanganan masalah harian. Disusun mengacu pada pedoman WHO, AAP, AASM, IDAI, dan ESPGHAN.</p>
+    <p class="subtitle">Dokumentasi tumbuh kembang <span id="abi-subtitle-name">Muhammad Abizar Kurniawan</span>: jadwal harian, panduan gizi, transisi susu UHT, dan penanganan masalah toddler. Disusun mengacu pada pedoman WHO, AAP, IDAI, ESPGHAN, dan CDC.</p>
     <div class="hero-stats">
-      <div class="hero-stat"><strong id="abi-hero-age">10 bulan</strong> &middot; lahir <span id="abi-hero-birth">28 Jul 2025</span></div>
-      <div class="hero-stat"><strong id="abi-hero-weight">10.72 kg</strong> &middot; <span id="abi-hero-pct">~P88-P92</span> WHO</div>
-      <div class="hero-stat" id="abi-hero-formula">Morinaga P-HP</div>
-      <div class="hero-stat" id="abi-hero-allergy">Suspected CMPA ringan</div>
+      <div class="hero-stat"><strong id="abi-hero-age">12 bulan</strong> &middot; lahir <span id="abi-hero-birth">28 Jul 2025</span></div>
+      <div class="hero-stat"><strong id="abi-hero-weight">12 kg</strong> &middot; <span id="abi-hero-pct">~P97&ndash;P99</span> WHO</div>
+      <div class="hero-stat" id="abi-hero-milk">Susu UHT Full Cream</div>
+      <div class="hero-stat" id="abi-hero-sleep">&#128564; Tidur mandiri 18:45 &rarr; 05:15</div>
     </div>
   </div>
 </header>
@@ -347,12 +306,12 @@
     <img src="img/abi-portrait.jpg" alt="Abizar" loading="lazy">
     <div class="photo-caption">
       <h3>&#127870; <span id="abi-photo-nick">Abi</span> Saat Ini</h3>
-      <p id="abi-photo-text">Muhammad Abizar Kurniawan, 10 bulan, BB 10.72 kg. Dokumen ini disusun khusus untuk mendukung tumbuh kembang Abi sampai usia 2 tahun, dengan pertimbangan riwayat alergi ringan susu sapi yang sudah resolved sejak pindah ke Morinaga P-HP.</p>
+      <p id="abi-photo-text">Muhammad Abizar Kurniawan, 12 bulan, BB 12 kg. Dokumen ini disusun khusus untuk mendukung tumbuh kembang Abi hingga usia 2 tahun. Abi sudah berhasil transisi ke susu UHT full cream dan tidur mandiri tanpa sleep props &mdash; hanya perlu digelapkan lampunya.</p>
     </div>
   </section>
 
   <section class="info-card">
-    <h2>&#128218; Profil Anak</h2>
+    <h2>&#128218; Profil Abi</h2>
     <div class="info-grid">
       <div class="info-item">
         <div class="label">Nama Lengkap</div>
@@ -362,125 +321,95 @@
         <div class="label">Tanggal Lahir</div>
         <div class="value" id="abi-profile-birth">28 Juli 2025</div>
       </div>
-      <div class="info-item">
+      <div class="info-item highlight">
         <div class="label">Usia Saat Ini</div>
-        <div class="value" id="abi-profile-age">9 bulan 28 hari (10 bln)</div>
+        <div class="value" id="abi-profile-age">12 bulan &#10004;</div>
       </div>
-      <div class="info-item">
+      <div class="info-item highlight">
         <div class="label">BB Terakhir</div>
-        <div class="value" id="abi-profile-weight">10.72 kg (~P88-P92, normal-tinggi)</div>
+        <div class="value" id="abi-profile-weight">12 kg (~P97&ndash;P99, pertumbuhan baik)</div>
       </div>
-      <div class="info-item">
+      <div class="info-item highlight">
         <div class="label">Susu Saat Ini</div>
-        <div class="value" id="abi-profile-formula">Morinaga Chil&middot;Mil P-HP</div>
+        <div class="value" id="abi-profile-milk">UHT Full Cream &mdash; max 375 ml/hari</div>
       </div>
       <div class="info-item">
         <div class="label">Riwayat Alergi</div>
-        <div class="value" id="abi-profile-allergy">Suspected CMPA ringan, asimptomatik di P-HP</div>
+        <div class="value" id="abi-profile-allergy">Suspected CMPA ringan &mdash; resolved</div>
       </div>
-      <div class="info-item">
+      <div class="info-item highlight">
         <div class="label">Pola Tidur</div>
-        <div class="value" id="abi-profile-sleep">18:30 &rarr; 03:30 (perlu dioptimasi)</div>
+        <div class="value" id="abi-profile-sleep">Bangun 05:15 &rarr; Tidur 18:45 (mandiri) &#10004;</div>
       </div>
       <div class="info-item">
         <div class="label">Update Terakhir</div>
-        <div class="value" id="abi-profile-updated">26 Mei 2026</div>
+        <div class="value" id="abi-profile-updated">30 Juli 2026</div>
       </div>
     </div>
   </section>
 
   <section class="docs-grid">
 
-    <a href="panduan-utama-10-bulan.html" class="doc-card utama">
-      <div class="doc-icon">&#127868;</div>
-      <span class="doc-tag">Panduan Utama &middot; Sekarang</span>
-      <h3 id="abi-doc-utama-title">Panduan Susu &amp; MPASI Usia 10 Bulan</h3>
-      <p class="doc-period">&#128197; <span id="abi-doc-utama-period">Bulan 10 - 12 (Mei - Agustus 2026)</span></p>
-      <p class="doc-desc" id="abi-doc-utama-desc">Konsolidasi P-HP, MPASI bergizi, persiapan transisi susu sapi, milk ladder bertahap, dan pola tidur optimal.</p>
-      <ul class="doc-features">
-        <li id="abi-doc-utama-vol">Volume susu 500-700 ml/hari</li>
-        <li>MPASI 3x utama + zat besi prioritas</li>
-        <li>Milk ladder 5 tangga aman</li>
-        <li>Pola tidur 13-15 jam (target)</li>
-        <li>Roadmap bulan 10, 11, 12</li>
-      </ul>
-      <span class="doc-btn">Buka Panduan Utama &rarr;</span>
-    </a>
-
     <a href="panduan-transisi-12-24-bulan.html" class="doc-card transisi">
       <div class="doc-icon">&#129371;</div>
-      <span class="doc-tag">Panduan Lanjutan</span>
+      <span class="doc-tag">Panduan Utama &middot; Sekarang <span class="badge-now-inline">AKTIF</span></span>
       <h3>Panduan Transisi Susu Toddler</h3>
-      <p class="doc-period">&#128197; <span id="abi-doc-transisi-period">Bulan 12 - 24 (Agt 2026 - Jul 2027)</span></p>
-      <p class="doc-desc">Transisi bertahap dari sufor ke UHT full cream, lepas susu malam, kurangi dot, dan menuju makan keluarga normal.</p>
+      <p class="doc-period">&#128197; <span id="abi-doc-transisi-period">Bulan 12 &ndash; 24 (Juli 2026 &ndash; Juli 2027)</span></p>
+      <p class="doc-desc">Panduan lengkap transisi dari sufor ke UHT full cream, jadwal harian Abi (bangun 05:15 &ndash; tidur 18:45), list makanan &amp; gizi optimal berbasis WHO/AAP/IDAI, stimulasi tumbuh kembang, imunisasi, dan milestone 12&ndash;24 bulan.</p>
       <ul class="doc-features">
-        <li>Fase 1: Sufor &rarr; UHT (rasio 3:1 sd 1:3)</li>
-        <li>Fase 2: Stop susu malam</li>
-        <li>Fase 3: Encerkan UHT, kurangi dot</li>
-        <li>Fase 4: Susu opsional, makan keluarga</li>
-        <li>Peta bulanan 12-24 dengan tanggal</li>
+        <li>Jadwal harian Abi detail (05:15&ndash;18:45)</li>
+        <li>List makanan bergizi &amp; contoh menu</li>
+        <li>Susu UHT max 375 ml/hari &mdash; dipisah dari makan</li>
+        <li>Milestone tumbuh kembang &amp; red flag</li>
+        <li>Imunisasi IDAI 12&ndash;24 bulan</li>
+        <li>Stimulasi otak 5 area (bahasa, motorik, kognitif)</li>
+        <li>Peta fase transisi bulanan 12&ndash;24</li>
       </ul>
       <span class="doc-btn">Buka Panduan Transisi &rarr;</span>
     </a>
 
     <a href="panduan-troubleshooting.html" class="doc-card trouble">
       <div class="doc-icon">&#128736;&#65039;</div>
-      <span class="doc-tag">Pendamping &middot; Saat Bermasalah</span>
-      <h3>Panduan Troubleshooting Transisi</h3>
-      <p class="doc-period">&#128197; <span id="abi-doc-trouble-period">Untuk Bulan 10 - 24 (Periode Transisi)</span></p>
-      <p class="doc-desc">Solusi praktis untuk tantrum malam, asosiasi dot, GTM, penolakan UHT, sleep training, sakit, travel, dan mental ortu.</p>
+      <span class="doc-tag">Panduan Pendamping &middot; Saat Bermasalah</span>
+      <h3>Panduan Troubleshooting Toddler</h3>
+      <p class="doc-period">&#128197; <span id="abi-doc-trouble-period">Untuk Bulan 12 &ndash; 24 (Periode Toddler)</span></p>
+      <p class="doc-desc">Solusi praktis untuk GTM (gerakan tutup mulut), tantrum tengah malam, sleep regression, penolakan UHT, penanganan saat sakit, travel/mudik di tengah transisi, dan mental orang tua.</p>
       <ul class="doc-features">
-        <li id="abi-doc-trouble-bb">Analisis BB Abi vs kurva WHO</li>
-        <li>Strategi tantrum &amp; bangun nangis</li>
-        <li>Asosiasi dot kosong (3 pendekatan)</li>
+        <li>Analisis BB Abi 12 kg vs kurva WHO</li>
+        <li>Tidur mandiri &amp; sleep regression darurat</li>
+        <li>GTM &amp; strategi penolakan makan</li>
+        <li>Penolakan UHT/susu baru saat transisi</li>
         <li>Kapan boleh mundur ke pola lama</li>
-        <li>Tanda emergency &amp; kontak DSA</li>
+        <li>Tanda emergency &amp; kapan ke DSA/IGD</li>
+        <li>Mental &amp; energi orang tua</li>
       </ul>
       <span class="doc-btn">Buka Troubleshooting &rarr;</span>
     </a>
-
-    <!--
-    <a href="progress.html" class="doc-card progress">
-      <div class="doc-icon">&#128221;</div>
-      <span class="doc-tag">Live Progress &middot; Update Tiap Hari</span>
-      <h3>Progress Sleep Training</h3>
-      <p class="doc-period">&#128197; Malam 1 - 21 (Camping Out)</p>
-      <p class="doc-desc">Catatan harian transisi lepas dot saat tidur, mengikuti protokol Camping Out (Hiscock 2007). Update tiap pagi.</p>
-      <ul class="doc-features">
-        <li>Timeline malam dengan jam-jam kunci</li>
-        <li>Strategi camping out 4 fase</li>
-        <li>Insight tiap malam untuk hari berikutnya</li>
-        <li>Indikator kemajuan berbasis riset</li>
-        <li>Red flag &amp; kapan stop training</li>
-      </ul>
-      <span class="doc-btn">Lihat Progress &rarr;</span>
-    </a>
-    -->
 
   </section>
 
   <section class="roadmap">
     <h2>&#128205; Roadmap Tumbuh Kembang Abi</h2>
     <div class="timeline">
-      <div class="timeline-item now" id="abi-roadmap-0">
-        <h4 id="abi-roadmap-h-0">Mei - Agustus 2026 &middot; Bulan 10-12 <span class="badge-now">SEKARANG</span></h4>
-        <p>Konsolidasi P-HP &amp; MPASI, pola tidur optimal, milk ladder tangga 1-3.<br>&rarr; <strong>Panduan Utama</strong></p>
+      <div class="timeline-item done" id="abi-roadmap-0">
+        <h4 id="abi-roadmap-h-0">Mei &ndash; Juli 2026 &middot; Bulan 10&ndash;12 <span class="badge-done">SELESAI &#10004;</span></h4>
+        <p>Konsolidasi P-HP &amp; MPASI, milk ladder, sleep training. Abi berhasil tidur mandiri tanpa sleep props.</p>
       </div>
-      <div class="timeline-item" id="abi-roadmap-1">
-        <h4 id="abi-roadmap-h-1">Agustus - Desember 2026 &middot; Bulan 12-16</h4>
-        <p>Fase 1 transisi: sufor &rarr; UHT bertahap (rasio 3:1 sampai 1:3).<br>&rarr; <strong>Panduan Transisi (Fase 1)</strong></p>
+      <div class="timeline-item now" id="abi-roadmap-1">
+        <h4 id="abi-roadmap-h-1">Juli &ndash; Oktober 2026 &middot; Bulan 12&ndash;15 <span class="badge-now">SEKARANG</span></h4>
+        <p>Fase 1 transisi: sufor &rarr; UHT full cream bertahap. Jadwal makan &amp; susu terpisah. BB 12 kg dipantau.<br>&rarr; <strong>Panduan Transisi (Fase 1&ndash;2)</strong></p>
       </div>
       <div class="timeline-item" id="abi-roadmap-2">
-        <h4 id="abi-roadmap-h-2">Januari - Maret 2027 &middot; Bulan 17-19</h4>
-        <p>Fase 2: full UHT, stop susu malam, biasakan air putih.<br>&rarr; <strong>Panduan Transisi (Fase 2)</strong></p>
+        <h4 id="abi-roadmap-h-2">Oktober 2026 &ndash; Februari 2027 &middot; Bulan 15&ndash;18</h4>
+        <p>Fase 2: full UHT, lepas dot sepenuhnya, biasakan air putih dan gelas.<br>&rarr; <strong>Panduan Transisi (Fase 2&ndash;3)</strong></p>
       </div>
       <div class="timeline-item" id="abi-roadmap-3">
-        <h4 id="abi-roadmap-h-3">April - Juni 2027 &middot; Bulan 20-22</h4>
-        <p>Fase 3: encerkan UHT, kurangi dot, transisi ke gelas/sippy cup.<br>&rarr; <strong>Panduan Transisi (Fase 3)</strong></p>
+        <h4 id="abi-roadmap-h-3">Februari &ndash; Mei 2027 &middot; Bulan 18&ndash;22</h4>
+        <p>Fase 3: kurangi volume UHT, susu opsional, perkuat makan keluarga. Screen time max 1 jam/hari.<br>&rarr; <strong>Panduan Transisi (Fase 3&ndash;4)</strong></p>
       </div>
       <div class="timeline-item" id="abi-roadmap-4">
-        <h4 id="abi-roadmap-h-4">Juli - Agustus 2027 &middot; Bulan 23-24</h4>
-        <p>Fase 4: susu opsional, makan keluarga normal, target tercapai.<br>&rarr; <strong>Panduan Transisi (Fase 4)</strong></p>
+        <h4 id="abi-roadmap-h-4">Juli 2027 &middot; Bulan 24 &mdash; Target Tercapai &#127775;</h4>
+        <p>Susu opsional, makan keluarga normal, kosa kata 50+ kata, berjalan &amp; berlari lancar.<br>&rarr; <strong>Tumbuh Kembang Optimal!</strong></p>
       </div>
     </div>
   </section>
@@ -488,43 +417,39 @@
   <section class="quick-actions">
     <h2>&#9889; Akses Cepat</h2>
     <div class="actions-grid">
-      <a href="panduan-utama-10-bulan.html#jadwal" class="action-link">
-        <div><span class="icon">&#9889;</span><span class="title">Jadwal Harian</span></div>
-        <div class="desc">Usia 10 s.d 12 bulan</div>
+      <a href="panduan-transisi-12-24-bulan.html#jadwal" class="action-link">
+        <div><span class="icon">&#128197;</span><span class="title">Jadwal Harian Abi</span></div>
+        <div class="desc">05:15 bangun &mdash; 18:45 tidur</div>
       </a>
-      <a href="panduan-utama-10-bulan.html#susu" class="action-link">
-        <div><span class="icon">&#127868;</span><span class="title">Volume Susu Harian</span></div>
-        <div class="desc" id="abi-action-vol">P-HP 500-700 ml/hari</div>
+      <a href="panduan-transisi-12-24-bulan.html#makanan" class="action-link">
+        <div><span class="icon">&#127860;</span><span class="title">List Makanan &amp; Gizi</span></div>
+        <div class="desc">Protein, sayur, buah, lemak sehat</div>
       </a>
-      <a href="panduan-utama-10-bulan.html#mpasi" class="action-link">
-        <div><span class="icon">&#127859;</span><span class="title">MPASI &amp; Tekstur</span></div>
-        <div class="desc">3x utama + 2 snack</div>
+      <a href="panduan-transisi-12-24-bulan.html#bulanan" class="action-link">
+        <div><span class="icon">&#129371;</span><span class="title">Panduan Susu Bulanan</span></div>
+        <div class="desc">UHT max 375 ml/hari, 3 slot</div>
       </a>
-      <a href="panduan-utama-10-bulan.html#zatbesi" class="action-link">
-        <div><span class="icon">&#129704;</span><span class="title">Zat Besi Prioritas</span></div>
-        <div class="desc">11 mg/hari, sumber heme</div>
+      <a href="panduan-transisi-12-24-bulan.html#perhatian" class="action-link">
+        <div><span class="icon">&#127775;</span><span class="title">Milestone &amp; Stimulasi</span></div>
+        <div class="desc">Tumbuh kembang 12&ndash;24 bln</div>
       </a>
-      <a href="panduan-utama-10-bulan.html#alergi" class="action-link">
-        <div><span class="icon">&#129496;</span><span class="title">Milk Ladder</span></div>
-        <div class="desc">Tangga 1-5 protokol</div>
+      <a href="panduan-transisi-12-24-bulan.html#perhatian" class="action-link">
+        <div><span class="icon">&#128138;</span><span class="title">Jadwal Imunisasi</span></div>
+        <div class="desc">IDAI 12&ndash;24 bulan</div>
       </a>
-      <a href="panduan-utama-10-bulan.html#tidur" class="action-link">
-        <div><span class="icon">&#128164;</span><span class="title">Pola Tidur Optimal</span></div>
-        <div class="desc">13-15 jam, 2 nap</div>
-      </a>
-      <a href="panduan-troubleshooting.html#analisis-bb" class="action-link">
+      <a href="panduan-troubleshooting.html#analisis-bb" class="action-link red">
         <div><span class="icon">&#128202;</span><span class="title">Analisis BB Abi</span></div>
-        <div class="desc" id="abi-action-bb">10.72 kg vs kurva WHO</div>
+        <div class="desc">12 kg vs kurva WHO</div>
       </a>
-      <a href="panduan-troubleshooting.html#tantrum-malam" class="action-link">
-        <div><span class="icon">&#128557;</span><span class="title">Tantrum Malam</span></div>
-        <div class="desc">Graduated extinction</div>
+      <a href="panduan-troubleshooting.html#tolak-mpasi" class="action-link red">
+        <div><span class="icon">&#127859;</span><span class="title">GTM &amp; Tolak Makan</span></div>
+        <div class="desc">Gerakan tutup mulut</div>
       </a>
-      <a href="panduan-troubleshooting.html#asosiasi-dot" class="action-link">
-        <div><span class="icon">&#128132;</span><span class="title">Asosiasi Dot</span></div>
-        <div class="desc">Weaning bertahap</div>
+      <a href="panduan-troubleshooting.html#bangun-nangis" class="action-link red">
+        <div><span class="icon">&#128564;</span><span class="title">Sleep Regression</span></div>
+        <div class="desc">Panduan darurat malam</div>
       </a>
-      <a href="panduan-troubleshooting.html#emergency" class="action-link">
+      <a href="panduan-troubleshooting.html#emergency" class="action-link red">
         <div><span class="icon">&#128680;</span><span class="title">Tanda Emergency</span></div>
         <div class="desc">Kapan ke DSA/IGD</div>
       </a>
@@ -532,39 +457,19 @@
         <div><span class="icon">&#128153;</span><span class="title">Mental Ortu</span></div>
         <div class="desc">Support &amp; burnout</div>
       </a>
-      <a href="panduan-utama-10-bulan.html#referensi" class="action-link">
+      <a href="panduan-transisi-12-24-bulan.html#referensi" class="action-link">
         <div><span class="icon">&#128218;</span><span class="title">Semua Referensi</span></div>
-        <div class="desc">WHO, AAP, IDAI, dll</div>
+        <div class="desc">WHO, AAP, IDAI, CDC</div>
       </a>
     </div>
   </section>
 
 </main>
 
-<!--
-<section class="parents-card">
-    <h3>Untuk Abi, dari</h3>
-    <div class="parents-names" id="abi-parents-name">Gilang &amp; Rhuka</div>
-    <p class="parents-quote" id="abi-parents-quote">
-      <em>&ldquo;Nak, ini hidupmu sayang.<br>
-      Kamu tidak ada kewajiban untuk membalas<br>
-      atas semua yang telah kami berikan.<br><br>
-      Untuk kami,<br>
-      membesarkanmu adalah tanggung jawab,<br>
-      bukan hutang yang nantinya harus kamu bayar.&rdquo;</em>
-    </p>
-    <p class="parents-tagline-strong" id="abi-parents-closing">
-      TUMBUHLAH DENGAN BAHAGIA.<br>
-      TUMBUHLAH DENGAN BAIK.
-    </p>
-    <div class="parents-divider">&#129293;</div>
-  </section>
--->
-
 <footer>
   <strong>Tumbuh Kembang <span id="abi-footer-fullname">Muhammad Abizar Kurniawan</span></strong><br>
-  Lahir <span id="abi-footer-birth">28 Juli 2025</span> &middot; Disusun: <span id="abi-footer-updated">26 Mei 2026</span><br>
-  Berbasis riset peer-reviewed dari WHO, AAP, AASM, IDAI, ESPGHAN, EAACI, BSACI, AAPD, CDC
+  Lahir <span id="abi-footer-birth">28 Juli 2025</span> &middot; BB <span id="abi-footer-bb">12 kg</span> &middot; Diperbarui: <span id="abi-footer-updated">30 Juli 2026</span><br>
+  Berbasis riset peer-reviewed dari WHO, AAP, IDAI, ESPGHAN, AAPD, CDC
 </footer>
 
 <script src="config.js?v=622ba3d57a"></script>
